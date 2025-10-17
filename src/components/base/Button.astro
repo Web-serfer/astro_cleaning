@@ -1,0 +1,45 @@
+---
+// Определяем пропсы (props) для компонента
+interface Props {
+    href?: string;       // Ссылка, куда ведет кнопка
+    text?: string;       // Текст на кнопке
+    class?: string;      // Для передачи дополнительных CSS-классов извне
+}
+
+// Задаем значения по умолчанию
+const {
+    href = '/booking',
+    text = 'BOOK NOW',
+    class: className
+} = Astro.props;
+---
+
+<a
+        href={href}
+        class:list={[
+            // --- Базовые стили кнопки ---
+		"inline-flex items-center justify-center gap-2.5", // Flex-контейнер для иконки и текста
+		"bg-primary text-white",                           // Цвета фона и текста
+		"font-bold text-sm uppercase tracking-wider",      // Стили текста
+		"py-3.5 px-7 rounded-full",                        // Отступы и скругление
+		"whitespace-nowrap",                               // Запрет переноса текста
+		// --- Эффекты при наведении ---
+		"transition-all duration-300 ease-in-out",         // Плавный переход
+		"hover:bg-primary-dark",                           // Затемнение фона при наведении
+		"hover:-translate-y-0.5",                          // Легкий подъем при наведении
+		"focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary", // Стили для фокуса (доступность)
+		// --- Подключение внешних классов ---
+		className
+        ]}
+>
+    <!-- SVG-иконка -->
+    <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M9 3H5C3.89543 3 3 3.89543 3 5V9" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M15 3H19C20.1046 3 21 3.89543 21 5V9" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M9 21H5C3.89543 21 3 20.1046 3 19V15" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M15 21H19C20.1046 21 21 20.1046 21 19V15" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+
+    <!-- Текст кнопки -->
+    <span>{text}</span>
+</a>
