@@ -1,10 +1,16 @@
 ---
+import { Image } from 'astro:assets';
 import ButtonSecondary from './ButtonSecondary.astro';
 import Button from '@components/base/Button.astro';
+import cleaningImg from '@assets/hero/girl.png';
 ---
 <div class="bg-white rounded-2xl p-6 shadow-lg flex flex-col gap-4 h-full transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
-    <!-- Placeholder для картинки -->
-    <div class="w-full h-36 bg-slate-200 rounded-xl"></div>
+    <!-- Изображение для карточки -->
+    <Image 
+        src={cleaningImg} 
+        alt="Professional cleaning service" 
+        class="w-full h-36 object-cover rounded-xl"
+    />
 
     <p class="text-gray-600 leading-relaxed">
         Our professional team uses eco-friendly products to deliver exceptional cleaning results every time.
