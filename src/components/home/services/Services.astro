@@ -1,6 +1,6 @@
 ---
-import ServiceCard from './ServiceCard.astro';
 import {Icon} from 'astro-icon/components';
+import ServiceCard from './ServiceCard.astro';
 
 interface Service {
     title: string;
@@ -62,10 +62,10 @@ const servicesData: Service[] = [
                     <Icon name="externalLink" class="w-5 h-5"/>
                 </a>
             </div>
-            <h2 class="text-4xl sm:text-5xl font-extrabold text-zinc-900 mb-4">
+            <h2 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold text-zinc-900 mb-4">
                 Explore Our Cleaning Services
             </h2>
-            <p class="text-lg text-zinc-600">
+            <p class="text-base sm:text-lg text-zinc-600">
                 Lorem ipsum dolor sit amet consectetur. Turpis pellentesque pellentesque tristique condimentum nulla
                 eget. Tincidunt et vel ultrices egestas viverra consequat neque aliquet vulputate.
             </p>
@@ -74,15 +74,15 @@ const servicesData: Service[] = [
         <!-- Сетка с карточками -->
         <div class="mt-12 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4">
             {servicesData.map(service => (
-                    <ServiceCard
-                            title={service.title}
-                            description={service.description}
-                            buttonText={service.buttonText}
-                            href={service.href}
-                            iconType={service.iconType}
-                            promoTag={service.promoTag}
-                            details={service.details}
-                    />
+                <ServiceCard
+                    title={service.title}
+                    description={service.description}
+                    buttonText={service.buttonText}
+                    href={service.href}
+                    iconType={service.iconType}
+                    promoTag={service.promoTag}
+                    details={service.details}
+                />
             ))}
         </div>
 
