@@ -1,24 +1,26 @@
 ---
 import Button from '@components/base/Button.astro';
+
+const menuItems = [
+    { href: '/services', label: 'Services' },
+    { href: '/pricing', label: 'Pricing' },
+    { href: '/about', label: 'About Us' }
+];
 ---
 
 <nav class="hidden md:block">
     <ul class="flex items-center gap-8">
-        <li>
-            <a href="/services" class="font-medium text-zinc-700 hover:text-primary transition-colors duration-300">
-                Services
-            </a>
-        </li>
-        <li>
-            <a href="/pricing" class="font-medium text-zinc-700 hover:text-primary transition-colors duration-300">
-                Pricing
-            </a>
-        </li>
-        <li>
-            <a href="/about" class="font-medium text-zinc-700 hover:text-primary transition-colors duration-300">
-                About Us
-            </a>
-        </li>
+        {menuItems.map((item) => (
+                <li class="relative group">
+                    <a
+                            href={item.href}
+                            class="font-medium text-zinc-700 hover:text-[#5d3ebc] transition-colors duration-300 relative inline-block px-1 py-1 overflow-hidden"
+                    >
+                        <span class="relative z-10">{item.label}</span>
+                        <span class="absolute bottom-0 left-1/2 w-full h-0.5 bg-[#5d3ebc] rounded-full transition-all duration-300 -translate-x-1/2 scale-x-0 group-hover:scale-x-100 origin-center"></span>
+                    </a>
+                </li>
+        ))}
         <Button text="BOOK NOW" href="/booking" />
     </ul>
 </nav>
