@@ -1,0 +1,92 @@
+---
+const menuItems = [
+    { href: '/services', label: 'Services' },
+    { href: '/pricing', label: 'Pricing' },
+    { href: '/about', label: 'About Us' }
+];
+---
+
+<nav class="relative">
+    <button 
+        id="mobile-menu-button" 
+        class="p-2 rounded-md text-gray-700 hover:text-[var(--primary)] focus:outline-none"
+        onclick="mobileMenuToggle()"
+    >
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
+    </button>
+    
+    <div 
+        id="mobile-menu" 
+        class="fixed top-0 left-0 h-full w-64 bg-white shadow-xl z-50 transform -translate-x-full transition-transform duration-300 ease-in-out flex flex-col">
+        <div class="p-4 border-b border-gray-200 flex justify-end">
+            <button 
+                id="close-menu-button" 
+                class="p-1 rounded-md text-gray-700"
+                onclick="mobileMenuClose()"
+            >
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+            </button>
+        </div>
+        <ul class="flex-1 flex flex-col items-center justify-center gap-8 py-8">
+            {menuItems.map((item) => (
+                <li>
+                    <a
+                        href={item.href}
+                        class="font-medium text-zinc-700 hover:text-[var(--primary)] transition-colors duration-300 text-lg block px-4 py-2"
+                        onclick="mobileMenuClose(); return true;"
+                    >
+                        {item.label}
+                    </a>
+                </li>
+            ))}
+            <li>
+                <a
+                    href="/booking"
+                    class="font-medium text-white relative inline-block px-6 py-3 bg-[var(--primary)] hover:bg-[var(--primary-hover)] rounded-full transition-all duration-300 hover:-translate-y-1 overflow-hidden"
+                    onclick="mobileMenuClose(); return true;"
+                >
+                    <span class="relative z-10 flex items-center gap-2">
+                        <svg class="icon w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                        </svg>
+                        BOOK NOW
+                    </span>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <div 
+        id="overlay" 
+        class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden transition-opacity duration-300 ease-in-out"
+        onclick="mobileMenuClose()"
+    ></div>
+</nav>
+
+<script is:inline>
+    function mobileMenuToggle() {
+        const mobileMenu = document.getElementById('mobile-menu');
+        const overlay = document.getElementById('overlay');
+        
+        mobileMenu.classList.toggle('active');
+        overlay.classList.toggle('active');
+        
+        if (mobileMenu.classList.contains('active')) {
+            document.body.classList.add('overflow-hidden');
+        } else {
+            document.body.classList.remove('overflow-hidden');
+        }
+    }
+    
+    function mobileMenuClose() {
+        const mobileMenu = document.getElementById('mobile-menu');
+        const overlay = document.getElementById('overlay');
+        
+        mobileMenu.classList.remove('active');
+        overlay.classList.remove('active');
+        document.body.classList.remove('overflow-hidden');
+    }
+</script>
