@@ -1,9 +1,18 @@
 ---
 import ServiceCard from './ServiceCard.astro';
-import { Icon } from 'astro-icon/components';
+import {Icon} from 'astro-icon/components';
 
+interface Service {
+    title: string;
+    description: string;
+    buttonText: string;
+    href: string;
+    iconType: 'arrow' | 'external';
+    promoTag?: string;
+    details?: string[];
+}
 
-const servicesData = [
+const servicesData: Service[] = [
     {
         title: "Regular Cleaning",
         description: "Keep life tidy week after week.",
@@ -45,17 +54,20 @@ const servicesData = [
         <!-- Заголовок секции -->
         <div class="max-w-3xl">
             <div class="flex justify-between items-center mb-4">
-                <p class="text-sm font-bold uppercase tracking-wider text-zinc-500 bg-zinc-100 px-3 py-1 rounded">SERVICES</p>
-                <a href="/services" class="hidden sm:flex items-center gap-2 text-teal-600 font-semibold hover:underline">
+                <p class="text-sm font-bold uppercase tracking-wider text-zinc-500 bg-zinc-100 px-3 py-1 rounded">
+                    SERVICES</p>
+                <a href="/services"
+                   class="hidden sm:flex items-center gap-2 text-teal-600 font-semibold hover:underline">
                     ALL SERVICES
-                    <Icon name="externalLink" class="w-5 h-5" />
+                    <Icon name="externalLink" class="w-5 h-5"/>
                 </a>
             </div>
             <h2 class="text-4xl sm:text-5xl font-extrabold text-zinc-900 mb-4">
                 Explore Our Cleaning Services
             </h2>
             <p class="text-lg text-zinc-600">
-                Lorem ipsum dolor sit amet consectetur. Turpis pellentesque pellentesque tristique condimentum nulla eget. Tincidunt et vel ultrices egestas viverra consequat neque aliquet vulputate.
+                Lorem ipsum dolor sit amet consectetur. Turpis pellentesque pellentesque tristique condimentum nulla
+                eget. Tincidunt et vel ultrices egestas viverra consequat neque aliquet vulputate.
             </p>
         </div>
 
@@ -75,9 +87,10 @@ const servicesData = [
         </div>
 
         <!-- Ссылка для мобильных устройств под карточками -->
-        <a href="/services" class="mt-8 flex sm:hidden items-center justify-center gap-2 text-teal-600 font-semibold hover:underline">
+        <a href="/services"
+           class="mt-8 flex sm:hidden items-center justify-center gap-2 text-teal-600 font-semibold hover:underline">
             ALL SERVICES
-            <Icon name="externalLink" class="w-5 h-5" />
+            <Icon name="externalLink" class="w-5 h-5"/>
         </a>
     </div>
 </section>
