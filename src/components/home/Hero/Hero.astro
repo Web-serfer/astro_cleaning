@@ -1,0 +1,29 @@
+---
+import Tag from './Tag.astro';
+import RatingCard from './RatingCard.astro';
+import ServiceCard from './ServiceCard.astro';
+---
+
+<section class="py-16 px-4 sm:px-6 lg:px-8 font-sans">
+    <div class="max-w-7xl mx-auto">
+        <div class="bg-[var(--hero-bg-color)] rounded-3xl p-8 sm:p-10">
+            <div class="grid grid-cols-1 lg:grid-cols-5 gap-10 items-end">
+    
+                <!-- Левая колонка (занимает 3/5 ширины на больших экранах) -->
+                <div class="lg:col-span-3 flex flex-col items-center text-center lg:items-start lg:text-left pb-12">
+                    <Tag text="Lorem ipsum" />
+                    <h1 class="text-2xl sm:text-4xl lg:text-5xl font-bold text-dark-text my-5 leading-tight max-w-lg">
+                        Lorem ipsum sit amet consectetur.
+                    </h1>
+                </div>
+    
+                <!-- Правая колонка (занимает 2/5 ширины на больших экранах) -->
+                <div class="lg:col-span-2 flex flex-col gap-6 w-full">
+                    <RatingCard />
+                    <ServiceCard />
+                </div>
+    
+            </div>
+        </div>
+    </div>
+</section>
