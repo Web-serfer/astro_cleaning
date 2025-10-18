@@ -22,15 +22,15 @@ const menuItems = [
                 </li>
         ))}
         <li class="relative group">
-            <a
-                    href="/booking"
-                    class="font-medium text-white hover:text-white relative inline-block px-6 py-3 bg-[var(--primary)] hover:bg-[var(--primary-hover)] rounded-full transition-all duration-300 hover:-translate-y-1 overflow-hidden"
+            <button
+                    onclick="openModal()"
+                    class="font-medium text-white hover:text-white relative inline-block px-6 py-3 bg-[var(--primary)] hover:bg-[var(--primary-hover)] rounded-full transition-all duration-300 hover:-translate-y-1 overflow-hidden cursor-pointer hover:cursor-pointer"
             >
                 <span class="relative z-10 flex items-center gap-2">
                     <Icon name="bounding-box" class="icon w-4 h-4" />
                     BOOK NOW
                 </span>
-            </a>
+            </button>
         </li>
     </ul>
 </nav>

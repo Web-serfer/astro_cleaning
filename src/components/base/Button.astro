@@ -5,19 +5,35 @@ interface Props {
     href?: string;
     text?: string;
     class?: string;
+    isModalButton?: boolean;
 }
 
 // Задаем значения по умолчанию
-const { href = '#', text = 'BOOK NOW', class: className } = Astro.props;
+const { href = '#', text = 'BOOK NOW', class: className, isModalButton = false } = Astro.props;
+
+const buttonClass = `book-button inline-flex items-center justify-center ${className || ''}`;
 ---
 
-<a href={href} class:list={['book-button', 'inline-flex items-center justify-center', className]}>
-    <!-- Иконка через Astro Icon -->
-    <Icon name="bounding-box" class="icon" />
+{isModalButton ? (
+    <button 
+        onclick="openModal()" 
+        class={buttonClass}
+    >
+        <!-- Иконка через Astro Icon -->
+        <Icon name="bounding-box" class="icon" />
 
-    <!-- Текст кнопки -->
-    <span>{text}</span>
-</a>
+        <!-- Текст кнопки -->
+        <span>{text}</span>
+    </button>
+) : (
+    <a href={href} class={buttonClass}>
+        <!-- Иконка через Astro Icon -->
+        <Icon name="bounding-box" class="icon" />
+
+        <!-- Текст кнопки -->
+        <span>{text}</span>
+    </a>
+)}
 
 <style>
     .book-button {
