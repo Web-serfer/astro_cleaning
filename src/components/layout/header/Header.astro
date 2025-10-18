@@ -1,17 +1,20 @@
 ---
 import Logo from './Logo.astro';
-import Navbar from './Navbar.astro';
+import DesktopNav from './DesktopNav.astro';
 import MobileMenu from './MobileMenu.astro';
 ---
 
-<header class="bg-white border-t-[3px] border-zinc-900 py-4 px-6 sm:px-10 shadow-sm">
-    <div class="container flex items-center justify-between">
+<header class="bg-white border-t-[3px] border-zinc-900 py-4 px-6 sm:px-10 shadow-sm relative z-50">
+    <div class="container mx-auto flex items-center justify-between">
         <Logo />
-        <div class="hidden md:block">
-            <Navbar />
-        </div>
-        <div class="md:hidden">
-            <MobileMenu />
-        </div>
+        <DesktopNav />
+        <MobileMenu />
     </div>
+
+    <!-- Overlay для мобильного меню с glass эффектом -->
+    <div
+            id="overlay"
+            class="fixed inset-0 bg-white/80 backdrop-blur-md z-40 hidden transition-opacity duration-300"
+            aria-hidden="true"
+    ></div>
 </header>
