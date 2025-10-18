@@ -1,8 +1,8 @@
 ---
-import ButtonPrimary from './ButtonPrimary.astro';
 import ButtonSecondary from './ButtonSecondary.astro';
+import Button from '@components/base/Button.astro';
 ---
-<div class="bg-white rounded-2xl p-6 shadow-lg flex flex-col gap-4 h-full">
+<div class="bg-white rounded-2xl p-6 shadow-lg flex flex-col gap-4 h-full transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
     <!-- Placeholder для картинки -->
     <div class="w-full h-36 bg-slate-200 rounded-xl"></div>
 
@@ -13,6 +13,6 @@ import ButtonSecondary from './ButtonSecondary.astro';
     <!-- mt-auto прижмет кнопки к низу карточки -->
     <div class="flex gap-3 mt-auto justify-center">
         <ButtonSecondary text="SERVICES" />
-        <ButtonPrimary text="BOOK NOW" />
+        <Button text="BOOK NOW" />
     </div>
 </div>
