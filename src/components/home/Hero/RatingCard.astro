@@ -1,5 +1,19 @@
+---
+import { Icon } from 'astro-icon/components';
+
+const starCount = 5;
+---
+
 <div class="bg-white rounded-2xl p-6 shadow-lg transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
-    <div class="text-primary text-2xl tracking-widest">★★★★★</div>
+    <div class="text-2xl tracking-widest flex gap-1">
+        {Array.from({ length: starCount }, () => (
+            <Icon 
+                name="starIcon" 
+                class="icon" 
+                style="color: var(--primary);"
+            />
+        ))}
+    </div>
     <p class="text-gray-600 text-sm mt-2 mb-4">
         Rated 5.0/5.0 by Philly neighbors
     </p>

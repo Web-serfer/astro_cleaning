@@ -1,5 +1,5 @@
 ---
-import { Icon } from 'astro-icon/components'
+import { Icon } from 'astro-icon/components';
 
 interface Props {
     href?: string;
@@ -28,7 +28,7 @@ const { href = '#', text = 'BOOK NOW', class: className } = Astro.props;
         gap: 10px; /* Расстояние между иконкой и текстом */
 
         /* Внешний вид */
-        background-color: var(--primary-button-bg); /* Фиолетовый цвет, как на картинке */
+        background-color: var(--primary); /* Фиолетовый цвет, как на картинке */
         color: #ffffff; /* Белый цвет текста и иконки */
         border: none;
         border-radius: 50px; /* Создает форму "пилюли" */
@@ -48,7 +48,7 @@ const { href = '#', text = 'BOOK NOW', class: className } = Astro.props;
     }
 
     .book-button:hover {
-        background-color: var(--primary-button-hover); /* Делаем цвет темнее при наведении */
+        background-color: var(--primary-hover); /* Делаем цвет темнее при наведении */
         transform: translateY(-2px); /* Легкий эффект "подъема" */
     }
 
