@@ -93,6 +93,29 @@ const menuItems = [
     </nav>
 </div>
 
+<style is:inline>
+    #mobile-menu-button {
+        position: relative;
+    }
+
+    #burger-icon, #close-icon {
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    /* Улучшенный glass эффект */
+    #mobile-menu {
+        background: rgba(255, 255, 255, 0.97);
+        backdrop-filter: blur(20px) saturate(180%);
+        -webkit-backdrop-filter: blur(20px) saturate(180%);
+    }
+
+    #overlay {
+        background: rgba(255, 255, 255, 0.85);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+    }
+</style>
+
 <script is:inline>
     document.addEventListener('DOMContentLoaded', () => {
         const mobileMenuButton = document.getElementById('mobile-menu-button');
@@ -177,25 +200,4 @@ const menuItems = [
     });
 </script>
 
-<style is:inline>
-    #mobile-menu-button {
-        position: relative;
-    }
 
-    #burger-icon, #close-icon {
-        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-
-    /* Улучшенный glass эффект */
-    #mobile-menu {
-        background: rgba(255, 255, 255, 0.97);
-        backdrop-filter: blur(20px) saturate(180%);
-        -webkit-backdrop-filter: blur(20px) saturate(180%);
-    }
-
-    #overlay {
-        background: rgba(255, 255, 255, 0.85);
-        backdrop-filter: blur(12px);
-        -webkit-backdrop-filter: blur(12px);
-    }
-</style>
