@@ -1,13 +1,12 @@
 ---
 import { Icon } from 'astro-icon/components';
 
-// Определяем, какие свойства компонент может принимать
 export interface Props {
-    title: string;
-    description: string;
-    buttonText: string;
-    href: string;
-    iconType: 'arrow' | 'external';
+    title?: string;
+    description?: string;
+    buttonText?: string;
+    href?: string;
+    iconType?: 'arrow' | 'external';
     promoTag?: string;
     details?: string[];
 }
@@ -33,15 +32,15 @@ const { title, description, buttonText, href, iconType, promoTag, details } = As
         )}
 
         <!-- Иконка-ссылка в углу -->
-        <a href={href} class="absolute top-4 right-4 p-2 rounded-full hover:bg-black/5 transition-colors">
-            {iconType === 'arrow' ? <IconArrowRight class="w-7 h-7" /> : <IconExternalLink class="w-7 h-7" />}
+        <a href={href || "#"} class="absolute top-4 right-4 p-2 rounded-full hover:bg-black/5 transition-colors">
+            {iconType === 'arrow' ? <Icon name="arrowRight" class="w-7 h-7" /> : <Icon name="externalLink" class="w-7 h-7" />}
         </a>
     </div>
 
-    <!-- Текстовый контент -->
+    <!-- Текстовый контен -->
     <div class="flex-grow flex flex-col">
-        <h3 class="text-2xl font-bold mb-2">{title}</h3>
-        <p class="text-zinc-600 mb-4">{description}</p>
+        {title && <h3 class="text-2xl font-bold mb-2">{title}</h3>}
+        {description && <p class="text-zinc-600 mb-4">{description}</p>}
 
         <!-- Детали (отображаются только если переданы) -->
         {details && details.length > 0 && (
@@ -55,8 +54,10 @@ const { title, description, buttonText, href, iconType, promoTag, details } = As
         )}
 
         <!-- Кнопка (flex-grow заставляет ее быть внизу) -->
-        <a href={href} class="mt-auto w-full text-center font-semibold text-violet-800 border-2 border-violet-300 rounded-full px-6 py-3 hover:bg-violet-100 transition-colors">
-            {buttonText}
-        </a>
+        {buttonText && href && (
+            <a href={href} class="mt-auto w-full text-center font-semibold text-violet-800 border-2 border-violet-300 rounded-full px-6 py-3 hover:bg-violet-100 transition-colors">
+                {buttonText}
+            </a>
+        )}
     </div>
 </div>

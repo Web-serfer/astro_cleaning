@@ -2,6 +2,7 @@
 import ServiceCard from './ServiceCard.astro';
 import { Icon } from 'astro-icon/components';
 
+
 // Здесь можно было бы получать данные из API или CMS, но для примера зададим их статически
 const servicesData = [
     {
@@ -37,7 +38,7 @@ const servicesData = [
 ];
 ---
 <section class="bg-white py-16 sm:py-24">
-    <div class="container mx-auto px-4">
+    <div class="container">
 
         <!-- Заголовок секции -->
         <div class="max-w-3xl">
@@ -45,7 +46,7 @@ const servicesData = [
                 <p class="text-sm font-bold uppercase tracking-wider text-zinc-500 bg-zinc-100 px-3 py-1 rounded">SERVICES</p>
                 <a href="/services" class="hidden sm:flex items-center gap-2 text-teal-600 font-semibold hover:underline">
                     ALL SERVICES
-                    <Icon name="IconExternalLink" />
+                    <Icon name="externalLink" class="w-5 h-5" />
                 </a>
             </div>
             <h2 class="text-4xl sm:text-5xl font-extrabold text-zinc-900 mb-4">
@@ -74,7 +75,7 @@ const servicesData = [
         <!-- Ссылка для мобильных устройств под карточками -->
         <a href="/services" class="mt-8 flex sm:hidden items-center justify-center gap-2 text-teal-600 font-semibold hover:underline">
             ALL SERVICES
-            <Icon name="IconExternalLink" />
+            <Icon name="externalLink" class="w-5 h-5" />
         </a>
     </div>
 </section>

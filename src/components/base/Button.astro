@@ -11,7 +11,7 @@ interface Props {
 const { href = '#', text = 'BOOK NOW', class: className } = Astro.props;
 ---
 
-<a href={href} class:list={['book-button', className]}>
+<a href={href} class:list={['book-button', 'inline-flex items-center justify-center', className]}>
     <!-- Иконка через Astro Icon -->
     <Icon name="bounding-box" class="icon" />
 
