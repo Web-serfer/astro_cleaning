@@ -18,9 +18,13 @@ import ServiceCard from './ServiceCard.astro';
                 </div>
     
                 <!-- Правая колонка (занимает 2/5 ширины на больших экранах) -->
-                <div class="lg:col-span-2 flex flex-col gap-6 w-full">
-                    <RatingCard />
-                    <ServiceCard />
+                <div class="lg:col-span-2 flex flex-col gap-6 w-full items-center">
+                    <div class="w-full max-w-sm">
+                        <RatingCard />
+                    </div>
+                    <div class="w-full max-w-sm">
+                        <ServiceCard />
+                    </div>
                 </div>
     
             </div>
