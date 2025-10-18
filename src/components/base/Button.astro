@@ -1,10 +1,6 @@
 ---
-// src/components/Button.astro
+import { Icon } from 'astro-icon/components'
 
-// Определяем свойства (props), которые компонент может принимать
-// 'href' - ссылка, куда ведет кнопка
-// 'text' - текст на кнопке
-// 'className' - для добавления дополнительных CSS классов извне
 interface Props {
     href?: string;
     text?: string;
@@ -16,26 +12,8 @@ const { href = '#', text = 'BOOK NOW', class: className } = Astro.props;
 ---
 
 <a href={href} class:list={['book-button', className]}>
-    <!-- Иконка в формате SVG. Она легко стилизуется через CSS -->
-    <svg
-            class="icon"
-            xmlns="http://www.w3.org/2000/svg"
-            width="20"
-            height="20"
-            viewBox="0 0 24 24"
-            stroke-width="2"
-            stroke="currentColor"
-            fill="none"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-    >
-        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-        <rect x="4" y="4" width="16" height="16" rx="2"></rect>
-        <circle cx="8.5" cy="8.5" r=".5" fill="currentColor"></circle>
-        <circle cx="15.5" cy="8.5" r=".5" fill="currentColor"></circle>
-        <circle cx="8.5" cy="15.5" r=".5" fill="currentColor"></circle>
-        <circle cx="15.5" cy="15.5" r=".5" fill="currentColor"></circle>
-    </svg>
+    <!-- Иконка через Astro Icon -->
+    <Icon name="bounding-box" class="icon" />
 
     <!-- Текст кнопки -->
     <span>{text}</span>
@@ -54,7 +32,7 @@ const { href = '#', text = 'BOOK NOW', class: className } = Astro.props;
         color: #ffffff; /* Белый цвет текста и иконки */
         border: none;
         border-radius: 50px; /* Создает форму "пилюли" */
-        padding: 10px 26px; /* Внутренние отступы */
+        padding: 10px 20px; /* Внутренние отступы */
 
         /* Стили текста */
         font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
