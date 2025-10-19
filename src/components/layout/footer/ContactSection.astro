@@ -1,5 +1,6 @@
 ---
 import ContactCard from './ContactCard.astro';
+import { Icon } from 'astro-icon/components';
 ---
 
 <section class="relative bg-[#e6efee] py-24 px-8 text-center" style="padding-bottom: 30rem;">
@@ -20,11 +21,11 @@ import ContactCard from './ContactCard.astro';
             </ContactCard>
 
             <ContactCard title="Fill Out Form" description="Lorem ipsum dolor sit amet consectetur.">
-                <button class="bg-[#6a48a9] text-white rounded-full py-4 px-8 font-semibold flex items-center justify-center transition hover:bg-[#56398b]">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="mr-2">
-                        <path d="M4 12V4H20V12M4 12V20H12M4 12H2M16 16H22M19 13V19" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                    REQUEST SOMETHING
+                <button class="font-medium text-white hover:text-white relative inline-block px-6 py-3 bg-[var(--primary)] hover:bg-[var(--primary-hover)] rounded-full transition-all duration-300 hover:-translate-y-1 overflow-hidden cursor-pointer hover:cursor-pointer">
+                    <span class="relative z-10 flex items-center gap-2">
+                        <Icon name="bounding-box" class="icon w-4 h-4" />
+                        REQUEST SOMETHING
+                    </span>
                 </button>
             </ContactCard>
 
