@@ -1,0 +1,47 @@
+---
+import { Icon } from 'astro-icon/components';
+
+interface Props {
+  title: string;
+  subtitle?: string;
+  description: string;
+  category?: string;
+  allLink?: string;
+  allLinkText?: string;
+}
+
+const {
+  title,
+  subtitle = '',
+  description,
+  category = '',
+  allLink = '',
+  allLinkText = 'ALL SERVICES'
+} = Astro.props;
+---
+
+<div class="max-w-3xl">
+  <div class="flex justify-between items-center mb-4">
+    {category && (
+      <p class="text-sm font-bold uppercase tracking-wider text-zinc-500 bg-zinc-100 px-3 py-1 rounded">
+        {category}
+      </p>
+    )}
+    {allLink && (
+      <a 
+        href={allLink}
+        class="hidden sm:flex items-center gap-2 text-teal-600 font-semibold hover:underline"
+      >
+        {allLinkText}
+        <Icon name="externalLink" class="w-5 h-5" />
+      </a>
+    )}
+  </div>
+  <h2 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold text-zinc-900 mb-4">
+    {title}
+    {subtitle && <span class="block text-lg font-normal mt-2">{subtitle}</span>}
+  </h2>
+  <p class="text-base sm:text-lg text-zinc-600">
+    {description}
+  </p>
+</div>

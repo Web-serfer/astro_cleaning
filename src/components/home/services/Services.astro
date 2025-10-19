@@ -1,6 +1,7 @@
 ---
 import {Icon} from 'astro-icon/components';
 import ServiceCard from './ServiceCard.astro';
+import SectionHeader from '@components/base/SectionHeader.astro';
 
 interface Service {
     title: string;
@@ -18,7 +19,7 @@ const servicesData: Service[] = [
         description: "Keep life tidy week after week.",
         buttonText: "VIEW SERVICE",
         href: "/services/regular",
-        iconType: 'arrow',
+        iconType: 'external',
         promoTag: "Most Popular",
         details: ["WEEKLY", "BI-WEEKLY", "MONTHLY", "KITCHENS & BATHS", "FLOORS & DUSTING"],
     },
@@ -51,38 +52,31 @@ const servicesData: Service[] = [
 <section class="bg-white px-2 sm:px-6 lg:px-8 py-16 sm:py-24">
     <div class="container-sm">
         <!-- Заголовок секции -->
-        <div class="max-w-3xl">
-            <div class="flex justify-between items-center mb-4">
-                <p class="text-sm font-bold uppercase tracking-wider text-zinc-500 bg-zinc-100 px-3 py-1 rounded">
-                    SERVICES</p>
-                <a href="/services"
-                   class="hidden sm:flex items-center gap-2 text-teal-600 font-semibold hover:underline">
-                    ALL SERVICES
-                    <Icon name="externalLink" class="w-5 h-5"/>
-                </a>
-            </div>
-            <h2 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold text-zinc-900 mb-4">
-                Explore Our Cleaning Services
-            </h2>
-            <p class="text-base sm:text-lg text-zinc-600">
-                Lorem ipsum dolor sit amet consectetur. Turpis pellentesque pellentesque tristique condimentum nulla
-                eget. Tincidunt et vel ultrices egestas viverra consequat neque aliquet vulputate.
-            </p>
-        </div>
+        <SectionHeader 
+            title="Explore Our Cleaning Services"
+            description="Lorem ipsum dolor sit amet consectetur. Turpis pellentesque pellentesque tristique condimentum nulla eget. Tincidunt et vel ultrices egestas viverra consequat neque aliquet vulputate."
+            category="SERVICES"
+            allLink="/services"
+            allLinkText="ALL SERVICES"
+        />
 
-        <!-- Сетка с карточками -->
-        <div class="mt-12 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4">
-            {servicesData.map(service => (
-                <ServiceCard
-                    title={service.title}
-                    description={service.description}
-                    buttonText={service.buttonText}
-                    href={service.href}
-                    iconType={service.iconType}
-                    promoTag={service.promoTag}
-                    details={service.details}
-                />
-            ))}
+        <!-- Контейнер для карточек с гибкой сеткой -->
+        <div class="mt-12 relative" id="services-container">
+            <div class="flex flex-col md:flex-row gap-8 w-full relative overflow-visible" id="services-flex-container">
+                {servicesData.map((service, index) => (
+                    <div class="service-card-wrapper flex-grow relative" style="flex: 1 1 0" key={index}>
+                        <ServiceCard
+                            title={service.title}
+                            description={service.description}
+                            buttonText={service.buttonText}
+                            href={service.href}
+                            iconType={service.iconType}
+                            promoTag={service.promoTag}
+                            details={service.details}
+                        />
+                    </div>
+                ))}
+            </div>
         </div>
 
         <!-- Ссылка для мобильных устройств под карточками -->
@@ -93,3 +87,91 @@ const servicesData: Service[] = [
         </a>
     </div>
 </section>
+
+<script is:inline>
+    document.addEventListener('DOMContentLoaded', () => {
+        const cardWrappers = document.querySelectorAll('.service-card-wrapper');
+        
+        // Устанавливаем начальное состояние - первая карточка расширена
+        setTimeout(() => {
+            if(cardWrappers[0]) {
+                cardWrappers[0].classList.add('expanded');
+                cardWrappers[0].style.zIndex = '2';
+                cardWrappers[0].style.transform = 'scale(1.05)';
+            }
+        }, 100);
+        
+        cardWrappers.forEach((wrapper, index) => {
+            wrapper.addEventListener('mouseenter', () => {
+                // Убираем расширенное состояние у всех карточек
+                cardWrappers.forEach(card => {
+                    card.classList.remove('expanded');
+                    card.style.transform = 'scale(1)';
+                    card.style.zIndex = '1';
+                });
+                
+                // Устанавливаем текущую карточку как расширенную
+                wrapper.classList.add('expanded');
+                wrapper.style.zIndex = '3';
+                wrapper.style.transform = 'scale(1.05)';
+            });
+            
+            wrapper.addEventListener('mouseleave', (e) => {
+                // Проверяем, находится ли курсор над этой карточкой или над дочерним элементом
+                setTimeout(() => {
+                    const isHovered = e.currentTarget.matches(':hover');
+                    if (!isHovered) {
+                        // Проверяем, возможно курсор уже на другой карточке
+                        const anyExpanded = document.querySelector('.service-card-wrapper.expanded');
+                        if (!anyExpanded) {
+                            // Возвращаем первую карточку к расширенному состоянию
+                            cardWrappers[0].classList.add('expanded');
+                            cardWrappers[0].style.zIndex = '2';
+                            cardWrappers[0].style.transform = 'scale(1.05)';
+                        }
+                    }
+                }, 50);
+            });
+        });
+        
+        // Обработчик для всего контейнера
+        const container = document.getElementById('services-flex-container');
+        if(container) {
+            container.addEventListener('mouseleave', () => {
+                setTimeout(() => {
+                    const isAnyCardHovered = document.querySelector('.service-card-wrapper:hover');
+                    if (!isAnyCardHovered) {
+                        // Возвращаем все карточки к исходному состоянию и расширяем первую
+                        cardWrappers.forEach((card, idx) => {
+                            card.classList.remove('expanded');
+                            card.style.transform = 'scale(1)';
+                            card.style.zIndex = '1';
+                        });
+                        
+                        // Восстанавливаем расширенное состояние для первой карточки
+                        if(cardWrappers[0]) {
+                            cardWrappers[0].classList.add('expanded');
+                            cardWrappers[0].style.zIndex = '2';
+                            cardWrappers[0].style.transform = 'scale(1.05)';
+                        }
+                    }
+                }, 50);
+            });
+        }
+    });
+</script>
+
+<style is:inline>
+    .service-card-wrapper {
+        transition: transform 0.4s ease, z-index 0.4s ease;
+        overflow: visible;
+        min-width: 0;
+        transform-origin: center;
+        will-change: transform;
+    }
+    
+    .service-card-wrapper.expanded {
+        z-index: 2 !important;
+        transform: scale(1.05);
+    }
+</style>

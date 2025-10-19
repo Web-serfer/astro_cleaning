@@ -1,40 +1,9 @@
-<footer class="bg-gray-800 text-white py-12">
-  <div class="container-sm">
-    <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
-      <div>
-        <h3 class="text-lg font-bold mb-4">Company</h3>
-        <ul class="space-y-2">
-          <li><a href="/about" class="hover:underline">About Us</a></li>
-          <li><a href="/contact" class="hover:underline">Contact</a></li>
-          <li><a href="/careers" class="hover:underline">Careers</a></li>
-        </ul>
-      </div>
-      <div>
-        <h3 class="text-lg font-bold mb-4">Services</h3>
-        <ul class="space-y-2">
-          <li><a href="/services/regular" class="hover:underline">Regular Cleaning</a></li>
-          <li><a href="/services/deep-clean" class="hover:underline">Deep Cleaning</a></li>
-          <li><a href="/services/move-in-out" class="hover:underline">Move-in/Move-out</a></li>
-          <li><a href="/services/post-construction" class="hover:underline">Post-Construction</a></li>
-        </ul>
-      </div>
-      <div>
-        <h3 class="text-lg font-bold mb-4">Contact</h3>
-        <p>123 Cleaning Street<br />Clean City, CC 12345</p>
-        <p class="mt-2">Phone: (123) 456-7890</p>
-        <p>Email: info@cleaningapp.com</p>
-      </div>
-      <div>
-        <h3 class="text-lg font-bold mb-4">Newsletter</h3>
-        <p>Subscribe to our newsletter for cleaning tips and special offers.</p>
-        <div class="mt-4 flex">
-          <input type="email" placeholder="Your email" class="px-4 py-2 rounded-l text-gray-800 w-full" />
-          <button class="bg-teal-600 px-4 py-2 rounded-r">Subscribe</button>
-        </div>
-      </div>
-    </div>
-    <div class="border-t border-gray-700 mt-8 pt-8 text-center text-sm text-gray-400">
-      <p>&copy; 2023 Cleaning App. All rights reserved.</p>
-    </div>
-  </div>
-</footer>
+---
+import ContactSection from './ContactSection.astro';
+import FooterInfo from './FooterInfo.astro';
+---
+
+<div class="relative">
+    <ContactSection />
+    <FooterInfo />
+</div>

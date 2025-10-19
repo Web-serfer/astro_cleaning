@@ -1,0 +1,38 @@
+---
+import ContactCard from './ContactCard.astro';
+---
+
+<section class="relative bg-[#e6efee] py-24 px-8 text-center" style="padding-bottom: 30rem;">
+    <div class="max-w-7xl mx-auto">
+        <span class="inline-block bg-white/70 py-2 px-5 rounded-full text-sm font-medium text-gray-700">Get in Touch</span>
+        <h2 class="text-5xl font-extrabold my-6 text-slate-900">Have a Questions?</h2>
+        <p class="max-w-2xl mx-auto mb-16 text-gray-600 leading-relaxed">
+            Lorem ipsum dolor sit amet consectetur. Turpis pellentesque pellentesque tristique
+            condimentum nulla eget. Tincidunt et vel ultrices viverra consequat neque
+            aliquet vulputate.
+        </p>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <ContactCard title="E-Mail us" description="Lorem ipsum dolor sit amet consectetur.">
+                <a href="mailto:wellknowncleaning@test.com" class="hover:underline">
+                    wellknowncleaning@test.com
+                </a>
+            </ContactCard>
+
+            <ContactCard title="Fill Out Form" description="Lorem ipsum dolor sit amet consectetur.">
+                <button class="bg-[#6a48a9] text-white rounded-full py-4 px-8 font-semibold flex items-center justify-center transition hover:bg-[#56398b]">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="mr-2">
+                        <path d="M4 12V4H20V12M4 12V20H12M4 12H2M16 16H22M19 13V19" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    REQUEST SOMETHING
+                </button>
+            </ContactCard>
+
+            <ContactCard title="Phone us" description="Lorem ipsum dolor sit amet consectetur.">
+                <a href="tel:2155550199" class="hover:underline">
+                    (215) 555-0199
+                </a>
+            </ContactCard>
+        </div>
+    </div>
+</section>
