@@ -5,7 +5,14 @@ import MobileMenu from './MobileMenu.astro';
 import Modal from '@components/base/Modal.astro';
 ---
 
-<header class="bg-white border-t-[3px] border-zinc-900 py-4 px-6 sm:px-10 shadow-sm relative z-50">
+<!--
+    ВОЗВРАЩАЕМ 'shadow-sm' В ИСХОДНОЕ СОСТОЯНИЕ.
+    Это и есть та самая "легкая линия", которая вам нравилась.
+-->
+<header
+        id="header"
+        class="bg-white border-t-[3px] border-zinc-900 py-4 px-6 sm:px-10 shadow-sm fixed top-0 left-0 right-0 z-50 w-full transition-all duration-300"
+>
     <div class="container mx-auto flex items-center justify-between">
         <Logo />
         <DesktopNav />
@@ -19,5 +26,24 @@ import Modal from '@components/base/Modal.astro';
             aria-hidden="true"
     ></div>
 </header>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const header = document.getElementById('header');
+        if (!header) return;
+
+        const updateHeaderOnScroll = () => {
+            if (window.scrollY > 10) {
+                header.classList.remove('shadow-sm');
+                header.classList.add('shadow-lg', 'bg-white/95', 'backdrop-blur-sm');
+            } else {
+                header.classList.remove('shadow-lg', 'bg-white/95', 'backdrop-blur-sm');
+                header.classList.add('shadow-sm');
+            }
+        };
+        updateHeaderOnScroll();
+        window.addEventListener('scroll', updateHeaderOnScroll, { passive: true });
+    });
+</script>
 
 <Modal />
