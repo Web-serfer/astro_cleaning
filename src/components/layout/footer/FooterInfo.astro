@@ -1,10 +1,10 @@
 
 ---
 const companyLinks = [
-    { href: "#", text: "About Us" },
-    { href: "#", text: "Services" },
-    { href: "#", text: "Pricing" },
-    { href: "#", text: "Reviews" }
+    { href: "/about", text: "About Us" },
+    { href: "/services", text: "Services" },
+    { href: "/pricing", text: "Pricing" },
+    { href: "/reviews", text: "Reviews" }
 ];
 
 const socialLinks = [
@@ -14,14 +14,14 @@ const socialLinks = [
 ];
 
 const contactInfo = [
-    { label: "EMAIL:", value: "wellknowncleaning@test.com" },
+    { label: "EMAIL:", value: "info@wellknowncleaning.com" },
     { label: "PHONE:", value: "(215) 555-0199" },
     { label: "ADDRESS:", value: "315 N 12th St, Philadelphia, PA 19107" }
 ];
 
 const footerLinks = [
-    { href: "#", text: "Privacy & Policy" },
-    { href: "#", text: "Terms & Condition" }
+    { href: "/privacy-policy", text: "Privacy & Policy" },
+    { href: "/terms-conditions", text: "Terms & Conditions" }
 ];
 ---
 
@@ -82,7 +82,7 @@ const footerLinks = [
 
         <!-- Нижняя часть футера -->
         <div class="flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-gray-500">
-            <p>&copy;2025 WellKnown Cleaning. All rights reserved</p>
+            <p>&copy;{new Date().getFullYear()} WellKnown Cleaning. All rights reserved</p>
             <div class="flex gap-6">
                 {footerLinks.map((link) => (
                     <a href={link.href} class="hover:text-black hover:underline">
