@@ -32,7 +32,7 @@ const { title, description, buttonText, href, iconType, promoTag, details } = As
         )}
 
         <!-- Иконка-ссылка в углу -->
-        <a href={href || "#"} class="absolute top-4 right-4 p-2 rounded-full hover:bg-black/5 transition-colors">
+        <a href={href || "#"} aria-label={title ? `Learn more about ${title}` : "Learn more"} class="absolute top-4 right-4 p-2 rounded-full hover:bg-black/5 transition-colors">
             {iconType === 'arrow' ? <Icon name="arrowRight" class="w-7 h-7" /> : <Icon name="externalLink" class="w-7 h-7" />}
         </a>
     </div>
