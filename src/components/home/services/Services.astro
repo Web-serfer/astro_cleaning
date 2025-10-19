@@ -1,54 +1,61 @@
 ---
-import {Icon} from 'astro-icon/components';
-import ServiceCard from './ServiceCard.astro';
+import { Icon } from 'astro-icon/components';
 import SectionHeader from '@components/base/SectionHeader.astro';
+import ServiceCard from './ServiceCard.astro';
 
 interface Service {
-    title: string;
-    description: string;
-    buttonText: string;
-    href: string;
-    iconType: 'arrow' | 'external';
-    promoTag?: string;
-    details?: string[];
+  title: string;
+  description: string;
+  buttonText: string;
+  href: string;
+  iconType: 'arrow' | 'external';
+  promoTag?: string;
+  details?: string[];
 }
 
 const servicesData: Service[] = [
-    {
-        title: "Regular Cleaning",
-        description: "Keep life tidy week after week.",
-        buttonText: "VIEW SERVICE",
-        href: "/services/regular",
-        iconType: 'external',
-        promoTag: "Most Popular",
-        details: ["WEEKLY", "BI-WEEKLY", "MONTHLY", "KITCHENS & BATHS", "FLOORS & DUSTING"],
-    },
-    {
-        title: "Deep Cleaning",
-        description: "A top-to-bottom refresh.",
-        buttonText: "VIEW SERVICE",
-        href: "/services/deep-clean",
-        iconType: 'external',
-        details: ["DEEP CLEANING", "SANITIZING", "DETAILING"],
-    },
-    {
-        title: "Move-Out / Move-In",
-        description: "Inspection-ready for deposits & fresh starts.",
-        buttonText: "VIEW SERVICE",
-        href: "/services/move-in-out",
-        iconType: 'external',
-        details: ["MOVE-OUT", "MOVE-IN", "DETAILED CLEANING"],
-    },
-    {
-        title: "Post-Construction",
-        description: "Goodbye, builders' dust.",
-        buttonText: "VIEW SERVICE",
-        href: "/services/post-construction",
-        iconType: 'external',
-        details: ["CONSTRUCTION DEBRIS", "CLEANING", "DETAILING"],
-    }
+  {
+    title: 'Regular Cleaning',
+    description: 'Keep life tidy week after week.',
+    buttonText: 'VIEW SERVICE',
+    href: '/services/regular',
+    iconType: 'external',
+    promoTag: 'Most Popular',
+    details: [
+      'WEEKLY',
+      'BI-WEEKLY',
+      'MONTHLY',
+      'KITCHENS & BATHS',
+      'FLOORS & DUSTING',
+    ],
+  },
+  {
+    title: 'Deep Cleaning',
+    description: 'A top-to-bottom refresh.',
+    buttonText: 'VIEW SERVICE',
+    href: '/services/deep-clean',
+    iconType: 'external',
+    details: ['DEEP CLEANING', 'SANITIZING', 'DETAILING'],
+  },
+  {
+    title: 'Move-Out / Move-In',
+    description: 'Inspection-ready for deposits & fresh starts.',
+    buttonText: 'VIEW SERVICE',
+    href: '/services/move-in-out',
+    iconType: 'external',
+    details: ['MOVE-OUT', 'MOVE-IN', 'DETAILED CLEANING'],
+  },
+  {
+    title: 'Post-Construction',
+    description: "Goodbye, builders' dust.",
+    buttonText: 'VIEW SERVICE',
+    href: '/services/post-construction',
+    iconType: 'external',
+    details: ['CONSTRUCTION DEBRIS', 'CLEANING', 'DETAILING'],
+  },
 ];
 ---
+
 <section class="bg-white px-2 sm:px-6 lg:px-8 py-16 sm:py-24">
     <div class="container-sm">
         <!-- Заголовок секции -->

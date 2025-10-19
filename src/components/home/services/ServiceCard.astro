@@ -2,16 +2,17 @@
 import { Icon } from 'astro-icon/components';
 
 export interface Props {
-    title?: string;
-    description?: string;
-    buttonText?: string;
-    href?: string;
-    iconType?: 'arrow' | 'external';
-    promoTag?: string;
-    details?: string[];
+  title?: string;
+  description?: string;
+  buttonText?: string;
+  href?: string;
+  iconType?: 'arrow' | 'external';
+  promoTag?: string;
+  details?: string[];
 }
 
-const { title, description, buttonText, href, iconType, promoTag, details } = Astro.props;
+const { title, description, buttonText, href, iconType, promoTag, details } =
+  Astro.props;
 ---
 
 <!-- Контейнер карточки -->

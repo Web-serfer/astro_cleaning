@@ -1,13 +1,13 @@
 ---
-import Logo from './Logo.astro';
 import DesktopNav from './DesktopNav.astro';
+import Logo from './Logo.astro';
 import MobileMenu from './MobileMenu.astro';
 import Modal from '@components/base/Modal.astro';
 ---
 
 <header
         id="header"
-        class="bg-white border-t-[3px] border-zinc-900 py-4 px-6 sm:px-10 shadow-sm fixed top-0 left-0 right-0 z-50 w-full transition-all duration-300"
+        class="bg-white border-t-[3px] border-zinc-900 py-4 px-6 sm:px-10 fixed top-0 left-0 right-0 z-50 w-full"
 >
     <div class="container mx-auto flex items-center justify-between">
         <Logo />
@@ -28,18 +28,20 @@ import Modal from '@components/base/Modal.astro';
 <script>
     document.addEventListener('DOMContentLoaded', () => {
         const header = document.getElementById('header');
-        if (!header) return;
-        // скрипт появление тени у Header при прокрутке вниз
-        const updateHeaderOnScroll = () => {
-            if (window.scrollY > 10) {
-                header.classList.remove('shadow-sm');
-                header.classList.add('shadow-lg', 'bg-white/95', 'backdrop-blur-sm');
+        let lastScrollY = window.scrollY;
+
+        const updateHeaderShadow = () => {
+            if (window.scrollY > 0) {
+                header.classList.add('shadow-xl');
             } else {
-                header.classList.remove('shadow-lg', 'bg-white/95', 'backdrop-blur-sm');
-                header.classList.add('shadow-sm');
+                header.classList.remove('shadow-xl');
             }
         };
-        updateHeaderOnScroll();
-        window.addEventListener('scroll', updateHeaderOnScroll, { passive: true });
+
+        // Устанавливаем начальное состояние
+        updateHeaderShadow();
+
+        // Добавляем обработчик события прокрутки
+        window.addEventListener('scroll', updateHeaderShadow);
     });
 </script>

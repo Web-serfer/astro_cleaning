@@ -2,12 +2,12 @@
 import { Icon } from 'astro-icon/components';
 
 interface Props {
-  title: string;
-  subtitle?: string;
-  description: string;
-  category?: string;
-  allLink?: string;
-  allLinkText?: string;
+  title: string
+  subtitle?: string
+  description: string
+  category?: string
+  allLink?: string
+  allLinkText?: string
 }
 
 const {
@@ -16,8 +16,8 @@ const {
   description,
   category = '',
   allLink = '',
-  allLinkText = 'ALL SERVICES'
-} = Astro.props;
+  allLinkText = 'ALL SERVICES',
+} = Astro.props
 ---
 
 <div class="max-w-3xl">

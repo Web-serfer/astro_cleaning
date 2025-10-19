@@ -2,21 +2,11 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "@public/*": [
-        "./public/*"
-      ],
-      "@components/*": [
-        "src/components/*"
-      ],
-      "@layouts/*": [
-        "src/layouts/*"
-      ],
-      "@assets/*": [
-        "src/assets/*"
-      ],
-      "@styles/*": [
-        "src/styles/*"
-      ]
+      "@public/*": ["./public/*"],
+      "@components/*": ["src/components/*"],
+      "@layouts/*": ["src/layouts/*"],
+      "@assets/*": ["src/assets/*"],
+      "@styles/*": ["src/styles/*"]
     },
     "jsx": "preserve",
     "jsxImportSource": "solid-js"

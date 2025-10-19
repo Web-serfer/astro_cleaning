@@ -2,74 +2,65 @@
 import { Icon } from 'astro-icon/components';
 
 interface Props {
-    href?: string;
-    text?: string;
-    class?: string;
-    isModalButton?: boolean;
+  href?: string
+  text?: string
+  class?: string
+  isModalButton?: boolean
 }
 
-// Задаем значения по умолчанию
-const { href = '#', text = 'BOOK NOW', class: className, isModalButton = false } = Astro.props;
+const {
+  href = '#',
+  text = 'BOOK NOW',
+  class: className,
+  isModalButton = false,
+} = Astro.props
 
-const buttonClass = `book-button inline-flex items-center justify-center ${className || ''}`;
+const _buttonClass = `book-button inline-flex items-center justify-center ${className || ''}`
 ---
 
 {isModalButton ? (
     <button 
         onclick="openModal()" 
-        class={buttonClass}
+        class={_buttonClass}
     >
-        <!-- Иконка через Astro Icon -->
         <Icon name="bounding-box" class="icon" />
-
-        <!-- Текст кнопки -->
         <span>{text}</span>
     </button>
 ) : (
-    <a href={href} class={buttonClass}>
-        <!-- Иконка через Astro Icon -->
+    <a href={href} class={_buttonClass}>
         <Icon name="bounding-box" class="icon" />
-
-        <!-- Текст кнопки -->
         <span>{text}</span>
     </a>
 )}
 
 <style>
     .book-button {
-        /* Расположение иконки и текста */
         display: inline-flex;
         align-items: center;
         justify-content: center;
-        gap: 10px; /* Расстояние между иконкой и текстом */
+        gap: 10px;
 
         /* Внешний вид */
-        background-color: var(--primary); /* Фиолетовый цвет, как на картинке */
-        color: #ffffff; /* Белый цвет текста и иконки */
+        background-color: var(--primary);
+        color: #ffffff;
         border: none;
-        border-radius: 50px; /* Создает форму "пилюли" */
-        padding: 10px 20px; /* Внутренние отступы */
+        border-radius: 50px;
+        padding: 10px 20px;
 
         /* Стили текста */
         font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
         font-size: 1.1rem;
         font-weight: 600;
-        text-transform: uppercase; /* Все буквы заглавные */
+        text-transform: uppercase;
         letter-spacing: 0.5px;
 
-        /* Прочее */
-        text-decoration: none; /* Убираем подчеркивание у ссылки */
+        text-decoration: none;
         cursor: pointer;
         transition: background-color 0.3s ease, transform 0.2s ease;
     }
 
     .book-button:hover {
-        background-color: var(--primary-hover); /* Делаем цвет темнее при наведении */
-        transform: translateY(-2px); /* Легкий эффект "подъема" */
-    }
-
-    /* SVG иконка наследует цвет от родителя благодаря `stroke="currentColor"` */
-    .book-button .icon {
-        /* Можно задать дополнительные стили для иконки, если нужно */
+        background-color: var(--primary-hover);
+        transform: translateY(-2px);
     }
 </style>

@@ -6,44 +6,4 @@ import FooterInfo from './FooterInfo.astro';
 <div class="relative">
     <ContactSection />
     <FooterInfo />
-    <button 
-        id="scroll-to-top" 
-        class="fixed bottom-8 right-8 bg-[var(--primary)] hover:bg-[var(--primary-hover)] text-white rounded-full w-12 h-12 flex items-center justify-center shadow-lg hover:shadow-xl transition-all duration-300 z-50 opacity-0 pointer-events-none hover:cursor-pointer"
-        aria-label="Scroll to top"
-    >
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6">
-            <path d="m18 15-6-6-6 6"/>
-        </svg>
-    </button>
 </div>
-
-<script>
-    document.addEventListener('DOMContentLoaded', () => {
-        const scrollToTopBtn = document.getElementById('scroll-to-top');
-        
-        // Показываем/скрываем кнопку в зависимости от позиции прокрутки
-        const toggleScrollButton = () => {
-            if (window.scrollY > 300) {
-                scrollToTopBtn.classList.remove('opacity-0', 'pointer-events-none');
-                scrollToTopBtn.classList.add('opacity-100');
-            } else {
-                scrollToTopBtn.classList.remove('opacity-100');
-                scrollToTopBtn.classList.add('opacity-0', 'pointer-events-none');
-            }
-        };
-        
-        // Обработчик события прокрутки
-        window.addEventListener('scroll', toggleScrollButton);
-        
-        // Обработчик клика для плавного скролла к началу
-        scrollToTopBtn.addEventListener('click', () => {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
-        });
-        
-        // Инициализация состояния кнопки
-        toggleScrollButton();
-    });
-</script>

@@ -4,38 +4,39 @@ import Header from "@components/layout/header/Header.astro";
 import Footer from "@components/layout/footer/Footer.astro";
 
 interface Props {
-    title?: string;
-    description?: string;
-    canonical?: string;
+  title?: string;
+  description?: string;
+  canonical?: string;
 }
 
 const {
-    title = 'WellKnown Cleaning',
-    description = 'Professional cleaning services for your home and office',
-    canonical,
+  title = 'WellKnown Cleaning',
+  description = 'Professional cleaning services for your home and office',
+  canonical,
 } = Astro.props;
 
-const displayTitle = title && title !== 'WellKnown Cleaning'
+const displayTitle =
+  title && title !== 'WellKnown Cleaning'
     ? `${title} | WellKnown Cleaning`
-    : 'WellKnown Cleaning';
+    : title;
 ---
 
 <!doctype html>
 <html lang="ru">
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 
-    <title>{displayTitle}</title>
-    <meta name="description" content={description} />
-    {canonical && <link rel="canonical" href={canonical} />}
-</head>
-<body class="flex flex-col min-h-screen">
-<Header />
-<main class="flex-grow pt-20">
-    <slot />
-</main>
-<Footer />
-</body>
+        <title>{displayTitle}</title>
+        <meta name="description" content={description} />
+        {canonical && <link rel="canonical" href={canonical} />}
+    </head>
+    <body class="flex flex-col min-h-screen">
+        <Header />
+        <main class="flex-grow pt-20">
+            <slot />
+        </main>
+        <Footer />
+    </body>
 </html>
