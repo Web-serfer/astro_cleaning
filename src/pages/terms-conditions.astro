@@ -1,14 +1,17 @@
 ---
-const pageTitle = 'Terms & Conditions';
-const pageDescription = 'Terms and Conditions for WellKnown Cleaning services in the USA';
----
-
 import Layout from "@layouts/Layout.astro";
 
-export function generateStaticPaths() {
-  return [{ params: {} }];
-}
+const pageTitle = 'Terms & Conditions';
+const pageDescription = 'Terms and Conditions for WellKnown Cleaning services in the USA';
+const pageCanonical = 'https://www.wellknowncleaning.com/terms-conditions';
+---
 
+
+<Layout
+    title={pageTitle}
+    description={pageDescription}
+    canonical={pageCanonical}
+>
 <div class="max-w-4xl mx-auto px-4 py-8">
   <h1 class="text-3xl font-bold mb-6">Terms & Conditions</h1>
   <p class="mb-4"><strong>Last Updated:</strong> October 19, 2025</p>
@@ -103,3 +106,4 @@ export function generateStaticPaths() {
     <p>Address: 315 N 12th St, Philadelphia, PA 19107</p>
   </section>
 </div>
+</Layout>

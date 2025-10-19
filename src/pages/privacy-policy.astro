@@ -1,14 +1,15 @@
 ---
+import Layout from "@layouts/Layout.astro";
 const pageTitle = 'Privacy Policy';
 const pageDescription = 'Privacy Policy for WellKnown Cleaning services in the USA';
+const pageCanonical = 'https://www.wellknowncleaning.com/privacy-policy';
 ---
 
-import Layout from "@layouts/Layout.astro";
-
-export function generateStaticPaths() {
-  return [{ params: {} }];
-}
-
+<Layout
+    title={pageTitle}
+    description={pageDescription}
+    canonical={pageCanonical}
+>
 <div class="max-w-4xl mx-auto px-4 py-8">
   <h1 class="text-3xl font-bold mb-6">Privacy Policy</h1>
   <p class="mb-4"><strong>Last Updated:</strong> October 19, 2025</p>
@@ -120,3 +121,4 @@ export function generateStaticPaths() {
     <p>Address: 315 N 12th St, Philadelphia, PA 19107</p>
   </section>
 </div>
+</Layout>
