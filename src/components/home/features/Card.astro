@@ -20,7 +20,7 @@ const { title, subtitle, bgColor, textColor } = Astro.props;
     <slot />
 
     {title && (
-        <h3
+        <h2
                 class="text-[1.75rem] leading-[1.2] font-medium"
                 set:html={title}
         />

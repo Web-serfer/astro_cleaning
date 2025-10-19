@@ -1,1 +1,11 @@
-<h2>About page</h2>
+---
+import Layout from "@layouts/Layout.astro";
+
+const pageTitle = 'About Us';
+const pageDescription = 'Learn more about our professional cleaning services and experienced team.';
+const pageCanonical = 'https://example.com/about';
+---
+
+<Layout title={pageTitle} description={pageDescription} canonical={pageCanonical}>
+  <h2>About page</h2>
+</Layout>
