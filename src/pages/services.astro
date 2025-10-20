@@ -1,10 +1,11 @@
 ---
 import Layout from "@layouts/Layout.astro";
+import { SITE_URL } from "@constants/site";
 
 const pageTitle = 'Our Services';
 const pageDescription =
   'Explore our range of professional cleaning services for homes and offices.';
-const pageCanonical = 'https://example.com/services';
+const pageCanonical = `${SITE_URL}/services`;
 ---
 
 <Layout title={pageTitle} description={pageDescription} canonical={pageCanonical}>

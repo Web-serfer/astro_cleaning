@@ -1,7 +1,7 @@
 ---
 import ProcessCard from "./ProcessCard.astro";
 import ProcessStep from "./ProcessStep.astro";
-
+import SectionHeader from "@components/base/SectionHeader.astro";
 
 const cardsData = [
     {
@@ -31,24 +31,24 @@ const stepsData = [
         description: "100% satisfaction guaranteed.",
     },
 ];
+
+const sectionTitle = "CLEANING PROCESS";
+const sectionSubtitle = "How It Works";
+const sectionDescription = "";
 ---
 
-<section class="py-16 sm:py-24 bg-white">
+<section class="py-16 sm:py-24 bg-[var(--bg-how-it-works)]">
     <div class="container mx-auto px-4">
         <div class="grid grid-cols-1 lg:grid-cols-2 lg:gap-16 xl:gap-24">
             <!-- Левая колонка с текстом и шагами -->
             <div class="flex flex-col">
-                <!-- Заголовок секции -->
                 <div class="mb-12">
-                    <div class="flex items-center gap-3 mb-3">
-                        <span class="w-3 h-3 bg-violet-200 rounded-sm"></span>
-                        <p class="text-sm font-bold uppercase tracking-wider text-gray-500">
-                            CLEANING PROCESS
-                        </p>
-                    </div>
-                    <h2 class="text-4xl sm:text-5xl font-bold text-gray-900">
-                        How It Works
-                    </h2>
+                    <SectionHeader 
+                        title={sectionSubtitle} 
+                        subtitle={''} 
+                        description={sectionDescription}
+                        category={sectionTitle}
+                    />
                 </div>
 
                 <!-- Блок с двумя карточками (позиционируются абсолютно) -->
