@@ -10,6 +10,7 @@
       "@constants/*": ["src/constants/*"]
     },
     "jsx": "preserve",
-    "jsxImportSource": "solid-js"
+    "jsxImportSource": "solid-js",
+    "lib": ["es2015", "dom"]
   }
 }
