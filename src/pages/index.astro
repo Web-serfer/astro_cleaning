@@ -1,10 +1,12 @@
 ---
+import { SITE_URL } from "@constants/site";
 import Layout from "@layouts/Layout.astro";
 import Hero from "@components/home/hero/Hero.astro";
 import Services from "@components/home/services/Services.astro";
 import HowItWorks from "@components/home/how/HowItWorks.astro";
 import PricingTeaser from "@components/home/pricing/PricingTeaser.astro";
-import { SITE_URL } from "@constants/site";
+import Testimonials from "../components/home/testimonials/Testimonials";
+
 
 const pageTitle = 'Home';
 const pageDescription =
@@ -17,4 +19,5 @@ const pageCanonical = SITE_URL;
   <Services />
   <HowItWorks />
   <PricingTeaser />
+  <Testimonials client:visible />
 </Layout>
