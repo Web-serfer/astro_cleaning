@@ -68,7 +68,7 @@ const servicesData: Service[] = [
         />
 
         <!-- Контейнер для карточек с гибкой сеткой -->
-        <div class="mt-12 relative" id="services-container">
+        <div class="mt-xl relative" id="services-container">
             <div class="flex flex-col md:flex-row gap-8 w-full relative overflow-visible" id="services-flex-container">
                 {servicesData.map((service, index) => (
                     <div class="service-card-wrapper flex-grow relative" style="flex: 1 1 0" key={index}>
@@ -88,7 +88,7 @@ const servicesData: Service[] = [
 
         <!-- Ссылка для мобильных устройств под карточками -->
         <a href="/services"
-           class="mt-8 flex sm:hidden items-center justify-center gap-2 text-teal-600 font-semibold hover:underline">
+           class="mt-lg flex sm:hidden items-center justify-center gap-2 text-teal-600 font-semibold hover:underline">
             ALL SERVICES
             <Icon name="externalLink" class="w-5 h-5"/>
         </a>

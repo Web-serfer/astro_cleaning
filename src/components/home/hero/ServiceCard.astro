@@ -5,7 +5,7 @@ import Button from '@components/base/Button.astro';
 import ButtonSecondary from './ButtonSecondary.astro';
 ---
 
-<article class="bg-white rounded-2xl p-6 shadow-lg flex flex-col gap-4 h-full transition-all duration-300 hover:shadow-xl hover:-translate-y-1" aria-label="Информация об услуге">
+<article class="bg-white rounded-2xl p-6 shadow-lg flex flex-col gap-4 h-full transition-all duration-300 hover:shadow-xl hover:-translate-y-1 v-gap-sm" aria-label="Информация об услуге">
     <!-- Изображение для карточки -->
     <Image 
         src={cleaningImg} 
@@ -13,7 +13,7 @@ import ButtonSecondary from './ButtonSecondary.astro';
         class="w-full h-36 object-cover rounded-xl"
     />
 
-    <p class="text-sm sm:text-base text-gray-600 leading-relaxed">
+    <p class="text-sm sm:text-base text-gray-600 leading-relaxed v-gap-sm">
         Our professional team uses eco-friendly products to deliver exceptional cleaning results every time.
     </p>
 

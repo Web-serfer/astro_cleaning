@@ -11,6 +11,15 @@
   --bg-pricing: #ffffff; /* Цвет фона для секции PricingTeaser */
   --primary: #5d3ebc; /* Основной фиолетовый цвет */
   --primary-hover: #4a309a; /* Основной фиолетовый цвет при наведении */
+  
+  /* Единая шкала вертикальных отступов */
+  --v-gap-xs: 0.5rem;    /* 8px */
+  --v-gap-sm: 1rem;      /* 16px */
+  --v-gap-md: 1.5rem;    /* 24px */
+  --v-gap-lg: 2rem;      /* 32px */
+  --v-gap-xl: 3rem;      /* 48px */
+  --v-gap-2xl: 4rem;     /* 64px */
+  --v-gap-3xl: 6rem;     /* 96px */
 }
 
 body {
@@ -29,63 +38,100 @@ body {
   overflow: hidden;
 }
 
+/* Единые вертикальные отступы */
+.v-gap-xs { margin-top: var(--v-gap-xs); margin-bottom: var(--v-gap-xs); }
+.v-gap-sm { margin-top: var(--v-gap-sm); margin-bottom: var(--v-gap-sm); }
+.v-gap-md { margin-top: var(--v-gap-md); margin-bottom: var(--v-gap-md); }
+.v-gap-lg { margin-top: var(--v-gap-lg); margin-bottom: var(--v-gap-lg); }
+.v-gap-xl { margin-top: var(--v-gap-xl); margin-bottom: var(--v-gap-xl); }
+.v-gap-2xl { margin-top: var(--v-gap-2xl); margin-bottom: var(--v-gap-2xl); }
+.v-gap-3xl { margin-top: var(--v-gap-3xl); margin-bottom: var(--v-gap-3xl); }
+
+/* Верхние отступы */
+.mt-xs { margin-top: var(--v-gap-xs); }
+.mt-sm { margin-top: var(--v-gap-sm); }
+.mt-md { margin-top: var(--v-gap-md); }
+.mt-lg { margin-top: var(--v-gap-lg); }
+.mt-xl { margin-top: var(--v-gap-xl); }
+.mt-2xl { margin-top: var(--v-gap-2xl); }
+.mt-3xl { margin-top: var(--v-gap-3xl); }
+
+/* Нижние отступы */
+.mb-xs { margin-bottom: var(--v-gap-xs); }
+.mb-sm { margin-bottom: var(--v-gap-sm); }
+.mb-md { margin-bottom: var(--v-gap-md); }
+.mb-lg { margin-bottom: var(--v-gap-lg); }
+.mb-xl { margin-bottom: var(--v-gap-xl); }
+.mb-2xl { margin-bottom: var(--v-gap-2xl); }
+.mb-3xl { margin-bottom: var(--v-gap-3xl); }
+
+/* Внутренние отступы */
+.py-xs { padding-top: var(--v-gap-xs); padding-bottom: var(--v-gap-xs); }
+.py-sm { padding-top: var(--v-gap-sm); padding-bottom: var(--v-gap-sm); }
+.py-md { padding-top: var(--v-gap-md); padding-bottom: var(--v-gap-md); }
+.py-lg { padding-top: var(--v-gap-lg); padding-bottom: var(--v-gap-lg); }
+.py-xl { padding-top: var(--v-gap-xl); padding-bottom: var(--v-gap-xl); }
+.py-2xl { padding-top: var(--v-gap-2xl); padding-bottom: var(--v-gap-2xl); }
+.py-3xl { padding-top: var(--v-gap-3xl); padding-bottom: var(--v-gap-3xl); }
+
 /* Стили для вертикальных отступов между секциями */
 .section-gap {
-  margin-bottom: 2rem;
+  margin-top: var(--v-gap-2xl);
+  margin-bottom: var(--v-gap-2xl);
 }
 
 /* Стили для размеров секций */
 .section-hero {
-  padding: 2.5rem 0.5rem 0 0.5rem; /* py-10 px-2 */
+  padding: var(--v-gap-3xl) 0.5rem 0 0.5rem;
 }
 
 @media (min-width: 640px) {
   .section-hero {
-    padding: 2.5rem 1.5rem 0 1.5rem; /* sm:px-6 */
+    padding: var(--v-gap-3xl) 1.5rem 0 1.5rem;
   }
 }
 
 @media (min-width: 1024px) {
   .section-hero {
-    padding: 2.5rem 2rem 0 2rem; /* lg:px-8 */
+    padding: var(--v-gap-3xl) 2rem 0 2rem;
   }
 }
 
 .section-services {
-  padding: 4rem 0.5rem; /* py-16 px-2 */
+  padding: var(--v-gap-3xl) 0.5rem;
   background-color: white;
 }
 
 @media (min-width: 640px) {
   .section-services {
-    padding: 6rem 1.5rem; /* sm:py-24 sm:px-6 */
+    padding: var(--v-gap-2xl) 1.5rem;
   }
 }
 
 @media (min-width: 1024px) {
   .section-services {
-    padding: 6rem 2rem; /* lg:px-8 */
+    padding: var(--v-gap-2xl) 2rem;
   }
 }
 
 .section-how-it-works {
-  padding: 4rem 0; /* py-16 */
+  padding: var(--v-gap-3xl) 0;
 }
 
 @media (min-width: 640px) {
   .section-how-it-works {
-    padding: 6rem 0; /* sm:py-24 */
+    padding: var(--v-gap-2xl) 0;
   }
 }
 
 .section-pricing {
-  padding: 4rem 0; /* py-16 */
+  padding: var(--v-gap-3xl) 0;
   background-color: white;
 }
 
 @media (min-width: 640px) {
   .section-pricing {
-    padding: 6rem 0; /* sm:py-24 */
+    padding: var(--v-gap-2xl) 0;
   }
 }
 
