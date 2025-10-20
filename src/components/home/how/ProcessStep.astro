@@ -1,0 +1,22 @@
+---
+interface Props {
+    number: string;
+    title: string;
+    description: string;
+}
+
+const { number, title, description } = Astro.props;
+---
+
+<div class="py-8 border-b border-gray-200">
+    <div class="grid grid-cols-[auto_1fr_auto] items-center gap-x-4 md:gap-x-8">
+        <!-- Номер шага -->
+        <span class="text-4xl md:text-5xl font-bold text-gray-800">{number}</span>
+
+        <!-- Заголовок шага -->
+        <h3 class="text-2xl md:text-3xl font-bold text-gray-900">{title}</h3>
+
+        <!-- Краткое описание -->
+        <p class="text-sm md:text-base text-gray-500 text-right whitespace-nowrap">{description}</p>
+    </div>
+</div>
