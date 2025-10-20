@@ -29,6 +29,66 @@ body {
   overflow: hidden;
 }
 
+/* Стили для вертикальных отступов между секциями */
+.section-gap {
+  margin-bottom: 2rem;
+}
+
+/* Стили для размеров секций */
+.section-hero {
+  padding: 2.5rem 0.5rem 0 0.5rem; /* py-10 px-2 */
+}
+
+@media (min-width: 640px) {
+  .section-hero {
+    padding: 2.5rem 1.5rem 0 1.5rem; /* sm:px-6 */
+  }
+}
+
+@media (min-width: 1024px) {
+  .section-hero {
+    padding: 2.5rem 2rem 0 2rem; /* lg:px-8 */
+  }
+}
+
+.section-services {
+  padding: 4rem 0.5rem; /* py-16 px-2 */
+  background-color: white;
+}
+
+@media (min-width: 640px) {
+  .section-services {
+    padding: 6rem 1.5rem; /* sm:py-24 sm:px-6 */
+  }
+}
+
+@media (min-width: 1024px) {
+  .section-services {
+    padding: 6rem 2rem; /* lg:px-8 */
+  }
+}
+
+.section-how-it-works {
+  padding: 4rem 0; /* py-16 */
+}
+
+@media (min-width: 640px) {
+  .section-how-it-works {
+    padding: 6rem 0; /* sm:py-24 */
+  }
+}
+
+.section-pricing {
+  padding: 4rem 0; /* py-16 */
+  background-color: white;
+}
+
+@media (min-width: 640px) {
+  .section-pricing {
+    padding: 6rem 0; /* sm:py-24 */
+  }
+}
+
 .container-sm {
   max-width: 1280px;
   margin-left: auto;

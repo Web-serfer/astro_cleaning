@@ -4,13 +4,15 @@ import { Icon } from 'astro-icon/components';
 const starCount = 5;
 ---
 
-<div class="bg-white rounded-2xl p-6 shadow-lg transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
-    <div class="text-2xl tracking-widest flex gap-1">
-        {Array.from({ length: starCount }, () => (
+<article class="bg-white rounded-2xl p-6 shadow-lg transition-all duration-300 hover:shadow-xl hover:-translate-y-1" aria-label="Отзывы и рейтинги">
+    <div class="text-2xl tracking-widest flex gap-1" aria-label="Рейтинг 5 звезд из 5">
+        {Array.from({ length: starCount }, (_, index) => (
             <Icon 
+                key={index}
                 name="starIcon" 
                 class="icon" 
                 style="color: var(--primary);"
+                aria-hidden="true"
             />
         ))}
     </div>
@@ -19,10 +21,10 @@ const starCount = 5;
     </p>
     <div class="flex items-center gap-5 text-dark-text font-bold text-xl">
         <div class="flex items-center gap-0">
-            <Icon name="torchIcon" class="w-6 h-6" />
+            <Icon name="torchIcon" class="w-6 h-6" aria-hidden="true" />
             <span>BBB</span>
         </div>
         <span>yelp*</span>
         <span>Google</span>
     </div>
-</div>
+</article>
