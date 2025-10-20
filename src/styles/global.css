@@ -74,6 +74,13 @@ body {
 .py-2xl { padding-top: var(--v-gap-2xl); padding-bottom: var(--v-gap-2xl); }
 .py-3xl { padding-top: var(--v-gap-3xl); padding-bottom: var(--v-gap-3xl); }
 
+/* Стили для анимированной полоски прокрутки */
+#scroll-indicator {
+  background: linear-gradient(90deg, var(--primary), var(--primary-hover));
+  transition: transform 0.1s ease-out, opacity 0.2s ease-out;
+  z-index: 51 !important;
+}
+
 /* Стили для вертикальных отступов между секциями */
 .section-gap {
   margin-top: var(--v-gap-2xl);

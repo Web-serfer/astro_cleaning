@@ -21,6 +21,13 @@ import Modal from '@components/base/Modal.astro';
             class="fixed inset-0 bg-white/80 backdrop-blur-md z-40 hidden transition-opacity duration-300"
             aria-hidden="true"
     ></div>
+
+    <!-- Анимированная полоска-индикатор прокрутки -->
+    <div
+            id="scroll-indicator"
+            class="absolute bottom-0 left-0 h-1 w-full origin-left scale-x-0 bg-[var(--primary)] opacity-0 transition-opacity duration-300"
+            style="transform-origin: left center;"
+    ></div>
 </header>
 
 <Modal />
@@ -28,8 +35,12 @@ import Modal from '@components/base/Modal.astro';
 <script>
     document.addEventListener('DOMContentLoaded', () => {
         const header = document.getElementById('header');
+        const scrollIndicator = document.getElementById('scroll-indicator');
+
+        // Отслеживаем последнюю позицию скролла для определения направления
         let lastScrollY = window.scrollY;
 
+        // Функция для обновления тени хедера
         const updateHeaderShadow = () => {
             if (window.scrollY > 0) {
                 header.classList.add('shadow-xl');
@@ -38,10 +49,42 @@ import Modal from '@components/base/Modal.astro';
             }
         };
 
-        // Устанавливаем начальное состояние
+        // Функция для обновления индикатора прокрутки
+        const updateScrollIndicator = () => {
+            const currentScrollY = window.scrollY;
+            const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+
+            // Рассчитываем прогресс прокрутки (от 0 до 1)
+            const scrollProgress = maxScroll > 0 ? currentScrollY / maxScroll : 0;
+
+            // 1. Всегда обновляем ширину полоски в соответствии с прогрессом
+            //    Используем requestAnimationFrame, чтобы анимация была плавной и не нагружала браузер
+            window.requestAnimationFrame(() => {
+                scrollIndicator.style.transform = `scaleX(${scrollProgress})`;
+            });
+
+            // 2. Управляем видимостью полоски в зависимости от направления скролла
+            if (currentScrollY > lastScrollY && currentScrollY > 0) {
+                // Скроллим ВНИЗ: показываем полоску
+                scrollIndicator.style.opacity = '1';
+            } else {
+                // Скроллим ВВЕРХ или находимся в самом верху: скрываем полоску
+                scrollIndicator.style.opacity = '0';
+            }
+
+            // Обновляем последнюю позицию скролла
+            // Условие `currentScrollY < 0` обрабатывает "резиновый" скролл на macOS/мобильных
+            lastScrollY = currentScrollY < 0 ? 0 : currentScrollY;
+        };
+
+        // Инициализация при загрузке страницы
         updateHeaderShadow();
+        updateScrollIndicator();
 
         // Добавляем обработчик события прокрутки
-        window.addEventListener('scroll', updateHeaderShadow);
+        window.addEventListener('scroll', () => {
+            updateHeaderShadow();
+            updateScrollIndicator();
+        }, { passive: true }); // Опция passive для лучшей производительности
     });
 </script>
