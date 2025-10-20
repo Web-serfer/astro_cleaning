@@ -5,12 +5,12 @@ import SectionHeader from "@components/base/SectionHeader.astro";
 
 const cardsData = [
     {
-        title: "Lorem ipsum dolor",
-        text: "Sit amet consectetur. Nulla velit dignissim sed ornare vulputate. Lectus vitae tincidunt posuere sem nisi est.",
+        title: "Professional Cleaning Services",
+        text: "Our trained professionals use eco-friendly products and state-of-the-art equipment to deliver exceptional cleaning results that exceed your expectations.",
     },
     {
-        title: "Lorem ipsum dolor sit",
-        text: "Nulla velit dignissim sed ornare vulputate. Ultrices volutpat non tellus mauris ut nisi tortor vestibulum amet. Lectus vitae tincidunt posuere sem nisi est. Velit imperdiet urna vulputate in diam neque.",
+        title: "Quality Guarantee",
+        text: "We stand behind our work with a 100% satisfaction guarantee. If you're not happy with our service, we'll make it right at no additional cost.",
     },
 ];
 
@@ -56,12 +56,12 @@ const sectionDescription = "";
                     <ProcessCard
                             title={cardsData[0].title}
                             text={cardsData[0].text}
-                            className="absolute top-0 left-0 w-4/5 transform -rotate-3"
+                            className="absolute top-0 left-0 w-4/5 transform -rotate-3 transition-all duration-300 hover:shadow-lg hover:-translate-y-1 hover:rotate-0 hover:z-20"
                     />
                     <ProcessCard
                             title={cardsData[1].title}
                             text={cardsData[1].text}
-                            className="absolute bottom-0 right-0 w-4/5 transform rotate-2 z-10"
+                            className="absolute bottom-0 right-0 w-4/5 transform rotate-2 z-10 transition-all duration-300 hover:shadow-lg hover:-translate-y-1 hover:rotate-0 hover:z-20"
                     />
                 </div>
 
