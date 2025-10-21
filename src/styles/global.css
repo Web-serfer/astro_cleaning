@@ -20,18 +20,24 @@
   --v-gap-xl: 3rem;      /* 48px */
   --v-gap-2xl: 4rem;     /* 64px */
   --v-gap-3xl: 6rem;     /* 96px */
+  
+  /* Горизонтальные отступы для компонентов */
+  --h-padding: 2rem;      /* 32px на десктопе */
+  --component-gap: 12.5rem; /* 200px между компонентами */
 }
 
 body {
   font-family: inherit;
+  max-width: 1344px;
+  margin: 0 auto;
 }
 
 .container {
   max-width: 1280px;
   margin-left: auto;
   margin-right: auto;
-  padding-left: 1rem;
-  padding-right: 1rem;
+  padding-left: 2rem;
+  padding-right: 2rem;
 }
 
 .overflow-hidden {
@@ -83,63 +89,85 @@ body {
 
 /* Стили для вертикальных отступов между секциями */
 .section-gap {
-  margin-top: var(--v-gap-2xl);
-  margin-bottom: var(--v-gap-2xl);
+  margin-top: var(--component-gap);
+  margin-bottom: var(--component-gap);
 }
 
 /* Стили для размеров секций */
 .section-hero {
-  padding: var(--v-gap-2xl) 0.5rem 0 0.5rem;
+  padding: var(--v-gap-2xl) var(--h-padding) 0 var(--h-padding);
   margin-top: -2.5rem; /* Поднимаем Hero секцию ближе к Header */
 }
 
 @media (min-width: 640px) {
   .section-hero {
-    padding: var(--v-gap-3xl) 1.5rem 0 1.5rem;
+    padding: var(--v-gap-3xl) calc(var(--h-padding) * 1.5) 0 calc(var(--h-padding) * 1.5);
   }
 }
 
 @media (min-width: 1024px) {
   .section-hero {
-    padding: var(--v-gap-3xl) 2rem 0 2rem;
+    padding: var(--v-gap-3xl) var(--h-padding) 0 var(--h-padding);
+  }
+}
+
+/* Мобильные стили */
+@media (max-width: 767px) {
+  :root {
+    --h-padding: 1rem;          /* 16px на мобильных */
+    --component-gap: 2rem;      /* ~32px между компонентами на мобильных */
+  }
+  
+  .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  
+  .section-gap {
+    margin-top: var(--component-gap);
+    margin-bottom: var(--component-gap);
+  }
+  
+  body {
+    max-width: 100%;
   }
 }
 
 .section-services {
-  padding: var(--v-gap-3xl) 0.5rem;
+  padding: var(--v-gap-3xl) var(--h-padding);
   background-color: white;
 }
 
 @media (min-width: 640px) {
   .section-services {
-    padding: var(--v-gap-2xl) 1.5rem;
+    padding: var(--v-gap-2xl) calc(var(--h-padding) * 1.5);
   }
 }
 
 @media (min-width: 1024px) {
   .section-services {
-    padding: var(--v-gap-2xl) 2rem;
+    padding: var(--v-gap-2xl) var(--h-padding);
   }
 }
 
 .section-how-it-works {
-  padding: var(--v-gap-3xl) 0;
+  padding: var(--v-gap-3xl) var(--h-padding);
 }
 
 @media (min-width: 640px) {
   .section-how-it-works {
-    padding: var(--v-gap-2xl) 0;
+    padding: var(--v-gap-2xl) var(--h-padding);
   }
 }
 
 .section-pricing {
-  padding: var(--v-gap-3xl) 0;
+  padding: var(--v-gap-3xl) var(--h-padding);
   background-color: white;
 }
 
 @media (min-width: 640px) {
   .section-pricing {
-    padding: var(--v-gap-2xl) 0;
+    padding: var(--v-gap-2xl) var(--h-padding);
   }
 }
 
@@ -147,14 +175,14 @@ body {
   max-width: 1280px;
   margin-left: auto;
   margin-right: auto;
-  padding-left: 0.1rem;
-  padding-right: 0.1rem;
+  padding-left: var(--h-padding);
+  padding-right: var(--h-padding);
 }
 
 @media (min-width: 768px) {
   .container-sm {
-    padding-left: 1rem;
-    padding-right: 1rem;
+    padding-left: var(--h-padding);
+    padding-right: var(--h-padding);
   }
 }
 
