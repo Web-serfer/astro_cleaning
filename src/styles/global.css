@@ -89,7 +89,8 @@ body {
 
 /* Стили для размеров секций */
 .section-hero {
-  padding: var(--v-gap-3xl) 0.5rem 0 0.5rem;
+  padding: var(--v-gap-2xl) 0.5rem 0 0.5rem;
+  margin-top: -2.5rem; /* Поднимаем Hero секцию ближе к Header */
 }
 
 @media (min-width: 640px) {

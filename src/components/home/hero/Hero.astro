@@ -9,7 +9,7 @@ import { heroData } from './heroData';
 ---
 
 <!-- hero section -->
-<header class="section-hero font-sans">
+<section aria-labelledby="hero-heading" class="section-hero">
     <div class="container-sm">
         <div class="relative rounded-3xl p-8 sm:p-10 overflow-hidden" style="min-height: 500px;">
             <Image
@@ -25,7 +25,7 @@ import { heroData } from './heroData';
                     <!-- Левая колонка -->
                     <div class="lg:col-span-3 flex flex-col items-center text-center lg:items-start lg:text-left md:pb-12">
                         <Tag text={heroData.tag.text} />
-                        <h1 class="text-2xl sm:text-4xl lg:text-5xl font-bold text-white v-gap-md leading-tight max-w-lg">
+                        <h1 id="hero-heading" class="text-2xl sm:text-4xl lg:text-5xl font-bold text-white v-gap-md leading-tight max-w-lg">
                             {heroData.heading.title}
                             <span
                                 class="inline-flex justify-end items-baseline ml-4 bg-white rounded-full shadow"
@@ -50,12 +50,12 @@ import { heroData } from './heroData';
             </div>
         </div>
     </div>
-</header>
+</section>
 
 <!-- services cards -->
-<section aria-labelledby="services-heading" class="px-6 mt-lg">
+<section aria-labelledby="services-heading" class="px-6 mt-md">
     <div class="container-sm">
-        <h2 id="services-heading" class="sr-only">Наши услуги</h2>
+        <h2 id="services-heading" class="text-2xl sm:text-3xl font-bold mb-md text-center">Наши услуги</h2>
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {heroData.servicesCards.map(card => (
                 <div
