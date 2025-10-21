@@ -38,11 +38,11 @@ import { heroData } from './heroData';
                     </div>
 
                     <!-- Правая колонка -->
-                    <div class="lg:col-span-2 flex flex-col gap-6 w-full items-center">
-                        <div class="w-full max-w-sm">
+                    <div class="lg:col-span-2 flex flex-col gap-8 w-full items-end">
+                        <div class="w-[384px] max-w-none mr-8">
                             <RatingCard />
                         </div>
-                        <div class="w-full max-w-sm">
+                        <div class="w-[384px] max-w-none mr-8">
                             <ServiceCard />
                         </div>
                     </div>
@@ -62,6 +62,7 @@ import { heroData } from './heroData';
                         font-sans rounded-3xl p-6 py-xl min-h-[220px]
                         flex flex-col justify-center items-center text-center
                         transition-transform duration-200 ease-in-out hover:-translate-y-1
+                        w-[296px] mx-auto
                     "
                     style={`background-color: ${card.bgColor}; color: ${card.textColor};`}
                 >
