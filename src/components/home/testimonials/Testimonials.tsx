@@ -70,7 +70,7 @@ export default function Testimonials() {
         >
             <div class="container-sm">
                 {/* Заголовок секции */}
-                <div class="mb-2xl text-center">
+                <div class="mb-4 text-center">
                     <div class="flex items-center justify-center gap-2 mb-md">
                         <span class="w-3 h-3 bg-yellow-400 rounded-full"></span>
                         <p class="text-sm font-bold uppercase tracking-wider text-gray-600">
