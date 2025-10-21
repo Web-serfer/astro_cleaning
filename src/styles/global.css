@@ -156,3 +156,29 @@ body {
     padding-right: 1rem;
   }
 }
+
+
+
+
+/* ==== Анимация для бесконечной прокрутки слайдера ==== */
+@keyframes scroll {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        /* Сдвигаем на 50%, так как мы дублировали контент */
+        transform: translateX(-50%);
+    }
+}
+
+.animate-scroll {
+    /*
+      Применяем анимацию.
+      Переменная --scroll-duration устанавливается инлайн в компоненте.
+    */
+    animation: scroll var(--scroll-duration) linear infinite;
+}
+
+.paused {
+    animation-play-state: paused;
+}
