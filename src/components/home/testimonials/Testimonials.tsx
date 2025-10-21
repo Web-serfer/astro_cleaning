@@ -3,11 +3,6 @@ import { TestimonialCard, type Testimonial } from './TestimonialCard';
 
 const testimonialsData: Testimonial[] = [
     {
-        quote: "Definitely one of the best burgers in town! The quality and taste are exceptional.",
-        author: "Jack Smith",
-        rating: 5,
-    },
-    {
         quote: "The cleaning service was impeccable. My apartment has never been this clean and fresh.",
         author: "Sarah Johnson",
         rating: 5,
@@ -66,26 +61,23 @@ export default function Testimonials() {
     });
 
     return (
-        <section
-            class="py-20 sm:py-28 bg-gradient-to-br from-gray-50 to-white font-sans relative"
+        <section 
+            class="section-how-it-works font-sans py-2xl" 
+            style="background-color: var(--bg-features);"
             ref={sliderRef}
             onMouseEnter={() => setIsPaused(true)}
             onMouseLeave={() => setIsPaused(false)}
         >
-            {/* Декоративные элементы */}
-            <div class="absolute top-10 left-10 w-20 h-20 bg-yellow-100 rounded-full opacity-60 blur-xl"></div>
-            <div class="absolute bottom-10 right-10 w-16 h-16 bg-blue-100 rounded-full opacity-40 blur-lg"></div>
-
-            <div class="container mx-auto px-4 relative z-10">
-                {/* Заголовок секции (без изменений) */}
-                <div class="mb-16 text-center">
-                    <div class="flex items-center justify-center gap-2 mb-3">
+            <div class="container-sm">
+                {/* Заголовок секции */}
+                <div class="mb-2xl text-center">
+                    <div class="flex items-center justify-center gap-2 mb-md">
                         <span class="w-3 h-3 bg-yellow-400 rounded-full"></span>
                         <p class="text-sm font-bold uppercase tracking-wider text-gray-600">
                             WHAT OUR CLIENTS SAY
                         </p>
                     </div>
-                    <h2 class="text-4xl sm:text-6xl font-bold text-gray-900 mb-4">
+                    <h2 class="text-4xl sm:text-5xl font-bold text-gray-900 mb-md">
                         Customer Reviews
                     </h2>
                     <p class="text-lg text-gray-600 max-w-2xl mx-auto">
@@ -96,11 +88,11 @@ export default function Testimonials() {
                 {/* Контейнер слайдера */}
                 <div class="relative group">
                     {/* Градиентные overlay для плавного исчезновения по краям */}
-                    <div class="absolute left-0 top-0 w-24 h-full bg-gradient-to-r from-gray-50 to-transparent z-10 pointer-events-none"></div>
-                    <div class="absolute right-0 top-0 w-24 h-full bg-gradient-to-l from-gray-50 to-transparent z-10 pointer-events-none"></div>
+                    <div class="absolute left-0 top-0 w-24 h-full bg-gradient-to-r from-[var(--bg-how-it-works)] to-transparent z-10 pointer-events-none"></div>
+                    <div class="absolute right-0 top-0 w-24 h-full bg-gradient-to-l from-[var(--bg-how-it-works)] to-transparent z-10 pointer-events-none"></div>
 
                     {/* Обертка для скрытия лишних карточек */}
-                    <div class="overflow-hidden">
+                    <div class="overflow-hidden rounded-3xl p-8" style="background-color: var(--bg-how-it-works);">
                         {/* "Трек" слайдера, который анимируется с помощью CSS */}
                         <div
                             class="flex gap-6"
