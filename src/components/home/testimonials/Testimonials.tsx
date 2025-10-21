@@ -71,15 +71,8 @@ export default function Testimonials() {
             <div class="container-sm">
                 {/* Заголовок секции */}
                 <div class="mb-4 text-center">
-                    <div class="flex items-center justify-center gap-2 mb-md">
-                        <span class="w-3 h-3 bg-yellow-400 rounded-full"></span>
-                        <p class="text-sm font-bold uppercase tracking-wider text-gray-600">
-                            WHAT OUR CLIENTS SAY
-                        </p>
-                    </div>
-                    <h2 class="text-4xl sm:text-5xl font-bold text-gray-900 mb-md">
-                        Customer Reviews
-                    </h2>
+                    <span class="inline-block bg-white/70 py-2 px-5 rounded-full text-sm font-medium text-gray-700">WHAT OUR CLIENTS SAY</span>
+                    <h2 class="text-5xl font-extrabold my-6 text-slate-900">Customer Reviews</h2>
                     <p class="text-lg text-gray-600 max-w-2xl mx-auto">
                         Discover why thousands of customers trust our services
                     </p>

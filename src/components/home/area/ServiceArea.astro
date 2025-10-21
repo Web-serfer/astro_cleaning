@@ -1,0 +1,42 @@
+---
+import ServiceAreaHeader from './ServiceAreaHeader.astro';
+import ServiceAreaMap from './ServiceAreaMap.astro';
+import ZipCodeChecker from './ZipCodeChecker.astro';
+import LocationList from './LocationList.astro';
+
+// Данные для списков можно вынести сюда для удобства
+const popularNeighborhoods = ["Center City", "Fishtown", "South Philly", "Manayunk", "Old City", "University City", "Fairmount"];
+const popularSuburbs = ["Main Line", "Upper Darby", "Abington", "Cherry Hill", "Collingswood"];
+const southJerseyAreas = ["Marlton"];
+---
+
+<section class="py-16 bg-white sm:py-24">
+    <div class="container px-4 mx-auto">
+        <ServiceAreaHeader />
+        
+        <div class="grid grid-cols-1 lg:grid-cols-3 lg:gap-16">
+            <div class="lg:col-span-2">
+                <ServiceAreaMap />
+            </div>
+
+            <div class="lg:pt-[1.8rem] lg:col-span-1">
+                <ZipCodeChecker />
+
+                <div class="space-y-8">
+                    <LocationList
+                            title="Popular Neighborhoods We Serve"
+                            locations={popularNeighborhoods}
+                    />
+                    <LocationList
+                            title="Popular Suburbs We Serve"
+                            locations={popularSuburbs}
+                    />
+                    <LocationList
+                            title="Popular South Jersey Areas We Serve"
+                            locations={southJerseyAreas}
+                    />
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
