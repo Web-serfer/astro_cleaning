@@ -62,8 +62,7 @@ export default function Testimonials() {
 
     return (
         <section 
-            class="section font-sans py-2xl bg-features" 
-            style="background-color: var(--bg-features);"
+            class="section font-sans py-2xl" 
             ref={sliderRef}
             onMouseEnter={() => setIsPaused(true)}
             onMouseLeave={() => setIsPaused(false)}
@@ -81,11 +80,11 @@ export default function Testimonials() {
                 {/* Контейнер слайдера */}
                 <div class="relative group">
                     {/* Градиентные overlay для плавного исчезновения по краям */}
-                    <div class="absolute left-0 top-0 w-24 h-full bg-gradient-to-r from-[var(--bg-how-it-works)] to-transparent z-10 pointer-events-none"></div>
-                    <div class="absolute right-0 top-0 w-24 h-full bg-gradient-to-l from-[var(--bg-how-it-works)] to-transparent z-10 pointer-events-none"></div>
+                    <div class="absolute left-0 top-0 w-24 h-full bg-gradient-to-r from-white to-transparent z-10 pointer-events-none"></div>
+                    <div class="absolute right-0 top-0 w-24 h-full bg-gradient-to-l from-white to-transparent z-10 pointer-events-none"></div>
 
                     {/* Обертка для скрытия лишних карточек */}
-                    <div class="overflow-hidden rounded-3xl p-8" style="background-color: var(--bg-how-it-works);">
+                    <div class="overflow-hidden rounded-3xl p-8">
                         {/* "Трек" слайдера, который анимируется с помощью CSS */}
                         <div
                             class="flex gap-6"
