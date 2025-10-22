@@ -31,11 +31,5 @@ export const heroData = {
       bgColor: '#6ca19a',
       textColor: '#ffffff',
     },
-  ],
-  ratingCard: {
-    // Данные для рейтинга
-  },
-  serviceCard: {
-    // Данные для сервисной карточки
-  }
+  ]
 };
