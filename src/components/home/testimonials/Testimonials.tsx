@@ -62,7 +62,7 @@ export default function Testimonials() {
 
     return (
         <section 
-            class="section-how-it-works font-sans py-2xl" 
+            class="section font-sans py-2xl bg-features" 
             style="background-color: var(--bg-features);"
             ref={sliderRef}
             onMouseEnter={() => setIsPaused(true)}

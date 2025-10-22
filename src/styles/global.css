@@ -32,12 +32,17 @@ body {
   margin: 0 auto;
 }
 
-.container {
+.container-sm {
   max-width: 1280px;
   margin-left: auto;
   margin-right: auto;
-  padding-left: 2rem;
-  padding-right: 2rem;
+}
+
+@media (min-width: 768px) {
+  .container-sm {
+    padding-left: var(--h-padding);
+    padding-right: var(--h-padding);
+  }
 }
 
 .overflow-hidden {
@@ -93,7 +98,24 @@ body {
   margin-bottom: var(--component-gap);
 }
 
-/* Стили для размеров секций */
+/* Универсальный класс для всех секций */
+.section {
+  padding: var(--v-gap-3xl) var(--h-padding);
+}
+
+@media (min-width: 640px) {
+  .section {
+    padding: var(--v-gap-2xl) calc(var(--h-padding) * 1.5);
+  }
+}
+
+@media (min-width: 1024px) {
+  .section {
+    padding: var(--v-gap-2xl) var(--h-padding);
+  }
+}
+
+/* Специфические стили для отдельных секций */
 .section-hero {
   padding: var(--v-gap-2xl) var(--h-padding) 0 var(--h-padding);
   margin-top: -2.5rem; /* Поднимаем Hero секцию ближе к Header */
@@ -118,11 +140,6 @@ body {
     --component-gap: 2rem;      /* ~32px между компонентами на мобильных */
   }
   
-  .container {
-    padding-left: 1rem;
-    padding-right: 1rem;
-  }
-  
   .section-gap {
     margin-top: var(--component-gap);
     margin-bottom: var(--component-gap);
@@ -133,59 +150,12 @@ body {
   }
 }
 
-.section-services {
-  padding: var(--v-gap-3xl) var(--h-padding);
-  background-color: white;
-}
-
-@media (min-width: 640px) {
-  .section-services {
-    padding: var(--v-gap-2xl) calc(var(--h-padding) * 1.5);
-  }
-}
-
-@media (min-width: 1024px) {
-  .section-services {
-    padding: var(--v-gap-2xl) var(--h-padding);
-  }
-}
-
-.section-how-it-works {
-  padding: var(--v-gap-3xl) var(--h-padding);
-}
-
-@media (min-width: 640px) {
-  .section-how-it-works {
-    padding: var(--v-gap-2xl) var(--h-padding);
-  }
-}
-
-.section-pricing {
-  padding: var(--v-gap-3xl) var(--h-padding);
-  background-color: white;
-}
-
-@media (min-width: 640px) {
-  .section-pricing {
-    padding: var(--v-gap-2xl) var(--h-padding);
-  }
-}
-
-.container-sm {
-  max-width: 1280px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-@media (min-width: 768px) {
-  .container-sm {
-    padding-left: var(--h-padding);
-    padding-right: var(--h-padding);
-  }
-}
-
-
-
+/* Фоновые цвета для секций */
+.bg-hero { background-color: var(--bg-hero); }
+.bg-features { background-color: var(--bg-features); }
+.bg-services { background-color: var(--bg-services); }
+.bg-how-it-works { background-color: var(--bg-how-it-works); }
+.bg-pricing { background-color: var(--bg-pricing); }
 
 /* ==== Анимация для бесконечной прокрутки слайдера ==== */
 @keyframes scroll {
