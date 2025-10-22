@@ -8,7 +8,6 @@ const starCount = 5;
     <div class="text-2xl tracking-widest flex gap-1" aria-label="Рейтинг 5 звезд из 5">
         {Array.from({ length: starCount }, (_, index) => (
             <Icon 
-                key={index}
                 name="starIcon" 
                 class="icon" 
                 style="color: var(--primary);"

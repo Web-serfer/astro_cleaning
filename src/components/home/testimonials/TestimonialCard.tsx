@@ -10,8 +10,8 @@ const StarRating: Component<{ rating: number }> = (props) => {
                     width="20"
                     height="20"
                     viewBox="0 0 24 24"
-                    fill={index < props.rating ? 'black' : 'none'} // Заливка черным, как на картинке
-                    stroke={index < props.rating ? 'black' : '#E0E0E0'} // Обводка для пустых звезд
+                    fill={index < props.rating ? 'var(--primary)' : 'none'} // Цвет как в RatingCard
+                    stroke={index < props.rating ? 'var(--primary)' : '#E0E0E0'} // Обводка для пустых звезд
                     stroke-width="1.5"
                     stroke-linecap="round"
                     stroke-linejoin="round"
