@@ -1,0 +1,40 @@
+---
+import FeatureCard from './FeatureCard.astro';
+import PhoneMockup from './PhoneMockup.astro';
+import SectionHeader from '@components/base/SectionHeader.astro';
+import { featureCardsData } from './featureCardsData';
+
+---
+<section class="py-12 lg:py-16 bg-white">
+    <div class="container mx-auto px-4">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+            <!-- Левая колонка: Заголовок и текст (40% ширины) -->
+            <div class="lg:col-span-5 flex flex-col justify-start">
+                <SectionHeader 
+                    title="Why Choose Us?"
+                    subtitle="Discover what sets our cleaning services apart from the rest"
+                    description="We combine professional expertise with a commitment to excellence, ensuring every cleaning experience exceeds your expectations."
+                    category="ABOUT US"
+                />
+            </div>
+
+            <!-- Правая колонка: Карточки и макет телефона (60% ширины) -->
+            <div class="lg:col-span-7">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 h-full">
+                    <div class="lg:col-span-1">
+                        <div class="grid grid-rows-3 gap-4 h-full">
+                            {featureCardsData.map(card => (
+                                <FeatureCard title={card.title} description={card.description} />
+                            ))}
+                        </div>
+                    </div>
+                    <div class="lg:col-span-1">
+                        <div class="h-full w-full flex items-center">
+                            <PhoneMockup />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
