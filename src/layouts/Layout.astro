@@ -33,10 +33,10 @@ const displayTitle =
         <meta name="description" content={description} />
         {canonical && <link rel="canonical" href={canonical} />}
     </head>
-    <body class="flex flex-col min-h-screen">
+    <body class="flex flex-col min-h-screen pt-18 md:pt-12">
         <Header />
         <ScrollToTopButton />
-            <main class="pt-12">
+            <main>
                 <slot />
             </main>
         <Footer />

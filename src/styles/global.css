@@ -175,8 +175,6 @@ body {
   max-width: 1280px;
   margin-left: auto;
   margin-right: auto;
-  padding-left: var(--h-padding);
-  padding-right: var(--h-padding);
 }
 
 @media (min-width: 768px) {
