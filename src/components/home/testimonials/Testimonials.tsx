@@ -70,7 +70,11 @@ export default function Testimonials() {
             <div class="container">
                 {/* Заголовок секции */}
                 <div class="mb-4 text-center">
-                    <span class="inline-block bg-white/70 py-2 px-5 rounded-full text-sm font-medium text-gray-700">WHAT OUR CLIENTS SAY</span>
+                    <div class="flex justify-center mb-4">
+                        <span class="text-sm font-bold uppercase tracking-wider text-zinc-500 bg-zinc-100 px-4 py-2 rounded-full">
+                            WHAT OUR CLIENTS SAY
+                        </span>
+                    </div>
                     <h2 class="text-5xl font-extrabold my-6 text-slate-900">Customer Reviews</h2>
                     <p class="text-lg text-gray-600 max-w-2xl mx-auto">
                         Discover why thousands of customers trust our services

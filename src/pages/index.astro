@@ -7,7 +7,8 @@ import HowItWorks from "@components/home/how/HowItWorks.astro";
 import PricingTeaser from "@components/home/pricing/PricingTeaser.astro";
 import Testimonials from "@components/home/testimonials/Testimonials";
 import ServiceArea from "@components/home/area/ServiceArea.astro";
-import AboutSection from "@components/home/about/AboutSection.astro";
+import About from "@components/home/about/AboutSection.astro";
+import Faq from "@components/home/faq/FaqSection";
 
 
 const pageTitle = 'Home';
@@ -23,5 +24,6 @@ const pageCanonical = SITE_URL;
   <PricingTeaser />
   <Testimonials client:visible />
   <ServiceArea />
-  <AboutSection />
+  <About />
+  <Faq client:visible />
 </Layout>
