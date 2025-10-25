@@ -1,0 +1,38 @@
+---
+import CardWithBackground from './CardWithBackground.astro';
+import InfoCard from './InfoCard.astro';
+import SectionHeader from '@components/base/SectionHeader.astro';
+---
+
+<div class="flex items-start gap-6 w-full">
+
+    <!-- ЛЕВАЯ КОЛОНКА: Картинка (фон) с текстом поверх -->
+    <div class="w-1/2 rounded-3xl overflow-hidden">
+        <CardWithBackground
+            title="Lorem ipsum dolor"
+            text="Sit amet consectetur. Nulla velit dignissim sed ornare vulputate. Lectus vitae tincidunt posuere sem nisi est."
+        />
+    </div>
+
+    <!-- ПРАВАЯ КОЛОНКА: Заголовок и текст под ним -->
+    <div class="w-1/2 rounded-3xl overflow-hidden">
+        <div class="p-6">
+            <div class="mb-6">
+                <div class="flex justify-center">
+                    <SectionHeader 
+                        category="Cleaning Process"
+                        title="How It Works"
+                    />
+                </div>
+            </div>
+            <div class="border border-gray-300 p-4 rounded-lg">
+                <InfoCard
+                        title="Lorem ipsum dolor sit"
+                        text="Nulla velit dignissim sed ornare vulputate. Ultrices volutpat non tellus mauris ut nisi tortor vestibulum amet. Lectus vitae tincidunt posuere sem nisi est. Velit imperdiet urna vulputate in diam neque."
+                        className="max-w-full"
+                />
+            </div>
+        </div>
+    </div>
+
+</div>

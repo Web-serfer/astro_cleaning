@@ -71,9 +71,12 @@ export default function Testimonials() {
                 {/* Заголовок секции */}
                 <div class="mb-4 text-center">
                     <div class="flex justify-center mb-4">
-                        <span class="text-sm font-bold uppercase tracking-wider text-zinc-500 bg-zinc-100 px-4 py-2 rounded-full">
-                            WHAT OUR CLIENTS SAY
-                        </span>
+                        <div class="flex items-center">
+                            <div class="w-4 h-4 bg-[var(--accent-hero-card)] rounded-md mr-2"></div>
+                            <span class="text-sm font-bold uppercase tracking-wider text-zinc-500">
+                                WHAT OUR CLIENTS SAY
+                            </span>
+                        </div>
                     </div>
                     <h2 class="text-5xl font-extrabold my-6 text-slate-900">Customer Reviews</h2>
                     <p class="text-lg text-gray-600 max-w-2xl mx-auto">

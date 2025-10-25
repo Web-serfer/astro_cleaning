@@ -1,0 +1,13 @@
+---
+interface Props {
+    title: string;
+    text: string;
+    className?: string;
+}
+
+const { title, text, className } = Astro.props;
+---
+<div class:list={["bg-card-bg p-6 rounded-2xl", className]}>
+    <h4 class="text-lg font-bold text-black mb-2">{title}</h4>
+    <p class="text-gray-700 leading-relaxed text-sm">{text}</p>
+</div>

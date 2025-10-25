@@ -1,0 +1,28 @@
+---
+import { Image } from 'astro:assets';
+import howItWorkImage from '@assets/home/how/howItWorl.png';
+
+interface Props {
+    title: string;
+    text: string;
+}
+
+const { title, text } = Astro.props;
+---
+<div class="relative border border-gray-300 h-96">
+    <!-- Фоновое изображение -->
+    <div class="absolute inset-0 overflow-hidden rounded-lg">
+        <Image
+            src={howItWorkImage}
+            alt="Background"
+            class="w-full h-full object-cover"
+        />
+    </div>
+
+    <div class="absolute bottom-6 right-6 z-10 w-35 h-35 bg-white bg-opacity-10 backdrop-blur-md p-0 rounded-xl border border-white border-opacity-20 flex items-center justify-center overflow-hidden">
+        <div class="w-full h-full p-3 flex flex-col items-center justify-center text-center">
+            <h4 class="text-xs font-bold text-black mb-1 truncate max-w-full">{title}</h4>
+            <p class="text-[10px] text-gray-700 leading-tight max-w-full">{text}</p>
+        </div>
+    </div>
+</div>

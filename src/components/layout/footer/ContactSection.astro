@@ -1,59 +1,68 @@
 ---
 import { Icon } from 'astro-icon/components';
-import ContactCard from './ContactCard.astro';
+import SectionHeader from '@components/base/SectionHeader.astro';
 
 const contactOptions = [
-  {
-    title: 'E-Mail us',
-    description:
-      "Send us an email with your inquiry and we'll get back to you shortly.",
-    type: 'email',
-    value: 'info@wellknowncleaning.com',
-    href: 'mailto:info@wellknowncleaning.com',
-  },
-  {
-    title: 'Request Service',
-    description:
-      "Fill out our service request form and we'll contact you to schedule a cleaning.",
-    type: 'button',
-    text: 'REQUEST SERVICE',
-  },
-  {
-    title: 'Call us',
-    description:
-      'Speak directly with our customer service team for immediate assistance.',
-    type: 'tel',
-    value: '(215) 555-0199',
-    href: 'tel:2155550199',
-  },
+    {
+        title: 'E-Mail us',
+        description: "Lorem ipsum dolor sit amet consectetur.",
+        type: 'email',
+        value: 'wellknowncleaning@test.com',
+        href: 'mailto:wellknowncleaning@test.com',
+    },
+    {
+        title: 'Fill Out Form',
+        description: "Lorem ipsum dolor sit amet consectetur.",
+        type: 'button',
+        text: 'REQUEST SOMETHING',
+    },
+    {
+        title: 'Phone us',
+        description: "Lorem ipsum dolor sit amet consectetur.",
+        type: 'tel',
+        value: '(215) 555-0199',
+        href: 'tel:2155550199',
+    },
 ]
 ---
 
-<section class="relative bg-[#e6efee] py-24 px-8 text-center rounded-tl-[40px] rounded-tr-[40px]" style="padding-bottom: 30rem;">
-    <div class="max-w-7xl mx-auto mb-8">
-        <span class="inline-block bg-white/70 py-2 px-5 rounded-full text-sm font-medium text-gray-700">Get in Touch</span>
-        <h2 class="text-5xl font-extrabold my-6 text-slate-900">Have a Questions?</h2>
-        <p class="max-w-2xl mx-auto mb-16 text-gray-600 leading-relaxed">
-            Reach out to us for any inquiries or to schedule our professional cleaning services. 
-            We're available 24/7 to assist you and provide top-quality cleaning solutions for your home or business.
-        </p>
-
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<section class="relative w-full bg-[#e6efee] pt-24 pb-[32rem] text-center rounded-tl-[40px] rounded-tr-[40px]">
+    <div class="max-w-7xl mx-auto mb-8 px-6 sm:px-8">
+        <div class="max-w-3xl mx-auto px-4">
+            <div class="text-center mb-8">
+                <div class="inline-flex items-center justify-center mb-6">
+                    <div class="w-4 h-4 bg-white rounded-md mr-2"></div>
+                    <span class="text-sm font-bold uppercase tracking-wider text-zinc-500">Get in Touch</span>
+                </div>
+                <SectionHeader 
+                    title="Have a Questions?" 
+                    subtitle="" 
+                    description="Lorem ipsum dolor sit amet consectetur. Turpis pellentesque pellentesque tristique condimentum nulla eget. Tincidunt et vel ultrices egestas viverra consequat neque aliquet vulputate."
+                />
+            </div>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-16">
             {contactOptions.map((option) => (
-                <ContactCard title={option.title} description={option.description}>
-                    {option.type === "email" || option.type === "tel" ? (
-                        <a href={option.href} class="hover:underline">
-                            {option.value}
-                        </a>
-                    ) : option.type === "button" ? (
-                        <button class="font-medium text-white hover:text-white relative inline-block px-6 py-3 bg-[var(--primary)] hover:bg-[var(--primary-hover)] rounded-full transition-all duration-300 hover:-translate-y-1 overflow-hidden cursor-pointer hover:cursor-pointer">
-                            <span class="relative z-10 flex items-center gap-2">
-                                <Icon name="bounding-box" class="icon w-4 h-4" />
-                                {option.text}
-                            </span>
-                        </button>
-                    ) : null}
-                </ContactCard>
+                    <div class="flex flex-col items-center text-center gap-4 p-4">
+                        <div class="w-20 h-20 bg-white rounded-full mb-4"></div>
+                        <h3 class="text-2xl font-bold text-slate-800">{option.title}</h3>
+                        <p class="text-gray-600 max-w-[250px]">{option.description}</p>
+                        <div class="mt-4 font-semibold text-slate-800">
+                            {option.type === "email" || option.type === "tel" ? (
+                                    <a href={option.href} class="hover:underline">
+                                        {option.value}
+                                    </a>
+                            ) : option.type === "button" ? (
+                                    <button class="font-medium text-white hover:text-white relative inline-block px-6 py-3 bg-[#6345e9] hover:bg-[#5038b8] rounded-full transition-all duration-300 hover:-translate-y-1 overflow-hidden cursor-pointer">
+                                <span class="relative z-10 flex items-center gap-2">
+                                    <Icon name="bounding-box" class="icon w-4 h-4" />
+                                    {option.text}
+                                </span>
+                                    </button>
+                            ) : null}
+                        </div>
+                    </div>
             ))}
         </div>
     </div>

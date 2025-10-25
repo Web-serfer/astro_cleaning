@@ -17,9 +17,12 @@ const FaqSection: Component = () => {
                     <div class="md:w-1/3 mb-8 md:mb-0">
                         <div class="max-w-3xl">
                             <div class="flex justify-between items-center mb-md">
-                                <p class="text-sm font-bold uppercase tracking-wider text-zinc-500 bg-zinc-100 px-4 py-2 rounded-full">
-                                    FAQ
-                                </p>
+                                <div class="flex items-center">
+                                    <div class="w-4 h-4 bg-[var(--accent-hero-card)] rounded-md mr-2"></div>
+                                    <p class="text-sm font-bold uppercase tracking-wider text-zinc-500">
+                                        FAQ
+                                    </p>
+                                </div>
                             </div>
                             <h2 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold text-zinc-900 mb-md">
                                 Frequently asked questions

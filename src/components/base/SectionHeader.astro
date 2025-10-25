@@ -4,7 +4,7 @@ import { Icon } from 'astro-icon/components';
 interface Props {
   title: string
   subtitle?: string
-  description: string
+  description?: string
   category?: string
   allLink?: string
   allLinkText?: string
@@ -23,9 +23,12 @@ const {
 <div class="max-w-3xl">
   <div class="flex justify-between items-center mb-md">
     {category && (
-      <p class="text-sm font-bold uppercase tracking-wider text-zinc-500 bg-zinc-100 px-4 py-2 rounded-full">
-        {category}
-      </p>
+      <div class="flex items-center">
+        <div class="w-4 h-4 bg-[var(--accent-hero-card)] rounded-md mr-2"></div>
+        <p class="text-sm font-bold uppercase tracking-wider text-zinc-500">
+          {category}
+        </p>
+      </div>
     )}
     {allLink && (
       <a 
