@@ -47,29 +47,10 @@ body {
     max-width: 1280px;
     margin-left: auto;
     margin-right: auto;
-    padding-left: 2rem;
-    padding-right: 2rem;
 }
 
-@media (min-width: 768px) {
-    .container {
-        padding-left: var(--h-padding);
-        padding-right: var(--h-padding);
-    }
-}
 
-.container-sm {
-    max-width: 1280px;
-    margin-left: auto;
-    margin-right: auto;
-}
 
-@media (min-width: 768px) {
-    .container-sm {
-        padding-left: var(--h-padding);
-        padding-right: var(--h-padding);
-    }
-}
 
 .overflow-hidden {
     overflow: hidden;
