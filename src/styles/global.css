@@ -2,67 +2,77 @@
 @import "./fonts.css";
 
 :root {
-  font-family: 'Chillax', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-  --font-sans: 'Chillax', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-  --bg-hero: #D9EAE8; /* Цвет фона для hero секции */
-  --bg-features: #f5f3f9; /* Цвет фона для секции Features */
-  --bg-services: #ffffff; /* Цвет фона для секции Services */
-  --bg-how-it-works: #f5f3f9; /* Цвет фона для секции HowItWorks */
-  --bg-pricing: #ffffff; /* Цвет фона для секции PricingTeaser */
-  --primary: #5d3ebc; /* Основной фиолетовый цвет */
-  --primary-hover: #4a309a; /* Основной фиолетовый цвет при наведении */
-  --accent-hero-card: #e1efed; /* Цвет фона второй карточки в Hero (ServiceCards) */
-  
-  /* Единая шкала вертикальных отступов */
-  --v-gap-xs: 0.5rem;    /* 8px */
-  --v-gap-sm: 1rem;      /* 16px */
-  --v-gap-md: 1.5rem;    /* 24px */
-  --v-gap-lg: 2rem;      /* 32px */
-  --v-gap-xl: 3rem;      /* 48px */
-  --v-gap-2xl: 4rem;     /* 64px */
-  --v-gap-3xl: 6rem;     /* 96px */
-  
-  /* Горизонтальные отступы для компонентов */
-  --h-padding: 2rem;      /* 32px на десктопе */
-  --component-gap: 12.5rem; /* 200px между компонентами */
+    font-family: 'Chillax', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    --font-sans: 'Chillax', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+
+    /* ===  ЦВЕТА === */
+    --primary: #6345e9;            /* Основной фиолетовый */
+    --primary-hover: #5038b8;      /* Фиолетовый при наведении */
+
+    --bg-hero: #e6efee;            /* Фон для hero и секции "Have a Questions"  */
+    --bg-features: #f5f3f9;        /* Фон для карточек, футера, FAQ  */
+    --bg-services: #ffffff;        /* Белый фон */
+    --bg-how-it-works: #f5f3f9;    /* Лавандовый фон */
+    --bg-pricing: #ffffff;         /* Белый фон */
+
+    --accent-hero-card: #e1efed;   /* Цвет для карточки*/
+
+    /* -- Новые переменные для текста и границ -- */
+    --text-dark: #111827;          /* Для заголовков */
+    --text-muted: #6b7280;         /* Для основного текста */
+    --border-color: #e5e7eb;      /* Для разделителей и рамок */
+    /* === КОНЕЦ БЛОКА ЦВЕТОВ === */
+
+    /* Единая шкала вертикальных отступов */
+    --v-gap-xs: 0.5rem;    /* 8px */
+    --v-gap-sm: 1rem;      /* 16px */
+    --v-gap-md: 1.5rem;    /* 24px */
+    --v-gap-lg: 2rem;      /* 32px */
+    --v-gap-xl: 3rem;      /* 48px */
+    --v-gap-2xl: 4rem;     /* 64px */
+    --v-gap-3xl: 6rem;     /* 96px */
+
+    /* Горизонтальные отступы для компонентов */
+    --h-padding: 2rem;      /* 32px на десктопе */
+    --component-gap: 12.5rem; /* 200px между компонентами */
 }
 
 body {
-  font-family: inherit;
-  max-width: 1344px;
-  margin: 0 auto;
+    font-family: inherit;
+    max-width: 1344px;
+    margin: 0 auto;
 }
 
 .container {
-  max-width: 1280px;
-  margin-left: auto;
-  margin-right: auto;
-  padding-left: 2rem;
-  padding-right: 2rem;
+    max-width: 1280px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 2rem;
+    padding-right: 2rem;
 }
 
 @media (min-width: 768px) {
-  .container {
-    padding-left: var(--h-padding);
-    padding-right: var(--h-padding);
-  }
+    .container {
+        padding-left: var(--h-padding);
+        padding-right: var(--h-padding);
+    }
 }
 
 .container-sm {
-  max-width: 1280px;
-  margin-left: auto;
-  margin-right: auto;
+    max-width: 1280px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 @media (min-width: 768px) {
-  .container-sm {
-    padding-left: var(--h-padding);
-    padding-right: var(--h-padding);
-  }
+    .container-sm {
+        padding-left: var(--h-padding);
+        padding-right: var(--h-padding);
+    }
 }
 
 .overflow-hidden {
-  overflow: hidden;
+    overflow: hidden;
 }
 
 /* Единые вертикальные отступы */
@@ -103,67 +113,67 @@ body {
 
 /* Стили для анимированной полоски прокрутки */
 #scroll-indicator {
-  background: linear-gradient(90deg, var(--primary), var(--primary-hover));
-  transition: transform 0.1s ease-out, opacity 0.2s ease-out;
-  z-index: 51 !important;
+    background: linear-gradient(90deg, var(--primary), var(--primary-hover));
+    transition: transform 0.1s ease-out, opacity 0.2s ease-out;
+    z-index: 51 !important;
 }
 
 /* Стили для вертикальных отступов между секциями */
 .section-gap {
-  margin-top: var(--component-gap);
-  margin-bottom: var(--component-gap);
+    margin-top: var(--component-gap);
+    margin-bottom: var(--component-gap);
 }
 
 /* Универсальный класс для всех секций */
 .section {
-  padding: var(--v-gap-3xl) var(--h-padding);
+    padding: var(--v-gap-3xl) var(--h-padding);
 }
 
 @media (min-width: 640px) {
-  .section {
-    padding: var(--v-gap-2xl) calc(var(--h-padding) * 1.5);
-  }
+    .section {
+        padding: var(--v-gap-2xl) calc(var(--h-padding) * 1.5);
+    }
 }
 
 @media (min-width: 1024px) {
-  .section {
-    padding: var(--v-gap-2xl) var(--h-padding);
-  }
+    .section {
+        padding: var(--v-gap-2xl) var(--h-padding);
+    }
 }
 
 /* Специфические стили для отдельных секций */
 .section-hero {
-  padding: var(--v-gap-2xl) var(--h-padding) 0 var(--h-padding);
-  margin-top: -2.5rem; /* Поднимаем Hero секцию ближе к Header */
+    padding: var(--v-gap-2xl) var(--h-padding) 0 var(--h-padding);
+    margin-top: -2.5rem; /* Поднимаем Hero секцию ближе к Header */
 }
 
 @media (min-width: 640px) {
-  .section-hero {
-    padding: var(--v-gap-3xl) calc(var(--h-padding) * 1.5) 0 calc(var(--h-padding) * 1.5);
-  }
+    .section-hero {
+        padding: var(--v-gap-3xl) calc(var(--h-padding) * 1.5) 0 calc(var(--h-padding) * 1.5);
+    }
 }
 
 @media (min-width: 1024px) {
-  .section-hero {
-    padding: var(--v-gap-3xl) var(--h-padding) 0 var(--h-padding);
-  }
+    .section-hero {
+        padding: var(--v-gap-3xl) var(--h-padding) 0 var(--h-padding);
+    }
 }
 
 /* Мобильные стили */
 @media (max-width: 767px) {
-  :root {
-    --h-padding: 1rem;          /* 16px на мобильных */
-    --component-gap: 2rem;      /* ~32px между компонентами на мобильных */
-  }
-  
-  .section-gap {
-    margin-top: var(--component-gap);
-    margin-bottom: var(--component-gap);
-  }
-  
-  body {
-    max-width: 100%;
-  }
+    :root {
+        --h-padding: 1rem;          /* 16px на мобильных */
+        --component-gap: 2rem;      /* ~32px между компонентами на мобильных */
+    }
+
+    .section-gap {
+        margin-top: var(--component-gap);
+        margin-bottom: var(--component-gap);
+    }
+
+    body {
+        max-width: 100%;
+    }
 }
 
 /* Фоновые цвета для секций */
