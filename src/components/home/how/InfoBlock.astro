@@ -4,21 +4,13 @@ import InfoCard from './InfoCard.astro';
 import SectionHeader from '@components/base/SectionHeader.astro';
 ---
 
-<div class="flex items-start gap-6 w-full">
+<div class="flex flex-col md:flex-row items-start gap-6 w-full">
 
-    <!-- ЛЕВАЯ КОЛОНКА: Картинка (фон) с текстом поверх -->
-    <div class="w-1/2 rounded-3xl overflow-hidden">
-        <CardWithBackground
-            title="Lorem ipsum dolor"
-            text="Sit amet consectetur. Nulla velit dignissim sed ornare vulputate. Lectus vitae tincidunt posuere sem nisi est."
-        />
-    </div>
-
-    <!-- ПРАВАЯ КОЛОНКА: Заголовок и текст под ним -->
-    <div class="w-1/2 rounded-3xl overflow-hidden">
+    <!-- БЛОК С ЗАГОЛОВКОМ (первый на мобильных, второй на десктопе) -->
+    <div class="w-full md:w-1/2 rounded-3xl overflow-hidden order-1 md:order-2">
         <div class="p-6">
             <div class="mb-6">
-                <div class="flex justify-center">
+                <div class="flex justify-center md:justify-start">
                     <SectionHeader 
                         category="Cleaning Process"
                         title="How It Works"
@@ -33,6 +25,14 @@ import SectionHeader from '@components/base/SectionHeader.astro';
                 />
             </div>
         </div>
+    </div>
+
+    <!-- БЛОК С КАРТИНКОЙ ФОНОМ (второй на мобильных, первый на десктопе) -->
+    <div class="w-full md:w-1/2 rounded-3xl overflow-hidden order-2 md:order-1">
+        <CardWithBackground
+            title="Lorem ipsum dolor"
+            text="Sit amet consectetur. Nulla velit dignissim sed ornare vulputate. Lectus vitae tincidunt posuere sem nisi est."
+        />
     </div>
 
 </div>
