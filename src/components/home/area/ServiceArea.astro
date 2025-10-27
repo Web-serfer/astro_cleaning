@@ -1,0 +1,46 @@
+---
+import ServiceAreaHeader from '../../base/SectionHeader.astro';
+import ServiceAreaMap from './ServiceAreaMap.astro';
+import ZipCodeChecker from './ZipCodeChecker.astro';
+import LocationList from './LocationList.astro';
+
+// Данные для списков можно вынести сюда для удобства
+const popularNeighborhoods = ["Center City", "Fishtown", "South Philly", "Manayunk", "Old City", "University City", "Fairmount"];
+const popularSuburbs = ["Main Line", "Upper Darby", "Abington", "Cherry Hill", "Collingswood"];
+const southJerseyAreas = ["Marlton"];
+---
+
+<section class="py-16 bg-white sm:py-24">
+    <div class="container px-4 mx-auto">
+        <ServiceAreaHeader 
+            title="We Serve Philadelphia + South Jersey"
+            description="Enter your zip code to check if your neighborhood is in our service area and discover the convenient cleaning services we offer in your location."
+            category="Service Area"
+        />
+        
+        <div class="grid grid-cols-1 lg:grid-cols-3 lg:gap-16">
+            <div class="lg:col-span-2">
+                <ServiceAreaMap />
+            </div>
+
+            <div class="mt-4 md:mt-0 lg:pt-[1.8rem] lg:col-span-1">
+                <ZipCodeChecker />
+
+                <div class="space-y-8">
+                    <LocationList
+                            title="Popular Neighborhoods We Serve"
+                            locations={popularNeighborhoods}
+                    />
+                    <LocationList
+                            title="Popular Suburbs We Serve"
+                            locations={popularSuburbs}
+                    />
+                    <LocationList
+                            title="Popular South Jersey Areas We Serve"
+                            locations={southJerseyAreas}
+                    />
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

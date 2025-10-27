@@ -1,0 +1,64 @@
+---
+import { Icon } from 'astro-icon/components';
+
+export interface Props {
+  title?: string;
+  description?: string;
+  buttonText?: string;
+  href?: string;
+  iconType?: 'arrow' | 'external';
+  promoTag?: string;
+  details?: string[];
+}
+
+const { title, description, buttonText, href, iconType, promoTag, details } =
+  Astro.props;
+---
+
+<!-- Контейнер карточки -->
+<div class="bg-violet-50 rounded-3xl p-6 flex flex-col h-full text-zinc-800">
+
+    <!-- Блок с "изображением" -->
+    <div class="relative bg-teal-100/60 rounded-2xl aspect-[4/3] flex items-center justify-center mb-6">
+        <!-- Иконка-плейсхолдер для изображения -->
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-16 h-16 text-gray-400">
+            <path fill-rule="evenodd" d="M1.5 6a2.25 2.25 0 0 1 2.25-2.25h16.5A2.25 2.25 0 0 1 22.5 6v12a2.25 2.25 0 0 1-2.25 2.25H3.75A2.25 2.25 0 0 1 1.5 18V6ZM3 16.06l4.47-4.47a.75.75 0 0 1 1.06 0l3.97 3.97L15.97 12a.75.75 0 0 1 1.06 0l4.47 4.47v.94a.75.75 0 0 1-.75.75H3.75a.75.75 0 0 1-.75-.75v-.94Z" clip-rule="evenodd" />
+        </svg>
+
+        <!-- Промо-тег (отображается только если передан) -->
+        {promoTag && (
+                <span class="absolute top-4 left-4 bg-white/70 backdrop-blur-sm text-violet-700 text-xs font-semibold px-3 py-1 rounded-full border border-violet-200">
+        {promoTag}
+      </span>
+        )}
+
+        <!-- Иконка-ссылка в углу -->
+        <a href={href || "#"} aria-label={title ? `Learn more about ${title}` : "Learn more"} class="absolute top-4 right-4 p-2 rounded-full hover:bg-black/5 transition-colors">
+            {iconType === 'arrow' ? <Icon name="arrowRight" class="w-7 h-7" /> : <Icon name="externalLink" class="w-7 h-7" />}
+        </a>
+    </div>
+
+    <!-- Текстовый контен -->
+    <div class="flex-grow flex flex-col">
+        {title && <h3 class="text-xl sm:text-2xl font-bold mb-2">{title}</h3>}
+        {description && <p class="text-sm sm:text-base text-zinc-600 mb-4">{description}</p>}
+
+        <!-- Детали (отображаются только если переданы) -->
+        {details && details.length > 0 && (
+                <div class="flex flex-wrap gap-2 my-4">
+                    {details.map(detail => (
+                            <span class="text-xs font-medium text-zinc-500 border border-dashed border-zinc-400 rounded-full px-3 py-1">
+            {detail}
+          </span>
+                    ))}
+                </div>
+        )}
+
+        <!-- Кнопка (flex-grow заставляет ее быть внизу) -->
+        {buttonText && href && (
+            <a href={href} class="mt-auto w-full text-center font-semibold text-violet-800 border-2 border-violet-300 rounded-full px-6 py-3 hover:bg-violet-100 transition-colors">
+                {buttonText}
+            </a>
+        )}
+    </div>
+</div>

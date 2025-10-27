@@ -1,0 +1,29 @@
+---
+import { SITE_URL } from "@constants/site";
+import Layout from "@layouts/Layout.astro";
+import Hero from "@components/home/hero/Hero.astro";
+import Services from "@components/home/services/Services.astro";
+import HowItWorks from "@components/home/how/HowItWorks.astro";
+import PricingTeaser from "@components/home/pricing/PricingTeaser.astro";
+import Testimonials from "@components/home/testimonials/Testimonials";
+import ServiceArea from "@components/home/area/ServiceArea.astro";
+import About from "@components/home/about/AboutSection.astro";
+import Faq from "@components/home/faq/FaqSection";
+
+
+const pageTitle = 'Home';
+const pageDescription =
+  'Professional cleaning services for your home and office. Get a free quote today.';
+const pageCanonical = SITE_URL;
+---
+
+<Layout title={pageTitle} description={pageDescription} canonical={pageCanonical}>
+  <Hero />
+  <Services />
+  <HowItWorks />
+  <PricingTeaser />
+  <Testimonials client:visible />
+  <ServiceArea />
+  <About />
+  <Faq client:visible />
+</Layout>

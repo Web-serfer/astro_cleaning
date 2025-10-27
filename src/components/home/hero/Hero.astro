@@ -1,0 +1,58 @@
+---
+import { Image } from 'astro:assets';
+import { heroData } from './heroData';
+import spongeImg from '@assets/home/hero/sponge.png';
+import heroBg from '@assets/home/hero/hero.png';
+import Tag from './Tag.astro';
+import RatingCard from './RatingCard.astro';
+import ServiceCard from './ServiceCard.astro';
+import ServiceCards from './ServiceCards.astro';
+import ModalController from '@components/base/ModalController.tsx';
+---
+
+<!-- hero section -->
+<section aria-labelledby="hero-heading" class="section-hero">
+    <div class="container">
+        <div class="relative rounded-3xl p-8 sm:p-10 overflow-hidden" style="min-height: 664px;">
+            <Image
+                src={heroBg}
+                alt="Hero Background"
+                class="absolute inset-0 w-full h-full object-cover z-0"
+            />
+            <!-- темная подложка -->
+            <div class="absolute inset-0 bg-black/50 z-10"></div>
+            <div class="relative z-20">
+                <div class="grid grid-cols-1 lg:grid-cols-5 gap-10 items-end content-end">
+
+                    <!-- Левая колонка -->
+                    <div class="lg:col-span-3 flex flex-col items-center text-center lg:items-start lg:text-left justify-end">
+                        <Tag text={heroData.tag.text} />
+                        <h1 id="hero-heading" class="text-2xl sm:text-4xl lg:text-5xl font-bold text-white v-gap-sm leading-tight max-w-lg">
+                            {heroData.heading.title}
+                            <span
+                                class="inline-flex justify-end items-baseline ml-4 bg-white rounded-full shadow"
+                                style="width: 146px; height: 60px; padding: 0 0 2px 16px;"
+                            >
+                                <Image src={spongeImg} alt="Sponge" class="h-auto w-auto" style="width: 106px; height: 60px; margin: 0;" />
+                            </span>
+                            <br /> {heroData.heading.highlight}
+                        </h1>
+                    </div>
+
+                    <!-- Правая колонка -->
+                    <div class="lg:col-span-2 flex flex-col gap-8 w-full items-center sm:items-end px-4 sm:px-0">
+                        <div class="w-[384px] max-w-none">
+                            <RatingCard />
+                        </div>
+                        <div class="w-[384px] max-w-none">
+                            <ModalController client:idle>
+                                <ServiceCard />
+                            </ModalController>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <ServiceCards />
+    </div>
+</section>

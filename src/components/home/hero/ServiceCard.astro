@@ -1,0 +1,25 @@
+---
+import { Image } from 'astro:assets';
+import cleaningImg from '@assets/home/hero/girl.png';
+import Button from '@components/base/Button.astro';
+import ButtonSecondary from './ButtonSecondary.astro';
+---
+
+<div class="bg-white rounded-2xl p-6 shadow-lg flex flex-col gap-4 h-full transition-all duration-300 hover:shadow-xl hover:-translate-y-1 v-gap-sm" aria-label="Информация об услуге">
+    <!-- Изображение для карточки -->
+    <Image 
+        src={cleaningImg} 
+        alt="Professional cleaning service" 
+        class="w-full object-cover rounded-xl" 
+        style="height: 170px; width: 336px;"
+    />
+
+    <p class="text-sm sm:text-base text-gray-600 leading-relaxed v-gap-sm" style="width: 336px; height: 78px;">
+        Our professional team uses eco-friendly products to deliver exceptional cleaning results every time.
+    </p>
+
+    <div class="flex flex-col sm:flex-row gap-3 justify-center">
+        <ButtonSecondary text="SERVICES" />
+        <Button text="BOOK NOW" isModalButton={true} class="flex-1" />
+    </div>
+</div>

@@ -1,0 +1,64 @@
+---
+import { featureCardsData } from './featureCardsData';
+import FeatureCard from './FeatureCard.astro';
+import PhoneMockup from './PhoneMockup.astro';
+---
+
+<section class="py-12 lg:py-16 bg-white">
+    <div class="container mx-auto px-4">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+            <!-- Левая колонка: (55% ширины) -->
+            <div class="lg:col-span-7 flex flex-col justify-center">
+                <div class="max-w-lg">
+                    <div class="flex items-center gap-2 mb-4">
+                        <div class="w-4 h-4 bg-[var(--accent-hero-card)] rounded-md mr-2"></div>
+                        <p class="text-sm font-bold uppercase tracking-wider text-zinc-500">
+                            ABOUT US
+                        </p>
+                    </div>
+
+                    <!-- Основной заголовок -->
+                    <h2 class="text-4xl md:text-5xl font-bold text-slate-900 mb-6 leading-tight">
+                        About<br class="hidden md:block" />
+                        WellKnown<br class="hidden md:block" />
+                        Cleaning
+                    </h2>
+
+                    <!-- Описание -->
+                    <p class="text-slate-600 text-base md:text-lg mb-8 max-w-sm">
+                        Our mission is to provide an exceptional clean that's safe for your family and the environment. We use modern techniques and eco-friendly products to ensure your space is not just spotless, but also healthy and welcoming.
+                    </p>
+
+                    <!-- Список в виде "таблеток" -->
+                    <div class="flex flex-col items-start gap-3">
+                        <span class="px-4 py-2 border border-slate-300 rounded-full text-sm text-slate-700">
+                            Refillable bottles
+                        </span>
+                        <span class="px-4 py-2 border border-slate-300 rounded-full text-sm text-slate-700">
+                            Microfiber system
+                        </span>
+                        <span class="px-4 py-2 border border-slate-300 rounded-full text-sm text-slate-700">
+                            Fragrance-free options
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Правая колонка: Карточки и макет телефона (45% ширины) -->
+            <div class="lg:col-span-5">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 h-full">
+                    <div class="lg:col-span-1">
+                        <div class="grid grid-rows-3 gap-4 h-full">
+                            {featureCardsData.map(card => (
+                                <FeatureCard title={card.title} description={card.description} />
+                            ))}
+                        </div>
+                    </div>
+                    <div class="lg:col-span-1">
+                        <PhoneMockup />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

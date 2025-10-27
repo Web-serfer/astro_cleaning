@@ -1,0 +1,35 @@
+---
+import { Icon } from 'astro-icon/components';
+import ModalController from '../../base/ModalController.tsx';
+import Button from '@components/base/Button.astro';
+
+const menuItems = [
+{ href: '/services', label: 'Services' },
+{ href: '/pricing', label: 'Pricing' },
+{ href: '/about', label: 'About Us' },
+];
+---
+
+<nav class="hidden md:block">
+    <ul class="flex items-center gap-[var(--space-32)]">
+        {menuItems.map((item) => (
+                <li class="relative group">
+                    <a
+                            href={item.href}
+                            class="font-medium text-zinc-700 hover:text-[var(--primary)] transition-colors duration-300 relative inline-block px-1 py-1 overflow-hidden text-lg"
+                    >
+                        <span class="relative z-10">{item.label}</span>
+                        <span class="absolute bottom-0 left-1/2 w-full h-0.5 bg-[var(--primary)] rounded-sm transition-all duration-300 -translate-x-1/2 scale-x-0 group-hover:scale-x-100 origin-center"></span>
+                    </a>
+                </li>
+        ))}
+        <li class="relative group">
+            <ModalController client:idle>
+                <Button 
+                    isModalButton={true}
+                    text="BOOK NOW"
+                />
+            </ModalController>
+        </li>
+    </ul>
+</nav>

@@ -1,0 +1,80 @@
+---
+import PricingCard from "./PricingCard.astro";
+import ModalController from '@components/base/ModalController.tsx';
+import { Icon } from 'astro-icon/components';
+
+const pricingData = [
+    {
+        tag: "Apartment",
+        price: "~$159/h",
+        description: "Studios & 1-2 BR",
+    },
+    {
+        tag: "House",
+        price: "~$159/h",
+        description: "Townhomes & Single-Family",
+    },
+    {
+        tag: "Move-Out",
+        price: "~$199/h",
+        description: "Empty units only",
+    },
+];
+
+const sectionTitle = "Pricing";
+const sectionSubtitle = "Pricing Teaser??";
+const sectionDescription = "Our transparent pricing ensures you know exactly what you're paying for. Choose from our range of cleaning services tailored to your needs, with no hidden fees.";
+---
+
+<section class="section section-gap bg-pricing">
+    <div class="container">
+        <div class="mb-xl">
+            <div class="max-w-3xl">
+                <div class="flex justify-between items-center mb-md">
+                    <div class="flex items-center">
+                        <div class="w-4 h-4 bg-[var(--accent-hero-card)] rounded-md mr-2"></div>
+                        <p class="text-sm font-bold uppercase tracking-wider text-zinc-500">
+                            {sectionTitle}
+                        </p>
+                    </div>
+                    <a 
+                        href="/pricing"
+                        class="flex items-center gap-2 text-teal-600 font-semibold hover:underline"
+                    >
+                        MORE ABOUT PRICING
+                        <Icon name="externalLink" class="w-5 h-5" />
+                    </a>
+                </div>
+                <h2 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-zinc-900 mb-md text-center md:text-left">
+                    {sectionSubtitle}
+                </h2>
+                <p class="text-base sm:text-lg text-zinc-600 text-center md:text-left">
+                    {sectionDescription}
+                </p>
+            </div>
+        </div>
+
+        <!-- Сетка с карточками цен -->
+        <div class="mt-xl grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+            {pricingData.map(card => <PricingCard {...card} />)}
+        </div>
+
+        <!-- Футер секции -->
+        <div class="text-center md:text-left mt-xl">
+            <p class="text-gray-600 mb-lg">
+                Prices vary by size/condition. Get your exact price instantly.
+            </p>
+            <ModalController client:idle>
+                <button
+                    type="button"
+                    class="font-medium text-white hover:text-white relative inline-block px-6 py-3 bg-[var(--primary)] hover:bg-[var(--primary-hover)] rounded-full transition-all duration-300 hover:-translate-y-1 overflow-hidden cursor-pointer hover:cursor-pointer"
+                >
+                    <span class="relative z-10 flex items-center gap-2">
+                        <Icon name="bounding-box" class="icon w-4 h-4" />
+                        BOOK NOW
+                    </span>
+                </button>
+            </ModalController>
+        </div>
+    </div>
+</section>

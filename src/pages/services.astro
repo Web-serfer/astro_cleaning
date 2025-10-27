@@ -1,0 +1,13 @@
+---
+import Layout from "@layouts/Layout.astro";
+import { SITE_URL } from "@constants/site";
+
+const pageTitle = 'Our Services';
+const pageDescription =
+  'Explore our range of professional cleaning services for homes and offices.';
+const pageCanonical = `${SITE_URL}/services`;
+---
+
+<Layout title={pageTitle} description={pageDescription} canonical={pageCanonical}>
+  <h2>Services page</h2>
+</Layout>

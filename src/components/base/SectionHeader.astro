@@ -1,0 +1,57 @@
+---
+import { Icon } from 'astro-icon/components';
+
+interface Props {
+  title: string
+  subtitle?: string
+  description?: string
+  category?: string
+  allLink?: string
+  allLinkText?: string
+}
+
+const {
+  title,
+  subtitle = '',
+  description,
+  category = '',
+  allLink = '',
+  allLinkText = 'ALL SERVICES',
+} = Astro.props
+---
+
+<!-- Основной контейнер заголовка секции -->
+<div class="max-w-3xl">
+  <!-- Контейнер для категории и ссылки "все услуги" -->
+  <div class={`flex flex-col items-center mb-md text-center md:text-left ${allLink ? 'md:flex-row md:justify-between md:items-center' : 'md:flex-row md:justify-start md:items-center'}`}>
+    <!-- Отображение категории с декоративным элементом -->
+    {category && (
+      <div class="flex items-center mb-4 md:mb-0">
+        <div class="w-4 h-4 bg-[var(--accent-hero-card)] rounded-md mr-2"></div>
+        <p class="text-sm font-bold uppercase tracking-wider text-zinc-500">
+          {category}
+        </p>
+      </div>
+    )}
+    <!-- Ссылка "все услуги" (отображается md и выше разрешении) -->
+    {allLink && (
+      <a 
+        href={allLink}
+        class="flex items-center gap-2 text-teal-600 font-semibold hover:underline"
+      >
+        {allLinkText}
+        <Icon name="externalLink" class="w-5 h-5" />
+      </a>
+    )}
+  </div>
+  <!-- Основной заголовок секции -->
+  <h2 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-zinc-900 mb-md text-center md:text-left">
+    {title}
+    <!-- Подзаголовок (если есть) -->
+    {subtitle && <span class="block text-lg font-normal mt-sm text-center md:text-left">{subtitle}</span>}
+  </h2>
+  <!-- Описание секции -->
+  <p class="text-base sm:text-lg text-zinc-600 text-center md:text-left">
+    {description}
+  </p>
+</div>

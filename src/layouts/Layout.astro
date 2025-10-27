@@ -1,0 +1,44 @@
+---
+import "@styles/global.css";
+import Header from "@components/layout/header/Header.astro";
+import Footer from "@components/layout/footer/Footer.astro";
+import ScrollToTopButton from "@components/base/ScrollToTopButton.astro";
+
+interface Props {
+  title?: string;
+  description?: string;
+  canonical?: string;
+}
+
+const {
+  title = 'WellKnown Cleaning',
+  description = 'Professional cleaning services for your home and office',
+  canonical,
+} = Astro.props;
+
+const displayTitle =
+  title && title !== 'WellKnown Cleaning'
+    ? `${title} | WellKnown Cleaning`
+    : title;
+---
+
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+        <title>{displayTitle}</title>
+        <meta name="description" content={description} />
+        {canonical && <link rel="canonical" href={canonical} />}
+    </head>
+    <body class="flex flex-col min-h-screen pt-18 md:pt-12">
+        <Header />
+        <ScrollToTopButton />
+            <main>
+                <slot />
+            </main>
+        <Footer />
+    </body>
+</html>

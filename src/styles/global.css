@@ -1,0 +1,187 @@
+@import "tailwindcss";
+@import "./fonts.css";
+
+:root {
+    font-family: 'Chillax', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    --font-sans: 'Chillax', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+
+    /* ===  ЦВЕТА === */
+    --primary: #4E46B4;            /* Основной сине-фиолетовый */
+    --primary-hover: #403894;      /* Затемненный для наведения */
+    --primary-fade: #F1F0F9;       /* Светлый фон для primary-секции */
+
+    /* Акцентные цвета */
+    --accent: #40A69F;             /* Бирюзовый акцент */
+    --accent-fade: #D1EAE8;        /* Светлый фон для accent-секции */
+
+    /* Текст */
+    --text: #000000;               /* Основной черный для заголовков */
+    --text-fade: #404040;          /* Серый для параграфов и второстепенного текста */
+
+    /* Фон и границы */
+    --background: #FFFFFF;         /* Основной белый фон */
+    --border-color: #e5e7eb;      /* Для разделителей и рамок (оставим для консистентности) */
+
+    /* === КОНЕЦ БЛОКА ЦВЕТОВ === */
+
+    /* Единая шкала вертикальных отступов */
+    --v-gap-xs: 0.5rem;    /* 8px */
+    --v-gap-sm: 1rem;      /* 16px */
+    --v-gap-md: 1.5rem;    /* 24px */
+    --v-gap-lg: 2rem;      /* 32px */
+    --v-gap-xl: 3rem;      /* 48px */
+    --v-gap-2xl: 4rem;     /* 64px */
+    --v-gap-3xl: 6rem;     /* 96px */
+
+    /* Горизонтальные отступы для компонентов */
+    --h-padding: 2rem;      /* 32px на десктопе */
+    --space-32: 2rem;       /* 32px */
+    --space-24: 1.5rem;     /* 24px */
+    --space-16: 1rem;       /* 16px */
+    --component-gap: 12.5rem; /* 200px между компонентами */
+}
+
+/* остановка смещения макета при открытии модального окна */
+html {
+    scrollbar-gutter: stable;
+}
+
+body {
+    font-family: inherit;
+    max-width: 1344px;
+    margin: 0 auto;
+}
+
+.container {
+    max-width: 1280px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.overflow-hidden {
+    overflow: hidden;
+}
+
+/* Единые вертикальные отступы */
+.v-gap-xs { margin-top: var(--v-gap-xs); margin-bottom: var(--v-gap-xs); }
+.v-gap-sm { margin-top: var(--v-gap-sm); margin-bottom: var(--v-gap-sm); }
+.v-gap-md { margin-top: var(--v-gap-md); margin-bottom: var(--v-gap-md); }
+.v-gap-lg { margin-top: var(--v-gap-lg); margin-bottom: var(--v-gap-lg); }
+.v-gap-xl { margin-top: var(--v-gap-xl); margin-bottom: var(--v-gap-xl); }
+.v-gap-2xl { margin-top: var(--v-gap-2xl); margin-bottom: var(--v-gap-2xl); }
+.v-gap-3xl { margin-top: var(--v-gap-3xl); margin-bottom: var(--v-gap-3xl); }
+
+/* Верхние отступы */
+.mt-xs { margin-top: var(--v-gap-xs); }
+.mt-sm { margin-top: var(--v-gap-sm); }
+.mt-md { margin-top: var(--v-gap-md); }
+.mt-lg { margin-top: var(--v-gap-lg); }
+.mt-xl { margin-top: var(--v-gap-xl); }
+.mt-2xl { margin-top: var(--v-gap-2xl); }
+.mt-3xl { margin-top: var(--v-gap-3xl); }
+
+/* Нижние отступы */
+.mb-xs { margin-bottom: var(--v-gap-xs); }
+.mb-sm { margin-bottom: var(--v-gap-sm); }
+.mb-md { margin-bottom: var(--v-gap-md); }
+.mb-lg { margin-bottom: var(--v-gap-lg); }
+.mb-xl { margin-bottom: var(--v-gap-xl); }
+.mb-2xl { margin-bottom: var(--v-gap-2xl); }
+.mb-3xl { margin-bottom: var(--v-gap-3xl); }
+
+/* Внутренние отступы */
+.py-xs { padding-top: var(--v-gap-xs); padding-bottom: var(--v-gap-xs); }
+.py-sm { padding-top: var(--v-gap-sm); padding-bottom: var(--v-gap-sm); }
+.py-md { padding-top: var(--v-gap-md); padding-bottom: var(--v-gap-md); }
+.py-lg { padding-top: var(--v-gap-lg); padding-bottom: var(--v-gap-lg); }
+.py-xl { padding-top: var(--v-gap-xl); padding-bottom: var(--v-gap-xl); }
+.py-2xl { padding-top: var(--v-gap-2xl); padding-bottom: var(--v-gap-2xl); }
+.py-3xl { padding-top: var(--v-gap-3xl); padding-bottom: var(--v-gap-3xl); }
+
+/* Стили для анимированной полоски прокрутки */
+#scroll-indicator {
+    background: linear-gradient(90deg, var(--primary), var(--primary-hover));
+    transition: transform 0.1s ease-out, opacity 0.2s ease-out;
+    z-index: 51 !important;
+}
+
+/* Стили для вертикальных отступов между секциями */
+.section-gap {
+    margin-top: var(--component-gap);
+    margin-bottom: var(--component-gap);
+}
+
+/* Универсальный класс для всех секций */
+.section {
+    padding: var(--v-gap-3xl) var(--h-padding);
+}
+
+@media (min-width: 640px) {
+    .section {
+        padding: var(--v-gap-2xl) calc(var(--h-padding) * 1.5);
+    }
+}
+
+@media (min-width: 1024px) {
+    .section {
+        padding: var(--v-gap-2xl) var(--h-padding);
+    }
+}
+
+/* Специфические стили для отдельных секций */
+.section-hero {
+    padding: var(--v-gap-2xl) var(--h-padding) 0 var(--h-padding);
+    margin-top: -1.1rem; /* Поднимаем Hero секцию ближе к Header */
+}
+
+@media (min-width: 640px) {
+    .section-hero {
+        padding: var(--v-gap-3xl) calc(var(--h-padding) * 1.5) 0 calc(var(--h-padding) * 1.5);
+    }
+}
+
+@media (min-width: 1024px) {
+    .section-hero {
+        padding: var(--v-gap-3xl) var(--h-padding) 0 var(--h-padding);
+    }
+}
+
+/* Мобильные стили */
+@media (max-width: 767px) {
+    :root {
+        --h-padding: 1rem;          /* 16px на мобильных */
+        --component-gap: 2rem;      /* ~32px между компонентами на мобильных */
+    }
+
+    .section-gap {
+        margin-top: var(--component-gap);
+        margin-bottom: var(--component-gap);
+    }
+
+    body {
+        max-width: 100%;
+    }
+}
+
+/* ==== Анимация для бесконечной прокрутки слайдера ==== */
+@keyframes scroll {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        /* Сдвигаем на 50%, так как мы дублировали контент */
+        transform: translateX(-50%);
+    }
+}
+
+.animate-scroll {
+    /*
+      Применяем анимацию.
+      Переменная --scroll-duration устанавливается инлайн в компоненте.
+    */
+    animation: scroll var(--scroll-duration) linear infinite;
+}
+
+.paused {
+    animation-play-state: paused;
+}

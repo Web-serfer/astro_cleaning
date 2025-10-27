@@ -1,0 +1,29 @@
+{
+  "name": "wellknow_cleaning",
+  "type": "module",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "astro dev --port 3000",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro",
+    "lint": "biome check .",
+    "lint:fix": "biome check --write .",
+    "format": "biome format .",
+    "format:write": "biome format --write ."
+  },
+  "dependencies": {
+    "@astrojs/solid-js": "^5.1.1",
+    "@astrojs/vercel": "9.0.0",
+    "@tailwindcss/vite": "^4.1.14",
+    "astro": "5.15.1",
+    "astro-icon": "^1.1.5",
+    "babel-preset-solid": "^1.9.9",
+    "sharp": "^0.34.4",
+    "solid-js": "^1.9.9",
+    "tailwindcss": "^4.1.14"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^2.2.6"
+  }
+}

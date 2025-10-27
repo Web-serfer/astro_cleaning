@@ -1,0 +1,19 @@
+---
+import LocationTag from './LocationTag.astro';
+
+interface Props {
+    title: string;
+    locations: string[];
+}
+
+const { title, locations } = Astro.props;
+---
+
+<div>
+    <h3 class="mb-3 font-bold text-sm text-gray-800">{title}</h3>
+    <div class="flex flex-wrap gap-2">
+        {locations.map((location) => <LocationTag name={location} />)}
+        <!-- Placeholder для пустых тегов, как в дизайне -->
+        <LocationTag name="..." />
+    </div>
+</div>

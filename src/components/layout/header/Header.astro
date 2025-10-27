@@ -1,0 +1,73 @@
+---
+import Logo from './Logo.astro';
+import DesktopNav from './DesktopNav.astro';
+import MobileMenu from './MobileMenu.astro';
+---
+
+<header
+    id="header"
+    class="bg-white border-t-[3px] border-zinc-900 p-[var(--space-32)] fixed top-0 left-0 right-0 z-50 w-full flex flex-col items-center gap-2.5"
+>
+    <div class="container px-4 md:px-0 flex items-center justify-between w-full">
+        <Logo />
+        <DesktopNav />
+        <MobileMenu />
+    </div>
+
+    <!-- Overlay для мобильного меню. -->
+    <div
+            id="overlay"
+            class="fixed inset-0 bg-white/80 backdrop-blur-md z-40 hidden transition-opacity duration-300"
+            aria-hidden="true"
+    ></div>
+
+    <!-- Индикатор прокрутки -->
+    <div
+            id="scroll-indicator"
+            class="absolute bottom-0 left-0 h-1 w-full origin-left scale-x-0 bg-[var(--primary)] opacity-0 transition-opacity duration-300"
+            style="transform-origin: left center;"
+    ></div>
+</header>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const header = document.getElementById('header');
+        const scrollIndicator = document.getElementById('scroll-indicator');
+
+        let lastScrollY = window.scrollY;
+
+        const updateHeaderShadow = () => {
+            if (window.scrollY > 0) {
+                header.classList.add('shadow-xl');
+            } else {
+                header.classList.remove('shadow-xl');
+            }
+        };
+
+        const updateScrollIndicator = () => {
+            const currentScrollY = window.scrollY;
+            const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+            const scrollProgress = maxScroll > 0 ? currentScrollY / maxScroll : 0;
+
+            window.requestAnimationFrame(() => {
+                scrollIndicator.style.transform = `scaleX(${scrollProgress})`;
+            });
+
+            if (currentScrollY > lastScrollY && currentScrollY > 0) {
+                scrollIndicator.style.opacity = '1';
+            } else {
+                scrollIndicator.style.opacity = '0';
+            }
+
+            lastScrollY = currentScrollY < 0 ? 0 : currentScrollY;
+        };
+
+        updateHeaderShadow();
+        updateScrollIndicator();
+
+        window.addEventListener('scroll', () => {
+            updateHeaderShadow();
+            updateScrollIndicator();
+        }, { passive: true });
+    });
+</script>

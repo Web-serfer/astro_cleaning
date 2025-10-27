@@ -1,0 +1,32 @@
+---
+import { Icon } from 'astro-icon/components';
+
+const starCount = 5;
+---
+
+<article class="bg-white rounded-2xl p-6 shadow-lg transition-all duration-300 hover:shadow-xl hover:-translate-y-1 v-gap-sm" style="width: 384px;" aria-label="Отзывы и рейтинги">
+    <div class="text-2xl tracking-widest flex gap-3" aria-label="Рейтинг 5 звезд из 5">
+        {Array.from({ length: starCount }, (_, index) => (
+            <Icon
+                name="starIcon"
+                class="w-6 h-6"
+                style="color: var(--primary); width: 31px; height: 31px;"
+                aria-hidden="true"
+            />
+        ))}
+    </div>
+    <p class="text-gray-600 text-sm mt-sm mb-md">
+        Rated 5.0/5.0 by Philly neighbors
+    </p>
+    <div class="flex items-center justify-start gap-8 text-dark-text font-bold text-2xl">
+        <div class="flex items-center gap-0">
+            <Icon name="torchIcon" class="w-12 h-12" aria-hidden="true" />
+            <span>BBB</span>
+        </div>
+        <div class="flex items-center gap-1">
+            <span>yelp</span>
+            <Icon name="yelpIcon" class="w-8 h-8" aria-hidden="true" />
+        </div>
+        <span>Google</span>
+    </div>
+</article>

@@ -1,0 +1,13 @@
+---
+import Layout from "@layouts/Layout.astro";
+import { SITE_URL } from "@constants/site";
+
+const pageTitle = 'Pricing';
+const pageDescription =
+  'Transparent pricing for all our professional cleaning services. No hidden fees.';
+const pageCanonical = `${SITE_URL}/pricing`;
+---
+
+<Layout title={pageTitle} description={pageDescription} canonical={pageCanonical}>
+  <h2>Pricing page</h2>
+</Layout>

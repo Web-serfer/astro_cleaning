@@ -1,0 +1,197 @@
+---
+import { Icon } from 'astro-icon/components';
+import Button from '@components/base/Button.astro';
+
+const menuItems = [
+  { href: '/services', label: 'Services' },
+  { href: '/pricing', label: 'Pricing' },
+  { href: '/about', label: 'About Us' },
+];
+---
+
+<div class="md:hidden">
+    <!-- Кнопка открытия мобильного меню -->
+    <button
+            id="mobile-menu-button"
+            class="p-0.5 rounded-md text-gray-700 hover:text-[var(--primary)] focus:outline-none transition-colors duration-300 ml-2"
+            aria-label="Открыть мобильное меню"
+    >
+        <!-- Гамбургер иконка -->
+        <svg id="burger-icon" class="w-7 h-7 transition-all duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16"></path>
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 12h16"></path>
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 18h16"></path>
+        </svg>
+        <!-- Крестик иконка (изначально скрыта) -->
+        <svg id="close-icon" class="w-7 h-7 transition-all duration-300 absolute opacity-0 scale-50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+        </svg>
+    </button>
+
+    <!-- Мобильное меню с glass эффектом -->
+    <nav
+            id="mobile-menu"
+            class="fixed top-0 left-0 h-full w-[85%] max-w-md bg-white/95 backdrop-blur-lg shadow-xl z-50 transform -translate-x-full transition-transform duration-300 ease-in-out flex flex-col border-r border-white/20"
+            aria-hidden="true"
+    >
+        <!-- Заголовок меню с логотипом и кнопкой закрытия -->
+        <div class="p-6 border-b border-gray-200/50 flex justify-between items-center bg-white/50">
+            <a href="/" class="flex items-center gap-3" onclick="closeMobileMenu()">
+                <img src="/logo.png" alt="WellKnown Cleaning Logo" width="40" height="40" class="w-10 h-10" />
+                <div class="flex flex-col leading-tight">
+                    <span class="font-bold text-lg tracking-wide">WellKnown</span>
+                    <span class="font-bold text-lg tracking-wide">Cleaning</span>
+                </div>
+            </a>
+
+            <!-- Кнопка закрытия меню -->
+            <button
+                    id="close-menu-button"
+                    class="p-2 rounded-full text-gray-700 hover:text-[var(--primary)] border border-gray-300 hover:border-[var(--primary)] transition-all duration-300"
+                    aria-label="Закрыть меню"
+            >
+                <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+            </button>
+        </div>
+
+        <!-- Все элементы меню вместе смещены вверх -->
+        <div class="px-6 pt-12">
+            <ul class="space-y-2">
+                {menuItems.map((item) => (
+                        <li class="text-center">
+                            <a
+                                    href={item.href}
+                                    class="font-medium text-zinc-700 hover:text-[var(--primary)] transition-all duration-300 text-xl block px-6 py-4 hover:bg-white/50 rounded-lg border border-transparent hover:border-white/30"
+                                    onclick="closeMobileMenu()"
+                            >
+                                {item.label}
+                            </a>
+                        </li>
+                ))}
+
+                <!-- Кнопка BOOK NOW как часть меню -->
+                <li class="text-center pt-6">
+                    <Button 
+                        onclick="openModal(); closeMobileMenu();"
+                        text="BOOK NOW"
+                        class="mx-auto text-lg"
+                    />
+                </li>
+            </ul>
+        </div>
+
+        <!-- Футер меню (опционально) -->
+        <div class="mt-auto p-6 border-t border-gray-200/50 text-center">
+            <p class="text-gray-600 text-sm">Professional Cleaning Services</p>
+        </div>
+    </nav>
+</div>
+
+<style is:inline>
+    #mobile-menu-button {
+        position: relative;
+    }
+
+    #burger-icon, #close-icon {
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    /* Улучшенный glass эффект */
+    #mobile-menu {
+        background: rgba(255, 255, 255, 0.97);
+        backdrop-filter: blur(20px) saturate(180%);
+        -webkit-backdrop-filter: blur(20px) saturate(180%);
+    }
+
+    #overlay {
+        background: rgba(255, 255, 255, 0.85);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+    }
+</style>
+
+<script is:inline>
+    document.addEventListener('DOMContentLoaded', () => {
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const burgerIcon = document.getElementById('burger-icon');
+        const closeIcon = document.getElementById('close-icon');
+        const closeMenuButton = document.getElementById('close-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const overlay = document.getElementById('overlay');
+        const body = document.body;
+
+        // Функции для глобального доступа
+        window.closeMobileMenu = closeMobileMenu;
+        window.openMobileMenu = openMobileMenu;
+
+        function toggleMenuIcons(isOpen) {
+            if (isOpen) {
+                // Показываем крестик, скрываем гамбургер
+                burgerIcon.classList.remove('opacity-100', 'scale-100');
+                burgerIcon.classList.add('opacity-0', 'scale-50');
+                closeIcon.classList.remove('opacity-0', 'scale-50');
+                closeIcon.classList.add('opacity-100', 'scale-100');
+            } else {
+                // Показываем гамбургер, скрываем крестик
+                burgerIcon.classList.remove('opacity-0', 'scale-50');
+                burgerIcon.classList.add('opacity-100', 'scale-100');
+                closeIcon.classList.remove('opacity-100', 'scale-100');
+                closeIcon.classList.add('opacity-0', 'scale-50');
+            }
+        }
+
+        function openMobileMenu() {
+            mobileMenu.classList.remove('-translate-x-full');
+            mobileMenu.classList.add('translate-x-0');
+            mobileMenu.setAttribute('aria-hidden', 'false');
+
+            overlay.classList.remove('hidden');
+            setTimeout(() => overlay.classList.add('opacity-100'), 10);
+            overlay.setAttribute('aria-hidden', 'false');
+
+            toggleMenuIcons(true);
+            body.classList.add('overflow-hidden');
+        }
+
+        function closeMobileMenu() {
+            mobileMenu.classList.remove('translate-x-0');
+            mobileMenu.classList.add('-translate-x-full');
+            mobileMenu.setAttribute('aria-hidden', 'true');
+
+            overlay.classList.remove('opacity-100');
+            setTimeout(() => overlay.classList.add('hidden'), 300);
+            overlay.setAttribute('aria-hidden', 'true');
+
+            toggleMenuIcons(false);
+            body.classList.remove('overflow-hidden');
+        }
+
+        if (mobileMenuButton) {
+            mobileMenuButton.addEventListener('click', openMobileMenu);
+        }
+
+        if (closeMenuButton) {
+            closeMenuButton.addEventListener('click', closeMobileMenu);
+        }
+
+        if (overlay) {
+            overlay.addEventListener('click', closeMobileMenu);
+        }
+
+        // Закрытие меню при ресайзе окна
+        window.addEventListener('resize', () => {
+            if (window.innerWidth >= 768) {
+                closeMobileMenu();
+            }
+        });
+
+        // ESC key для закрытия
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && mobileMenu.classList.contains('translate-x-0')) {
+                closeMobileMenu();
+            }
+        });
+    });
+</script>

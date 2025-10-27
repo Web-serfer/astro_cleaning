@@ -1,0 +1,96 @@
+---
+const companyLinks = [
+    { href: '/about', text: 'About Us' },
+    { href: '/services', text: 'Services' },
+    { href: '/pricing', text: 'Pricing' },
+    { href: '/reviews', text: 'Reviews' },
+]
+
+const socialLinks = [
+    { href: '#', ariaLabel: 'Follow us on Facebook' },
+    { href: '#', ariaLabel: 'Follow us on Instagram' },
+    { href: '#', ariaLabel: 'Connect with us on Twitter' },
+]
+
+const contactInfo = [
+    { label: 'EMAIL:', value: 'wellknowncleaning@test.com' },
+    { label: 'PHONE:', value: '(215) 555-0199' },
+    { label: 'ADDRESS:', value: '315 N 12th St, Philadelphia, PA 19107' },
+]
+
+const footerLinks = [
+    { href: '/privacy-policy', text: 'Privacy & Policy' },
+    { href: '/terms-conditions', text: 'Terms & Condition' },
+]
+---
+
+<footer class="relative w-full max-w-7xl mx-auto bg-[#f5f3f9] text-slate-800 py-16 px-6 sm:px-10 z-10 rounded-[40px] -mt-[30rem]">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-8">
+        <div class="lg:col-span-2">
+            <a href="/" aria-label="Вернуться на главную">
+                <img
+                        src="/logo.png"
+                        alt="WellKnown Cleaning Logo"
+                        width="59"
+                        height="56"
+                        class="w-[80px] h-auto mb-4"
+                />
+            </a>
+
+            <p class="text-gray-600 max-w-sm">Our vision is to provide convenience and help increase your sales business.</p>
+            <div class="flex gap-3 mt-6">
+                {socialLinks.map((social) => (
+                        <a
+                                href={social.href}
+                                aria-label={social.ariaLabel}
+                                class="block w-8 h-8 bg-black rounded-full"
+                        ></a>
+                ))}
+            </div>
+        </div>
+
+        <div>
+            <h4 class="font-bold text-lg mb-6">Company</h4>
+            <ul class="space-y-4">
+                {companyLinks.map((link) => (
+                        <li class="relative group">
+                            <a
+                                    href={link.href}
+                                    class="font-medium text-gray-600 hover:text-[var(--primary)] transition-colors duration-300 relative inline-block px-1 py-1"
+                            >
+                                <span class="relative z-10">{link.text}</span>
+                                <span class="absolute bottom-0 left-1/2 w-full h-0.5 bg-[var(--primary)] rounded-sm transition-all duration-300 -translate-x-1/2 scale-x-0 group-hover:scale-x-100 origin-center"></span>
+                            </a>
+                        </li>
+                ))}
+            </ul>
+        </div>
+
+        <div>
+            <h4 class="font-bold text-lg mb-6">Contact Us</h4>
+            <div class="space-y-4 text-gray-600">
+                {contactInfo.map((info) => (
+                        <p>
+                            <strong class="font-semibold text-slate-800">{info.label}</strong> {info.value}
+                        </p>
+                ))}
+            </div>
+        </div>
+    </div>
+
+    <hr class="border-t border-gray-300 my-8" />
+
+    <div class="flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-gray-500 font-medium">
+        <p>&copy;2025 WellKnown Cleaning. All rights reserved</p>
+        <div class="flex gap-6">
+            {footerLinks.map((link) => (
+                    <span class="relative group">
+                    <a href={link.href} class="font-medium text-gray-500 hover:text-[var(--primary)] transition-colors duration-300 relative inline-block px-1 py-1">
+                        <span class="relative z-10">{link.text}</span>
+                        <span class="absolute bottom-0 left-1/2 w-full h-0.5 bg-[var(--primary)] rounded-sm transition-all duration-300 -translate-x-1/2 scale-x-0 group-hover:scale-x-100 origin-center"></span>
+                    </a>
+                </span>
+            ))}
+        </div>
+    </div>
+</footer>

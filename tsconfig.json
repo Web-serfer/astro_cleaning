@@ -1,0 +1,18 @@
+{
+  "extends": "astro/tsconfigs/strict",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["src/*"],
+      "@public/*": ["./public/*"],
+      "@components/*": ["src/components/*"],
+      "@layouts/*": ["src/layouts/*"],
+      "@assets/*": ["src/assets/*"],
+      "@styles/*": ["src/styles/*"],
+      "@constants/*": ["src/constants/*"]
+    },
+    "jsx": "preserve",
+    "jsxImportSource": "solid-js",
+    "lib": ["es2019", "dom", "dom.iterable"]
+  }
+}

@@ -1,0 +1,14 @@
+---
+interface Props {
+    text: string
+    href?: string
+}
+const { text, href = '/services' } = Astro.props
+---
+<a
+    href={href}
+    class="inline-flex items-center justify-center bg-transparent text-gray-800 font-semibold text-sm py-3 px-6 border border-gray-300 rounded-full transition hover:bg-gray-100 hover:border-gray-400 tracking-widest"
+    aria-label={`Кнопка ${text}`}
+>
+    {text}
+</a>

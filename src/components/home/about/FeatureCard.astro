@@ -1,0 +1,22 @@
+---
+export interface Props {
+    title: string;
+    description: string;
+}
+
+const { title, description } = Astro.props;
+---
+
+<div class="bg-violet-50 rounded-2xl p-4 flex flex-col h-full gap-3">
+
+    <!-- Этот блок просто будет вверху -->
+    <div class="flex justify-between items-start">
+        <h3 class="font-bold text-base text-slate-800">{title}</h3>
+        <div class="w-6 h-6 bg-white/80 rounded-lg flex-shrink-0"></div>
+    </div>
+
+    <!-- Этот блок будет под ним с отступом в `gap-3` -->
+    <p class="text-slate-600 text-sm pt-4">
+        {description}
+    </p>
+</div>

@@ -1,0 +1,35 @@
+---
+const _menuItems = [
+  { href: '/services', label: 'Services' },
+  { href: '/pricing', label: 'Pricing' },
+  { href: '/about', label: 'About Us' },
+]
+---
+
+<!-- Десктопное меню -->
+<nav class="hidden md:block">
+    <ul class="flex items-center gap-8">
+        {menuItems.map((item) => (
+                <li class="relative group">
+                    <a
+                            href={item.href}
+                            class="font-medium text-zinc-700 hover:text-[var(--primary)] transition-colors duration-300 relative inline-block px-1 py-1 overflow-hidden text-lg"
+                    >
+                        <span class="relative z-10">{item.label}</span>
+                        <span class="absolute bottom-0 left-1/2 w-full h-0.5 bg-[var(--primary)] rounded-sm transition-all duration-300 -translate-x-1/2 scale-x-0 group-hover:scale-x-100 origin-center"></span>
+                    </a>
+                </li>
+        ))}
+        <li class="relative group">
+            <a
+                href="/booking"
+                class="font-medium text-white hover:text-white relative inline-block px-6 py-3 bg-[var(--primary)] hover:bg-[var(--primary-hover)] rounded-full transition-all duration-300 hover:-translate-y-1 overflow-hidden"
+            >
+                <span class="relative z-10 flex items-center gap-2">
+                    <Icon name="bounding-box" class="icon" style="width: 1rem; height: 1rem;" />
+                    BOOK NOW
+                </span>
+            </a>
+        </li>
+    </ul>
+</nav>
