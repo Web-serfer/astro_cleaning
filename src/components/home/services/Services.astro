@@ -1,58 +1,17 @@
 ---
 import { Icon } from 'astro-icon/components';
+import { servicesData } from './servicesData';
 import ServiceCard from './ServiceCard.astro';
 
 interface Service {
-  title: string;
-  description: string;
-  buttonText: string;
-  href: string;
-  iconType: 'arrow' | 'external';
-  promoTag?: string;
-  details?: string[];
+    title: string;
+    description: string;
+    buttonText: string;
+    href: string;
+    iconType: 'arrow' | 'external';
+    promoTag?: string;
+    details?: string[];
 }
-
-const servicesData: Service[] = [
-  {
-    title: 'Regular Cleaning',
-    description: 'Keep life tidy week after week.',
-    buttonText: 'VIEW SERVICE',
-    href: '/services/regular',
-    iconType: 'external',
-    promoTag: 'Most Popular',
-    details: [
-      'WEEKLY',
-      'BI-WEEKLY',
-      'MONTHLY',
-      'KITCHENS & BATHS',
-      'FLOORS & DUSTING',
-    ],
-  },
-  {
-    title: 'Deep Cleaning',
-    description: 'A top-to-bottom refresh.',
-    buttonText: 'VIEW SERVICE',
-    href: '/services/deep-clean',
-    iconType: 'external',
-    details: ['DEEP CLEANING', 'SANITIZING', 'DETAILING'],
-  },
-  {
-    title: 'Move-Out / Move-In',
-    description: 'Inspection-ready for deposits & fresh starts.',
-    buttonText: 'VIEW SERVICE',
-    href: '/services/move-in-out',
-    iconType: 'external',
-    details: ['MOVE-OUT', 'MOVE-IN', 'DETAILED CLEANING'],
-  },
-  {
-    title: 'Post-Construction',
-    description: "Goodbye, builders' dust.",
-    buttonText: 'VIEW SERVICE',
-    href: '/services/post-construction',
-    iconType: 'external',
-    details: ['CONSTRUCTION DEBRIS', 'CLEANING', 'DETAILING'],
-  },
-];
 ---
 
 <section class="section section-gap bg-services">
@@ -66,9 +25,9 @@ const servicesData: Service[] = [
                         SERVICES
                     </p>
                 </div>
-                <a 
-                    href="/services"
-                    class="flex items-center gap-2 text-teal-600 font-semibold hover:underline"
+                <a
+                        href="/services"
+                        class="flex items-center gap-2 text-teal-600 font-semibold hover:underline"
                 >
                     ALL SERVICES
                     <Icon name="externalLink" class="w-5 h-5" />
@@ -82,113 +41,44 @@ const servicesData: Service[] = [
             </p>
         </div>
 
-        <!-- Контейнер для карточек с гибкой сеткой -->
+        <!-- Контейнер для карточек с фиксом дергания -->
         <div class="mt-xl relative" id="services-container">
-            <div class="flex flex-col md:flex-row gap-8 w-full relative overflow-visible" id="services-flex-container">
+            <div class="flex flex-col md:flex-row gap-8 w-full relative" id="services-flex-container">
                 {servicesData.map((service, index) => (
-                    <div class="service-card-wrapper flex-grow relative" style="flex: 1 1 0" key={index}>
-                        <ServiceCard
-                            title={service.title}
-                            description={service.description}
-                            buttonText={service.buttonText}
-                            href={service.href}
-                            iconType={service.iconType}
-                            promoTag={service.promoTag}
-                            details={service.details}
-                        />
-                    </div>
+                        <div
+                            class="service-card-wrapper group relative flex-1 min-w-[240px] transition-all duration-500 ease-out"
+                            style="flex: 1 1 0%;"
+                        >
+                            <ServiceCard
+                                title={service.title}
+                                description={service.description}
+                                buttonText={service.buttonText}
+                                href={service.href}
+                                iconType={service.iconType}
+                                promoTag={service.promoTag}
+                                details={service.details}
+                            />
+                        </div>
                 ))}
             </div>
         </div>
-
-
     </div>
 </section>
 
-<script is:inline>
-    document.addEventListener('DOMContentLoaded', () => {
-        const cardWrappers = document.querySelectorAll('.service-card-wrapper');
-        
-        // Устанавливаем начальное состояние - первая карточка расширена
-        setTimeout(() => {
-            if(cardWrappers[0]) {
-                cardWrappers[0].classList.add('expanded');
-                cardWrappers[0].style.zIndex = '2';
-                cardWrappers[0].style.transform = 'scale(1.05)';
-            }
-        }, 100);
-        
-        cardWrappers.forEach((wrapper, index) => {
-            wrapper.addEventListener('mouseenter', () => {
-                // Убираем расширенное состояние у всех карточек
-                cardWrappers.forEach(card => {
-                    card.classList.remove('expanded');
-                    card.style.transform = 'scale(1)';
-                    card.style.zIndex = '1';
-                });
-                
-                // Устанавливаем текущую карточку как расширенную
-                wrapper.classList.add('expanded');
-                wrapper.style.zIndex = '3';
-                wrapper.style.transform = 'scale(1.05)';
-            });
-            
-            wrapper.addEventListener('mouseleave', (e) => {
-                // Проверяем, находится ли курсор над этой карточкой или над дочерним элементом
-                setTimeout(() => {
-                    const isHovered = e.currentTarget.matches(':hover');
-                    if (!isHovered) {
-                        // Проверяем, возможно курсор уже на другой карточке
-                        const anyExpanded = document.querySelector('.service-card-wrapper.expanded');
-                        if (!anyExpanded) {
-                            // Возвращаем первую карточку к расширенному состоянию
-                            cardWrappers[0].classList.add('expanded');
-                            cardWrappers[0].style.zIndex = '2';
-                            cardWrappers[0].style.transform = 'scale(1.05)';
-                        }
-                    }
-                }, 50);
-            });
-        });
-        
-        // Обработчик для всего контейнера
-        const container = document.getElementById('services-flex-container');
-        if(container) {
-            container.addEventListener('mouseleave', () => {
-                setTimeout(() => {
-                    const isAnyCardHovered = document.querySelector('.service-card-wrapper:hover');
-                    if (!isAnyCardHovered) {
-                        // Возвращаем все карточки к исходному состоянию и расширяем первую
-                        cardWrappers.forEach((card, idx) => {
-                            card.classList.remove('expanded');
-                            card.style.transform = 'scale(1)';
-                            card.style.zIndex = '1';
-                        });
-                        
-                        // Восстанавливаем расширенное состояние для первой карточки
-                        if(cardWrappers[0]) {
-                            cardWrappers[0].classList.add('expanded');
-                            cardWrappers[0].style.zIndex = '2';
-                            cardWrappers[0].style.transform = 'scale(1.05)';
-                        }
-                    }
-                }, 50);
-            });
-        }
-    });
-</script>
-
-<style is:inline>
+<style>
+    /* ФИКС ДЕРГАНИЯ - используем transform вместо flex-grow */
     .service-card-wrapper {
-        transition: transform 0.4s ease, z-index 0.4s ease;
-        overflow: visible;
-        min-width: 0;
-        transform-origin: center;
-        will-change: transform;
+        transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     }
-    
-    .service-card-wrapper.expanded {
-        z-index: 2 !important;
-        transform: scale(1.05);
+
+    .service-card-wrapper:hover {
+        transform: scale(1.05) translateY(-4px);
+        z-index: 10;
+        position: relative;
+    }
+
+    /* Гарантируем, что контейнер не меняет размер */
+    #services-flex-container {
+        min-height: 400px;
     }
 </style>

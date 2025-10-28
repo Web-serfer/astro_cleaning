@@ -52,6 +52,7 @@ body {
     margin: 0 auto;
 }
 
+
 .container {
     max-width: 1280px;
     margin-left: auto;
@@ -184,4 +185,49 @@ body {
 
 .paused {
     animation-play-state: paused;
+}
+
+/* ==== services card animation ==== */
+
+
+/* 1. Отключаем изменение flex-grow - основная причина дергания */
+.service-card-wrapper {
+    flex: 1 1 0% !important;
+    min-width: 240px;
+}
+
+/* 2. Используем transform вместо изменения размеров */
+#services-flex-container {
+    display: flex;
+    align-items: stretch;
+}
+
+/* 3. Гарантируем, что ховер карточка поверх остальных */
+.service-card-wrapper:hover {
+    transform: scale(1.05) translateY(-4px) !important;
+    z-index: 20 !important;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15) !important;
+}
+
+/* 4. Плавные переходы только для трансформаций */
+.service-card-wrapper {
+    transition:
+            transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1),
+            box-shadow 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
+}
+
+/* 5. Улучшаем производительность */
+.service-card-wrapper * {
+    transform: translateZ(0);
+    will-change: transform;
+}
+
+/* 6. Фикс для контейнера - предотвращает изменение размера */
+#services-container {
+    overflow: visible !important;
+}
+
+#services-flex-container {
+    transform: translateZ(0);
+    contain: layout style;
 }
