@@ -24,36 +24,34 @@ const {
 } = Astro.props;
 ---
 
-<!-- Убраны трансформации из корневого элемента чтобы избежать конфликтов -->
 <div class="bg-violet-50 rounded-3xl flex flex-col h-full text-zinc-800 overflow-hidden shadow-sm hover:shadow-lg transition-all duration-500 ease-out">
     <!-- Контейнер для изображения -->
     <div class="relative h-2/5 p-6 overflow-hidden">
         <div class="w-full h-full overflow-hidden rounded-2xl">
             <Image
-                    src={placeholderImg}
-                    alt={title}
-                    width={400}
-                    height={250}
-                    class="w-full h-full object-cover transition-all duration-700 ease-out group-hover:scale-110"
+                src={placeholderImg}
+                alt={title}
+                width={400}
+                height={250}
+                class="w-full h-full object-cover transition-all duration-700 ease-out group-hover:scale-110"
             />
         </div>
 
         <!-- Промо-тег -->
         {promoTag && (
-                <span class="absolute top-8 left-8 z-20 bg-white/80 backdrop-blur-sm text-violet-700 text-xs font-semibold px-3 py-1 rounded-full border border-violet-200 transition-all duration-500 ease-out opacity-0 group-hover:opacity-100 group-hover:translate-y-0">
-                {promoTag}
-            </span>
+            <span class="absolute top-8 left-8 z-20 bg-white/80 backdrop-blur-sm text-violet-700 text-xs font-semibold px-3 py-1 rounded-full border border-violet-200 transition-all duration-500 ease-out opacity-0 group-hover:opacity-100 group-hover:translate-y-0">
+            {promoTag}
+        </span>
         )}
 
-        <!-- Иконка-ссылка КРУПНЕЕ и без фона -->
         <a
-                href={href}
-                aria-label={`Learn more about ${title}`}
-                class="absolute top-6 right-6 z-20 p-2 rounded-full transition-all duration-500 ease-out opacity-0 group-hover:opacity-100 hover:scale-110"
+            href={href}
+            aria-label={`Learn more about ${title}`}
+            class="absolute top-6 right-6 z-20 p-2 rounded-full transition-all duration-500 ease-out opacity-0 group-hover:opacity-100 hover:scale-110"
         >
             <!-- Иконка по умолчанию и при наведении -->
             <div class="relative w-7 h-7">
-                <Icon name="externalLinkEnter" class="w-7 h-7 text-black transition-colors duration-300 hidden group-hover:block absolute" />
+                <Icon name="externalLinkEnter" class="w-7 h-7 text-black transition-colors duration-300 hidden group-hover:block absolute top-0 left-0" />
             </div>
         </a>
     </div>

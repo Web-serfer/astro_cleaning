@@ -4,20 +4,20 @@ import { Icon } from 'astro-icon/components';
 const contactOptions = [
     {
         title: 'E-Mail us',
-        description: "Lorem ipsum dolor sit amet consectetur.",
+        description: "Lorem ipsum dolor sit amet.",
         type: 'email',
         value: 'wellknowncleaning@test.com',
         href: 'mailto:wellknowncleaning@test.com',
     },
     {
         title: 'Fill Out Form',
-        description: "Lorem ipsum dolor sit amet consectetur.",
+        description: "Lorem ipsum dolor sit amet.",
         type: 'button',
         text: 'REQUEST SOMETHING',
     },
     {
         title: 'Phone us',
-        description: "Lorem ipsum dolor sit amet consectetur.",
+        description: "Lorem ipsum dolor sit amet.",
         type: 'tel',
         value: '(215) 555-0199',
         href: 'tel:2155550199',
@@ -25,17 +25,17 @@ const contactOptions = [
 ]
 ---
 
-<section class="relative w-full bg-[#e6efee] pt-24 pb-[32rem] text-center rounded-tl-[40px] rounded-tr-[40px]">
+<section class="relative w-full bg-[#D1EAE8] pt-24 pb-[32rem] text-center rounded-tl-[40px] rounded-tr-[40px]">
     <div class="max-w-7xl mx-auto mb-8 px-6 sm:px-8">
         <div class="max-w-3xl mx-auto px-4">
             <div class="flex flex-col items-center mb-8 text-center">
                 <div class="flex items-center justify-center mb-6">
-                    <div class="w-4 h-4 bg-white rounded-md mr-2"></div>
-                    <span class="text-sm font-bold uppercase tracking-wider text-zinc-500">
+                    <div class="w-4 h-4 bg-[#F1F0F9]  mr-2"></div>
+                    <span class="text-md font-semibold tracking-wider text-black">
                         Get in Touch
                     </span>
                 </div>
-                <h2 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-zinc-900 mb-md">
+                <h2 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold text-zinc-900 mb-md">
                     Have a Questions?
                 </h2>
                 <p class="text-base sm:text-lg text-zinc-600">
@@ -47,7 +47,7 @@ const contactOptions = [
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-16">
             {contactOptions.map((option) => (
                     <div class="flex flex-col items-center text-center gap-4 p-4">
-                        <div class="w-20 h-20 bg-white rounded-full mb-4"></div>
+                        <div class="w-15 h-15 bg-white rounded-full mb-4"></div>
                         <h3 class="text-2xl font-bold text-slate-800">{option.title}</h3>
                         <p class="text-gray-600 max-w-[250px]">{option.description}</p>
                         <div class="mt-4 font-semibold text-slate-800">

@@ -26,7 +26,10 @@ import ModalController from '@components/base/ModalController.tsx';
 
                     <!-- Левая колонка -->
                     <div class="lg:col-span-3 flex flex-col items-center text-center lg:items-start lg:text-left justify-end">
-                        <Tag text={heroData.tag.text} />
+                        <div class="flex items-center mb-4">
+                            <div class="w-4 h-4 bg-[var(--accent-hero-card)] rounded-md mr-2"></div>
+                            <Tag text={heroData.tag.text} />
+                        </div>
                         <h1 id="hero-heading" class="text-[56px] font-semibold text-white v-gap-sm leading-[72px] tracking-[-0.8px] max-w-2xl">
                             {heroData.heading.title}
                             <span

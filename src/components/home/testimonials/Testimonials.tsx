@@ -70,15 +70,15 @@ export default function Testimonials() {
             <div class="container">
                 {/* Заголовок секции */}
                 <div class="max-w-3xl">
-                    <div class="flex flex-col items-center md:flex-row md:justify-between md:items-center mb-md text-center md:text-left">
-                        <div class="flex items-center mb-4 md:mb-0">
-                            <div class="w-4 h-4 bg-[var(--accent-hero-card)] rounded-md mr-2"></div>
+                    <div class="flex flex-col items-center md:flex-row md:justify-between md:items-center my-2 text-center md:text-left">
+                        <div class="flex items-center">
+                            <div class="w-4 h-4 bg-[#F1F0F9] mr-2"></div>
                             <p class="text-sm font-bold uppercase tracking-wider text-zinc-500">
                                 reviews
                             </p>
                         </div>
                     </div>
-                    <h2 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-zinc-900 mb-md text-center md:text-left">
+                    <h2 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-zinc-900 mb-8 text-center md:text-left">
                         Testimonials
                     </h2>
                 </div>
