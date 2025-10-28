@@ -4,7 +4,7 @@ import Layout from "@layouts/Layout.astro";
 import Hero from "@components/home/hero/Hero.astro";
 import Services from "@components/home/services/Services.astro";
 import HowItWorks from "@components/home/how/HowItWorks.astro";
-import PricingTeaser from "@components/home/pricing/PricingTeaser.astro";
+import Pricing from "@components/home/pricing/PricingSection.astro";
 import Testimonials from "@components/home/testimonials/Testimonials";
 import ServiceArea from "@components/home/area/ServiceArea.astro";
 import About from "@components/home/about/AboutSection.astro";
@@ -21,7 +21,7 @@ const pageCanonical = SITE_URL;
   <Hero />
   <Services />
   <HowItWorks />
-  <PricingTeaser />
+  <Pricing />
   <Testimonials client:visible />
   <ServiceArea />
   <About />
