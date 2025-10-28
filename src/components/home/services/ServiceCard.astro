@@ -51,8 +51,10 @@ const {
                 aria-label={`Learn more about ${title}`}
                 class="absolute top-6 right-6 z-20 p-2 rounded-full transition-all duration-500 ease-out opacity-0 group-hover:opacity-100 hover:scale-110"
         >
-            <!-- УВЕЛИЧЕНА ИКОНКА -->
-            <Icon name="externalLink" class="w-7 h-7 text-black hover:text-violet-600 transition-colors duration-300" />
+            <!-- Иконка по умолчанию и при наведении -->
+            <div class="relative w-7 h-7">
+                <Icon name="externalLinkEnter" class="w-7 h-7 text-black transition-colors duration-300 hidden group-hover:block absolute" />
+            </div>
         </a>
     </div>
 
