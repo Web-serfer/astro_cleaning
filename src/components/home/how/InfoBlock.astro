@@ -10,7 +10,7 @@ import InfoCard from './InfoCard.astro';
     <div class="w-full md:w-1/2 order-1 md:order-2 flex flex-col justify-between">
 
         <!-- Заголовок -->
-        <div class="px-3 md:px-0 mb-6 md:mb-0">
+        <div class="px-3 mb-16 md:mb-0">
             <div class="flex justify-center md:justify-start">
                 <SectionHeader
                     category="Cleaning Process"
@@ -19,23 +19,20 @@ import InfoCard from './InfoCard.astro';
             </div>
         </div>
 
-        <div class="p-3 md:p-0 flex justify-center md:justify-end">
-            <div class="w-[357px] h-[161px] bg-slate-50 border border-slate-200 rounded-2xl p-6 shadow-sm flex items-center">
-                <InfoCard
-                    title="Lorem ipsum dolor sit"
-                    text="Nulla velit dignissim sed ornare vulputate. Ultrices volutpat non tellus mauris ut nisi tortor vestibulum amet. Lectus vitae tincidunt posuere sem nisi est. Velit imperdiet urna vulputate in diam neque."
-                    className="max-w-full text-left"
-                />
-            </div>
+        <div class="flex justify-center mb-[16px]">
+            <InfoCard
+                title="Professional Service"
+                text="Our professional cleaning service starts with a detailed assessment of your space. We use high-quality, eco-friendly products and advanced equipment to ensure optimal results while maintaining a safe environment for you and your family."
+                className="max-w-full text-left w-full md:w-11/12 bg-[#F1F0F9] border border-slate-200 rounded-2xl p-6 shadow-sm"
+            />
         </div>
     </div>
 
     <!-- Левая колонка с картинкой -->
     <div class="w-full md:w-1/2 order-2 md:order-1">
         <CardWithBackground
-            title="Lorem ipsum dolor"
-            text="Sit amet consectetur. Nulla velit dignissim sed ornare vulputate. Lectus vitae tincidunt posuere sem nisi est."
+            title="Expert Team"
+            text="Our trained professionals arrive with all supplies for an efficient, thorough cleaning experience. 100% satisfaction guaranteed."
         />
     </div>
-
 </div>
