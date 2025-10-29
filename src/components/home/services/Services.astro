@@ -11,54 +11,57 @@ interface Service {
     iconType: 'arrow' | 'external';
     promoTag?: string;
     details?: string[];
-}
+    }
+
+const sectionTitle = "Services";
+const sectionSubtitle = "Explore Our Cleaning Services";
+const sectionDescription = "Lorem ipsum dolor sit amet consectetur. Turpis pellentesque pellentesque tristique condimentum nulla eget. Tincidunt et vel ultrices egestas viverra consequat neque aliquet vulputate.";
 ---
 
 <section class="section section-gap bg-services">
-    <div class="container">
+    <div class="container max-w-7xl mx-auto px-4">
         <!-- Заголовок секции -->
-        <div class="max-w-3xl">
-            <div class="flex justify-between items-center my-2">
-                <div class="flex items-center">
-                    <div class="w-4 h-4 bg-[#F5F3FF] mr-2"></div>
-                    <p class="text-sm font-semibold uppercase tracking-wider text-black">
-                        SERVICES
-                    </p>
+        <div class="mb-xl">
+            <div class="max-w-3xl">
+                <div class="flex justify-between items-center my-2">
+                    <div class="flex items-center">
+                        <div class="w-4 h-4 bg-[#F1F0F9] mr-2"></div>
+                        <p class="text-sm font-semibold uppercase tracking-wider text-black">
+                            {sectionTitle}
+                        </p>
+                    </div>
+                    <a 
+                        href="/services"
+                        class="flex items-center gap-2 text-teal-600 font-semibold underline hover:cursor-pointer"
+                    >
+                        ALL SERVICES
+                        <Icon name="externalLink" class="w-5 h-5" />
+                    </a>
                 </div>
-                <a
-                    href="/services"
-                    class="flex items-center gap-2 text-[#40A69F] font-semibold underline hover:cursor-pointer"
-                >
-                    ALL SERVICES
-                    <Icon name="externalLink" class="w-5 h-5" />
-                </a>
+                <h2 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-zinc-900 mb-8 text-left">
+                    {sectionSubtitle}
+                </h2>
+                <p class="text-base sm:text-lg text-zinc-600 text-left mb-8">
+                    {sectionDescription}
+                </p>
             </div>
-            <h2 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold text-zinc-900 mb-8 text-center md:text-left">
-                Explore Our Cleaning Services
-            </h2>
-            <p class="text-base sm:text-lg text-zinc-600 text-center md:text-left">
-                Lorem ipsum dolor sit amet consectetur. Turpis pellentesque pellentesque tristique condimentum nulla eget. Tincidunt et vel ultrices egestas viverra consequat neque aliquet vulputate.
-            </p>
         </div>
 
-        <!-- Контейнер для карточек -->
-        <div class="mt-16 relative" id="services-container">
-            <div class="flex flex-col md:flex-row gap-8 w-full relative" id="services-flex-container">
+        <!-- Контейнер с аккордеоном -->
+        <div class="mt-10" style="height: calc(850px - 250px);">
+            <div
+                    id="services-accordion"
+                    class="flex flex-row h-full rounded-3xl overflow-hidden gap-8 p-2"
+            >
                 {servicesData.map((service, index) => (
-                        <div
-                            class="service-card-wrapper group relative flex-1 min-w-[240px] transition-all duration-500 ease-out"
-                            style="flex: 1 1 0%;"
+                        <button
+                                type="button"
+                                data-index={index}
+                                class="service-item flex-1 min-w-20 rounded-2xl transition-all duration-500 ease-out relative outline-none focus-visible:ring-4 focus-visible:ring-violet-300 focus-visible:z-10"
+                                style={`--card-order: ${index};`}
                         >
-                            <ServiceCard
-                                title={service.title}
-                                description={service.description}
-                                buttonText={service.buttonText}
-                                href={service.href}
-                                iconType={service.iconType}
-                                promoTag={service.promoTag}
-                                details={service.details}
-                            />
-                        </div>
+                            <ServiceCard {...service} data-index={index} />
+                        </button>
                 ))}
             </div>
         </div>
@@ -66,17 +69,125 @@ interface Service {
 </section>
 
 <style>
-    .service-card-wrapper {
-        transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+
+    #services-accordion {
+        max-width: 100%;
+        margin: 0 auto;
     }
 
-    .service-card-wrapper:hover {
-        transform: scale(1.05) translateY(-4px);
+    .service-item {
+        /* Начальное состояние */
+        flex: 1;
+        min-width: 100px;
+        opacity: 0.9;
+        transform: scale(1);
+        transition:
+                flex 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                opacity 0.4s ease,
+                transform 0.4s ease;
+        will-change: flex, transform;
+    }
+
+    /* Убираем сильное расширение при наведении, оставляем только небольшой эффект */
+    .service-item:hover:not(.active) {
+        opacity: 1;
+        transform: scale(1.01); /* Легкий подъем */
+        z-index: 5;
+    }
+
+    .service-item.active {
+        flex: 0 0 377px !important;
+        opacity: 1;
+        transform: scale(1);
         z-index: 10;
-        position: relative;
+        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
     }
 
-    #services-flex-container {
-        min-height: 400px;
+    /* Скрывать детали по умолчанию */
+    .service-item .details-container {
+        display: none;
+    }
+    
+    /* Показывать иконку и промо-тег для активной карточки */
+    .service-item.active :global(.promo-tag),
+    .service-item.active :global(.entry-icon) {
+        opacity: 1 !important;
+    }
+
+    /* Адаптивность */
+    @media (max-width: 1024px) {
+        .service-item { flex: 1; }
+        .service-item.active { flex: 3.5; }
+    }
+
+    @media (max-width: 768px) {
+        .service-item { flex: 0.8; }
+        .service-item.active { flex: 3; }
+        #services-accordion {
+            gap: 0.75rem;
+        }
     }
 </style>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const accordion = document.getElementById('services-accordion');
+        if (!accordion) return;
+
+        const items = accordion.querySelectorAll('.service-item');
+
+        if (items.length > 0) {
+            // Устанавливаем первую карточку активной при загрузке
+            items[0].classList.add('active');
+
+            // Добавляем обработчик клика ко всем элементам
+            items.forEach(item => {
+                item.addEventListener('click', (e) => {
+                    // Проверяем, был ли клик на внутреннем элементе <a>
+                    // Если целью клика является ссылка или ее родитель (кнопка в ServiceCard),
+                    // мы останавливаем выполнение функции аккордеона.
+                    const target = e.target;
+
+                    // Проверяем, является ли цель клика тегом <a> или его частью
+                    if (target.closest('a')) {
+                        // Если клик был по ссылке, позволяем ему пройти и не меняем состояние аккордеона
+                        return;
+                    }
+
+                    // Логика аккордеона
+                    if (item.classList.contains('active')) {
+                        // Если кликаем на уже активный элемент (но не на ссылку внутри),
+                        // можно ничего не делать или добавить логику схлопывания.
+                        // Оставим пока без схлопывания для лучшего UX.
+                        return;
+                    }
+
+                    // Удаляем класс 'active' со всех элементов
+                    items.forEach(i => i.classList.remove('active'));
+
+                    // Добавляем класс 'active' к текущему элементу
+                    item.classList.add('active');
+                    
+                    // Обновляем видимость деталей
+                    updateDetailsVisibility();
+                });
+            });
+            
+            // Обновляем видимость деталей при загрузке
+            updateDetailsVisibility();
+        }
+        
+        function updateDetailsVisibility() {
+            items.forEach(item => {
+                const detailsContainer = item.querySelector('.details-container');
+                if (detailsContainer) {
+                    if (item.classList.contains('active')) {
+                        detailsContainer.style.display = 'flex';
+                    } else {
+                        detailsContainer.style.display = 'none';
+                    }
+                }
+            });
+        }
+    });
+</script>
