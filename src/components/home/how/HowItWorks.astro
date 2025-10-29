@@ -14,13 +14,14 @@ import InfoBlock from './InfoBlock.astro';
                 <ProcessList />
             </div>
             <!--правая секция -->
-            <div class="w-full md:w-auto flex items-center order-last md:order-2 h-full">
-                <Image
-                    src={howItWorkImage}
-                    alt="Как это работает - изображение"
-                    class="h-full object-cover rounded-[48px]"
-                    style="width: 405px;"
-                />
+            <div class="w-full md:w-[405px] order-last md:order-2 h-full relative">
+                <div class="w-full h-full rounded-[48px] overflow-hidden absolute inset-0">
+                    <Image
+                        src={howItWorkImage}
+                        alt="Professional cleaning process demonstration"
+                        class="w-full h-full object-cover"
+                    />
+                </div>
             </div>
         </div>
     </div>
