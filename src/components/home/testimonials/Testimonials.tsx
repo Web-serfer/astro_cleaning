@@ -62,7 +62,7 @@ export default function Testimonials() {
 
     return (
         <section 
-            class="section font-sans py-2xl" 
+            class="section section-gap font-sans" 
             ref={sliderRef}
             onMouseEnter={() => setIsPaused(true)}
             onMouseLeave={() => setIsPaused(false)}

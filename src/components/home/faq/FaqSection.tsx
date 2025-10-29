@@ -11,7 +11,7 @@ const FaqSection: Component = () => {
     };
 
     return (
-        <section class="section section-gap bg-white">
+        <section class="section bg-white">
             <div class="container mx-auto px-4">
                 <div class="flex flex-col md:flex-row md:space-x-12">
                     <div class="md:w-1/3 mb-8 md:mb-0">

@@ -190,7 +190,6 @@ body {
 /* ==== services card animation ==== */
 
 
-/* 1. Отключаем изменение flex-grow - основная причина дергания */
 .service-card-wrapper {
     flex: 1 1 0% !important;
     min-width: 240px;

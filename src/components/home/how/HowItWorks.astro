@@ -5,16 +5,16 @@ import ProcessList from './ProcessList.astro';
 import InfoBlock from './InfoBlock.astro';
 ---
 
-<section class="bg-white py-16 px-8 h-[780px]">
-    <div class="max-w-7xl mx-auto h-full">
+<section class="section section-gap bg-white">
+    <div class="max-w-7xl mx-auto">
         <!-- левая секция -->
-        <div class="flex flex-col md:flex-row gap-8 mt-xl h-full">
-            <div class="w-full md:w-[calc(100%-405px)] flex flex-col gap-8 order-first md:order-1 h-full">
+        <div class="flex flex-col md:flex-row gap-8 mt-xl">
+            <div class="w-full md:w-[calc(100%-405px)] flex flex-col gap-8 order-first md:order-1">
                 <InfoBlock />
                 <ProcessList />
             </div>
             <!--правая секция -->
-            <div class="w-full md:w-[405px] order-last md:order-2 h-full relative">
+            <div class="w-full md:w-[405px] order-last md:order-2 relative">
                 <div class="w-full h-full rounded-[48px] overflow-hidden absolute inset-0">
                     <Image
                         src={howItWorkImage}
