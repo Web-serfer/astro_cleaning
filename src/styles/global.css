@@ -106,10 +106,15 @@ body {
     z-index: 51 !important;
 }
 
-/* Стили для вертикальных отступов между секциями */
+/* Класс для отступов между секциями - только верхний отступ */
 .section-gap {
     margin-top: var(--component-gap);
-    margin-bottom: var(--component-gap);
+}
+
+/* Альтернативная схема - отступ 100px сверху и 100px снизу (половина от --component-gap) */
+.section-gap-100 {
+    margin-top: calc(var(--component-gap) / 2);
+    margin-bottom: calc(var(--component-gap) / 2);
 }
 
 /* Универсальный класс для всех секций */
@@ -229,4 +234,24 @@ body {
 #services-flex-container {
     transform: translateZ(0);
     contain: layout style;
+}
+
+/* ==== faq styles ==== */
+
+/* Скрытие скроллбара для Chrome, Safari, Edge */
+.hide-scrollbar::-webkit-scrollbar {
+    display: none;
+    width: 0; /* Обеспечивает, что ширина скроллбара равна 0 */
+    height: 0;
+}
+
+/* Скрытие скроллбара для IE и Edge (старые версии) */
+.hide-scrollbar {
+    -ms-overflow-style: none; /* IE and Edge */
+}
+
+/* Скрытие скроллбара для Firefox */
+/* Примечание: Firefox может требовать сброса 'scrollbar-width: none' */
+.hide-scrollbar {
+    scrollbar-width: none; /* Firefox */
 }

@@ -2,6 +2,7 @@
 import { Icon } from 'astro-icon/components';
 import { servicesData } from './servicesData';
 import ServiceCard from './ServiceCard.astro';
+import SectionHeader from '@components/base/SectionHeader.astro';
 
 interface Service {
     title: string;
@@ -18,34 +19,16 @@ const sectionSubtitle = "Explore Our Cleaning Services";
 const sectionDescription = "Lorem ipsum dolor sit amet consectetur. Turpis pellentesque pellentesque tristique condimentum nulla eget. Tincidunt et vel ultrices egestas viverra consequat neque aliquet vulputate.";
 ---
 
-<section class="section section-gap bg-services">
+<section class="section section-gap">
     <div class="container max-w-7xl mx-auto px-4">
-        <!-- Заголовок секции -->
-        <div class="mb-xl">
-            <div class="max-w-3xl">
-                <div class="flex justify-between items-center my-2">
-                    <div class="flex items-center">
-                        <div class="w-4 h-4 bg-[#F1F0F9] mr-2"></div>
-                        <p class="text-sm uppercase tracking-wider text-black">
-                            {sectionTitle}
-                        </p>
-                    </div>
-                    <a 
-                        href="/services"
-                        class="flex items-center gap-2 text-teal-600 font-semibold underline hover:cursor-pointer"
-                    >
-                        ALL SERVICES
-                        <Icon name="externalLink" class="w-5 h-5" />
-                    </a>
-                </div>
-                <h2 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-zinc-900 mb-8 text-left">
-                    {sectionSubtitle}
-                </h2>
-                <p class="text-base sm:text-lg text-zinc-600 text-left mb-8">
-                    {sectionDescription}
-                </p>
-            </div>
-        </div>
+        <SectionHeader 
+            title={sectionSubtitle}
+            subtitle=""
+            description={sectionDescription}
+            category={sectionTitle}
+            allLink="/services"
+            allLinkText="ALL SERVICES"
+        />
 
         <!-- Контейнер с аккордеоном -->
         <div class="mt-10" style="height: calc(850px - 250px);">

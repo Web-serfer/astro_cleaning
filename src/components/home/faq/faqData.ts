@@ -1,31 +1,23 @@
-interface FaqData {
-    id: number;
+export interface FaqItem {
     question: string;
     answer: string;
 }
 
-const faqData: FaqData[] = [
+export const faqData: FaqItem[] = [
     {
-        id: 1,
-        question: 'Lorem ipsum dolor sit amet consectetur. Ullamcorper eget?',
-        answer: 'Massa diam tristique vulputate et at vivamus pulvinar. Elementum scelerisque justo elit tempor sapien pretium sit. Integer suspendisse adipiscing molestie ut purus suspendisse dui aliquam. Malesuada adipiscing tortor ipsum viverra consequat semper.',
+        question: "What services do you provide?",
+        answer: "We provide professional cleaning services for homes and offices, including deep cleaning, regular maintenance, window cleaning, post-renovation cleaning, and property cleaning before sale."
     },
     {
-        id: 2,
-        question: 'Lorem ipsum dolor sit amet consectetur. Ullamcorper eget?',
-        answer: 'Massa diam tristique vulputate et at vivamus pulvinar. Elementum scelerisque justo elit tempor sapien pretium sit. Integer suspendisse adipiscing molestie ut purus suspendisse dui aliquam. Malesuada adipiscing tortor ipsum viverra consequat semper.',
+        question: "How long does a standard cleaning take?",
+        answer: "Cleaning time depends on the size of the area and the scope of work. On average, standard cleaning of a one-bedroom apartment takes 2-3 hours, while a three-bedroom apartment takes 4-6 hours."
     },
     {
-        id: 3,
-        question: 'Lorem ipsum dolor sit amet consectetur. Ullamcorper eget?',
-        answer: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+        question: "What payment methods do you accept?",
+        answer: "We accept cash, credit card, and popular electronic payment systems. You can also pay for the cleaning service in advance or after the work is completed."
     },
     {
-        id: 4,
-        question: 'Lorem ipsum dolor sit amet consectetur. Ullamcorper eget?',
-        answer: 'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-    },
+        question: "Do you use safe cleaning products?",
+        answer: "Yes, we use only certified and eco-friendly cleaning products that are harmless to people and pets. Upon request, we can use your own cleaning supplies."
+    }
 ];
-
-export type { FaqData };
-export { faqData };
