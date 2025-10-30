@@ -2,79 +2,38 @@
 import { Icon } from 'astro-icon/components';
 import PricingCard from "./PricingCard.astro";
 import ModalController from '@components/base/ModalController.tsx';
+import SectionHeader from '@components/base/SectionHeader.astro';
+import Button from '@components/base/Button.astro';
+import { pricingSectionData } from './pricingData';
 
-
-const pricingData = [
-    {
-        tag: "Apartment",
-        price: "~$159/h",
-        description: "Studios & 1-2 BR",
-    },
-    {
-        tag: "House",
-        price: "~$159/h",
-        description: "Townhomes & Single-Family",
-    },
-    {
-        tag: "Move-Out",
-        price: "~$199/h",
-        description: "Empty units only",
-    },
-];
-
-const sectionTitle = "Pricing";
-const sectionSubtitle = "Pricing Teaser??";
-const sectionDescription = "Our transparent pricing ensures you know exactly what you're paying for. Choose from our range of cleaning services tailored to your needs, with no hidden fees.";
+const { title, category, description, allLink, allLinkText, pricingCards } = pricingSectionData;
 ---
 
-<section class="section section-gap">
+<section class="section section-gap h-[631px]">
     <div class="container">
-        <div class="mb-xl">
-            <div class="max-w-3xl">
-                <div class="flex justify-between items-center my-2">
-                    <div class="flex items-center">
-                        <div class="w-4 h-4 bg-[#404040] mr-2"></div>
-                        <p class="text-sm font-semibold uppercase tracking-wider text-black">
-                            {sectionTitle}
-                        </p>
-                    </div>
-                    <a 
-                        href="/pricing"
-                        class="flex items-center gap-2 text-teal-600 font-semibold underline hover:cursor-pointer"
-                    >
-                        MORE ABOUT PRICING
-                        <Icon name="externalLink" class="w-5 h-5" />
-                    </a>
-                </div>
-                <h2 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-zinc-900 mb-8 text-center md:text-left">
-                    {sectionSubtitle}
-                </h2>
-                <p class="text-base sm:text-lg text-zinc-600 text-center md:text-left mb-8">
-                    {sectionDescription}
-                </p>
-            </div>
-        </div>
+        <SectionHeader 
+            title={title}
+            category={category}
+            description={description}
+            allLink={allLink}
+            allLinkText={allLinkText}
+        />
 
         <!-- Сетка с карточками цен -->
-        <div class="mt-xl grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
-            {pricingData.map(card => <PricingCard {...card} />)}
+        <div class="mt-lg grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {pricingCards.map(card => <PricingCard {...card} />)}
         </div>
 
         <!-- Футер секции -->
-        <div class="text-center md:text-left mt-xl">
-            <p class="text-gray-600 mb-lg">
+        <div class="text-center md:text-left mt-lg">
+            <p class="text-gray-600 mb-sm">
                 Prices vary by size/condition. Get your exact price instantly.
             </p>
             <ModalController client:idle>
-                <button
-                    type="button"
-                    class="font-medium text-white hover:text-white relative inline-block px-6 py-3 bg-[var(--primary)] hover:bg-[var(--primary-hover)] rounded-full transition-all duration-300 hover:-translate-y-1 overflow-hidden cursor-pointer hover:cursor-pointer"
-                >
-                    <span class="relative z-10 flex items-center gap-2">
-                        <Icon name="bounding-box" class="icon w-4 h-4" />
-                        BOOK NOW
-                    </span>
-                </button>
+                <Button 
+                    isModalButton={true}
+                    text="BOOK NOW"
+                />
             </ModalController>
         </div>
     </div>
