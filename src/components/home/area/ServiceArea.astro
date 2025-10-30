@@ -1,8 +1,13 @@
 ---
-import ServiceAreaHeader from '../../base/SectionHeader.astro';
+import SectionHeader from '../../base/SectionHeader.astro';
 import ServiceAreaMap from './ServiceAreaMap.astro';
 import ZipCodeChecker from './ZipCodeChecker.astro';
 import LocationList from './LocationList.astro';
+
+// Данные для заголовка
+const sectionTitle = "We Serve Philadelphia + South Jersey";
+const sectionCategory = "Services area";
+const sectionDescription = "Lorem ipsum dolor sit amet consectetur. Turpis pellentesque pellentesque tristique condimentum nulla eget. Tincidunt et vel ultrices egestas viverra consequat neque aliquet vulputate.";
 
 // Данные для списков можно вынести сюда для удобства
 const popularNeighborhoods = ["Center City", "Fishtown", "South Philly", "Manayunk", "Old City", "University City", "Fairmount"];
@@ -12,41 +17,39 @@ const southJerseyAreas = ["Marlton"];
 
 <section class="section section-gap bg-white">
     <div class="container mx-auto">
-        <div class="flex items-center my-2">
-            <div class="w-4 h-4 bg-[#404040] mr-2"></div>
-            <p class="text-sm font-semibold uppercase tracking-wider text-zinc-500">
-                Services area
-            </p>
-        </div>
-        <div>
-            <h2 class="text-xl md:text-4xl font-semibold text-zinc-900 mb-8 text-center md:text-left">
-                We Serve Philadelphia + South Jersey
-            </h2>
-            <p class="mb-8">Lorem ipsum dolor sit amet consectetur. Turpis pellentesque pellentesque tristique condimentum nulla eget. Tincidunt et vel ultrices egestas viverra consequat neque aliquet vulputate.
-            </p>
-        </div>
-
+        <SectionHeader 
+            title={sectionTitle}
+            category={sectionCategory}
+            description={sectionDescription}
+        />
         
-        <div class="grid grid-cols-1 lg:grid-cols-3 lg:gap-16">
+        <div class="grid grid-cols-1 lg:grid-cols-3 lg:gap-8 items-start mt-8">
+            <!-- левая секция-->
             <div class="lg:col-span-2">
                 <ServiceAreaMap />
             </div>
 
-            <div class="mt-4 md:mt-0 lg:pt-[1.8rem] lg:col-span-1">
+            <!-- правая секция-->
+            <div class="lg:col-span-1 mt-10">
+                <!-- Проверка почтового индекса -->
                 <ZipCodeChecker />
 
-                <div class="space-y-8">
+                <!-- Популярные места -->
+                <div class="space-y-6">
+                    <!-- Список популярных районов -->
                     <LocationList
-                            title="Popular Neighborhoods We Serve"
-                            locations={popularNeighborhoods}
+                        title="Popular Neighborhoods We Serve"
+                        locations={popularNeighborhoods}
                     />
+                    <!-- Список популярных пригородов -->
                     <LocationList
-                            title="Popular Suburbs We Serve"
-                            locations={popularSuburbs}
+                        title="Popular Suburbs We Serve"
+                        locations={popularSuburbs}
                     />
+                    <!-- Список популярных районов южного Нью-Джерси -->
                     <LocationList
-                            title="Popular South Jersey Areas We Serve"
-                            locations={southJerseyAreas}
+                        title="Popular South Jersey Areas We Serve"
+                        locations={southJerseyAreas}
                     />
                 </div>
             </div>
