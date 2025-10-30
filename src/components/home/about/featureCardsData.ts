@@ -5,7 +5,7 @@ interface FeatureCard {
 
 export const featureCardsData: FeatureCard[] = [
   {
-    title: "Professional Cleaning Services",
+    title: "Cleaning Services",
     description: "Our team of experienced professionals delivers exceptional cleaning."
   },
   {

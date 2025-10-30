@@ -7,16 +7,16 @@ export interface Props {
 const { title, description } = Astro.props;
 ---
 
-<div class="bg-violet-50 rounded-2xl p-4 flex flex-col h-full gap-3">
+<div class="bg-[#F1F0F9] rounded-2xl w-[264px] h-[148px] pr-[16px] py-[16px] px-[16px] flex flex-col gap-3">
 
     <!-- Этот блок просто будет вверху -->
     <div class="flex justify-between items-start">
-        <h3 class="font-bold text-base text-slate-800">{title}</h3>
-        <div class="w-6 h-6 bg-white/80 rounded-lg flex-shrink-0"></div>
+        <h3 class="font-semibold text-[18px] text-slate-800">{title}</h3>
+        <div class="w-6 h-6 bg-white/80 flex-shrink-0"></div>
     </div>
 
-    <!-- Этот блок будет под ним с отступом в `gap-3` -->
-    <p class="text-slate-600 text-sm pt-4">
+    <!-- описание -->
+    <p class="text-slate-600 text-sm">
         {description}
     </p>
 </div>
