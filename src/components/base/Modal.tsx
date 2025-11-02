@@ -198,18 +198,35 @@ const BookingModal: Component<BookingModalProps> = (props) => {
 
         if (props.isOpen) {
             setIsModalRendered(true);
-            setTimeout(() => setIsContentVisible(true), 20);
+            
+            // Ждем следующего тика, чтобы элемент был смонтирован
+            setTimeout(() => {
+                // Перемещаем модальное окно в специальный контейнер
+                const modalContainer = document.getElementById('modal-container');
+                const modalRoot = document.getElementById('modal-root');
+                
+                if (modalContainer && modalRoot) {
+                    // Перемещаем элемент в #modal-root
+                    modalRoot.appendChild(modalContainer);
+                    // Убираем фиксированное позиционирование и задаем нужный z-index
+                    modalContainer.style.position = 'fixed';
+                    modalContainer.style.zIndex = '99999';
+                }
+                
+                setIsContentVisible(true);
+                
+                // Отключаем прокрутку
+                document.body.style.overflow = 'hidden';
 
-            // Просто отключаем прокрутку. Расчеты и padding больше не нужны.
-            document.body.style.overflow = 'hidden';
+                document.addEventListener('keydown', handleEscapeKey);
+            }, 20);
 
-            document.addEventListener('keydown', handleEscapeKey);
         } else {
             setIsContentVisible(false);
             setTimeout(() => {
                 setIsModalRendered(false);
 
-                // Просто включаем прокрутку обратно.
+                // Включаем прокрутку обратно.
                 document.body.style.overflow = '';
 
                 setErrors({});
@@ -294,9 +311,11 @@ const BookingModal: Component<BookingModalProps> = (props) => {
         <>
             {isModalRendered() && (
                 <div
-                    class={`fixed inset-0 z-[9999] flex items-center justify-center p-4 transition-opacity duration-300 ${
+                    id="modal-container"
+                    class={`fixed inset-0 z-[99999] flex items-center justify-center p-4 transition-opacity duration-300 ${
                         isContentVisible() ? 'bg-white/30 backdrop-blur-sm' : 'bg-white/0 backdrop-blur-none'
                     }`}
+                    style="z-index: 99999;"
                     onClick={handleClickOutside}
                 >
                     <div

@@ -26,7 +26,7 @@ const _buttonClass = `book-button inline-flex items-center justify-center ${clas
         class={_buttonClass}
     >
         <Icon name="bounding-box" class="icon flex-shrink-0" />
-        <span class="flex-shrink-0">{text}</span>
+        <span class="flex-shrink-0 text-offset">{text}</span>
     </button>
 ) : onclick ? (
     <button
@@ -34,12 +34,12 @@ const _buttonClass = `book-button inline-flex items-center justify-center ${clas
         class={_buttonClass}
     >
         <Icon name="bounding-box" class="icon flex-shrink-0" />
-        <span class="flex-shrink-0">{text}</span>
+        <span class="flex-shrink-0 text-offset">{text}</span>
     </button>
 ) : (
     <a href={href} class={_buttonClass}>
         <Icon name="bounding-box" class="icon flex-shrink-0" />
-        <span class="flex-shrink-0">{text}</span>
+        <span class="flex-shrink-0 text-offset">{text}</span>
     </a>
 )}
 
@@ -76,5 +76,9 @@ const _buttonClass = `book-button inline-flex items-center justify-center ${clas
     .book-button:hover {
         background-color: var(--primary-hover);
         transform: translateY(-2px);
+    }
+    
+    .text-offset {
+        transform: translateY(2px);
     }
 </style>

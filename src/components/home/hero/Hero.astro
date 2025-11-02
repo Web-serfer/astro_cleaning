@@ -21,7 +21,7 @@ import ModalController from '@components/base/ModalController.tsx';
             />
             <!-- темная подложка -->
             <div class="absolute inset-0 bg-black/50 z-10"></div>
-            <div class="relative z-20">
+            <div class="relative z-20 overflow-visible">
                 <div class="grid grid-cols-1 lg:grid-cols-5 gap-10 items-end content-end">
 
                     <!-- Левая колонка -->
@@ -47,7 +47,7 @@ import ModalController from '@components/base/ModalController.tsx';
                         <div class="w-[384px] max-w-none">
                             <RatingCard />
                         </div>
-                        <div class="w-[384px] max-w-none">
+                        <div class="w-[384px] max-w-none relative z-30">
                             <ModalController client:idle>
                                 <ServiceCard />
                             </ModalController>

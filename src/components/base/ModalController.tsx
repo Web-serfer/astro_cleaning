@@ -16,7 +16,7 @@ const ModalController: Component<ModalControllerProps> = (props) => {
             <div onClick={openModal}>
                 {props.children}
             </div>
-            <BookingModal isOpen={isModalOpen()} onClose={closeModal} />
+            {isModalOpen() && <BookingModal isOpen={isModalOpen()} onClose={closeModal} />}
         </>
     );
 };
