@@ -91,12 +91,12 @@ const { class: externalClass = '' } = Astro.props;
         <hr class="border-t border-black my-8" />
 
         <!-- Блок копирайта и дополнительных ссылок -->
-        <div class="flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-gray-500 font-medium">
+        <div class="flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-black font-medium">
             <p>&copy;2025 WellKnown Cleaning. All rights reserved</p>
             <div class="flex gap-6">
                 {footerLinks.map((link) => (
                         <span class="relative group">
-                        <a href={link.href} class="font-medium text-gray-500 hover:text-[var(--primary)] transition-colors duration-300 relative inline-block px-1 py-1">
+                        <a href={link.href} class="font-medium text-black hover:text-[var(--primary)] transition-colors duration-300 relative inline-block px-1 py-1">
                             <span class="relative z-10">{link.text}</span>
                             <span class="absolute bottom-0 left-1/2 w-full h-0.5 bg-[var(--primary)] rounded-sm transition-all duration-300 -translate-x-1/2 scale-x-0 group-hover:scale-x-100 origin-center"></span>
                         </a>
