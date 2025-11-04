@@ -27,7 +27,7 @@ const { class: externalClass = '' } = Astro.props;
 ---
 
 <!-- Блок с основной информацией (логотип, описание, социальные сети) -->
-<footer class={`relative w-full max-w-7xl mx-auto bg-[#f5f3f9] text-slate-800 pt-16 pb-8 px-6 sm:px-10 z-10 rounded-[40px] -mt-[30rem] h-full ${externalClass}`}>
+<footer class={`relative w-full max-w-7xl mx-auto bg-[#f5f3f9] text-slate-800 pb-8 px-6 sm:px-10 z-10 rounded-[40px] -mt-[30rem] h-full ${externalClass}`}>
     <div class="flex flex-col justify-center h-full">
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
             <div class="lg:col-span-2">
@@ -91,7 +91,7 @@ const { class: externalClass = '' } = Astro.props;
         <hr class="border-t border-black my-8" />
 
         <!-- Блок копирайта и дополнительных ссылок -->
-        <div class="flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-black font-medium">
+        <div class="flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-black font-medium ">
             <p>&copy;2025 WellKnown Cleaning. All rights reserved</p>
             <div class="flex gap-6">
                 {footerLinks.map((link) => (
