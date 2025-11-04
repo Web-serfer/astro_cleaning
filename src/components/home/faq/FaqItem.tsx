@@ -3,10 +3,10 @@ import { Show } from 'solid-js';
 
 // Интерфейс для пропсов компонента FaqItem
 interface FaqItemProps {
-    question: string;        // Вопрос
-    answer: string;          // Ответ
-    isOpen: boolean;         // Состояние открытия/закрытия
-    onClick: () => void;     // Обработчик клика
+    question: string;
+    answer: string;
+    isOpen: boolean;
+    onClick: () => void;
 }
 
 // Компонент элемента FAQ
@@ -42,7 +42,7 @@ const FaqItem: Component<FaqItemProps> = (props) => {
 
             {/* Контейнер для ответа с анимацией открытия/закрытия */}
             <div
-                class="grid transition-[grid-template-rows] duration-300 ease-in-out bg-white"
+                class="grid transition-[grid-template-rows] duration-300 ease-in-out bg-[#F1F0F9]"
                 classList={{
                     'grid-rows-[1fr]': props.isOpen,      // При открытии показывает содержимое
                     'grid-rows-[0fr]': !props.isOpen,     // При закрытии скрывает содержимое
