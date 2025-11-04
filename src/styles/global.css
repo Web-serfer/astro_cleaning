@@ -255,3 +255,13 @@ body {
 .hide-scrollbar {
     scrollbar-width: none; /* Firefox */
 }
+
+/* Блокировка прокрутки */
+.scroll-lock {
+    overflow: hidden !important;
+    height: 100%; /* Дополнительно помогает гарантировать, что body/html не растягиваются */
+}
+/* ВАЖНО: Применяем также к html, чтобы покрыть все браузеры */
+.scroll-lock-html {
+    overflow: hidden !important;
+}

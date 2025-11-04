@@ -2,46 +2,45 @@
 import { Icon } from 'astro-icon/components';
 
 interface Props {
-  href?: string
-  text?: string
-  class?: string
-  isModalButton?: boolean
-  onclick?: string
+    href?: string
+    text?: string
+    class?: string
+    isModalButton?: boolean
+    onclick?: string
 }
 
 const {
-  href = '#',
-  text = 'BOOK NOW',
-  class: className,
-  isModalButton = false,
-  onclick,
+    href = '#',
+    text = 'BOOK NOW',
+    class: className,
+    isModalButton = false,
+    onclick,
 } = Astro.props
 
 const _buttonClass = `book-button inline-flex items-center justify-center ${className || ''}`
 ---
 
 {isModalButton ? (
-    <button 
-        onclick="openModal()" 
+<button
         class={_buttonClass}
-    >
-        <Icon name="bounding-box" class="icon flex-shrink-0" />
-        <span class="flex-shrink-0 text-offset">{text}</span>
-    </button>
-) : onclick ? (
-    <button
+>
+    <Icon name="bounding-box" class="icon flex-shrink-0" />
+    <span class="flex-shrink-0 text-offset">{text}</span>
+</button>
+    ) : onclick ? (
+<button
         onclick={onclick}
         class={_buttonClass}
-    >
-        <Icon name="bounding-box" class="icon flex-shrink-0" />
-        <span class="flex-shrink-0 text-offset">{text}</span>
-    </button>
-) : (
-    <a href={href} class={_buttonClass}>
-        <Icon name="bounding-box" class="icon flex-shrink-0" />
-        <span class="flex-shrink-0 text-offset">{text}</span>
-    </a>
-)}
+>
+    <Icon name="bounding-box" class="icon flex-shrink-0" />
+    <span class="flex-shrink-0 text-offset">{text}</span>
+</button>
+    ) : (
+<a href={href} class={_buttonClass}>
+    <Icon name="bounding-box" class="icon flex-shrink-0" />
+    <span class="flex-shrink-0 text-offset">{text}</span>
+</a>
+    )}
 
 <style>
     .book-button {
@@ -67,7 +66,7 @@ const _buttonClass = `book-button inline-flex items-center justify-center ${clas
         text-decoration: none;
         cursor: pointer;
         transition: background-color 0.3s ease, transform 0.2s ease;
-        
+
         /* Улучшенное центрирование */
         box-sizing: border-box;
         line-height: 1;
@@ -77,7 +76,7 @@ const _buttonClass = `book-button inline-flex items-center justify-center ${clas
         background-color: var(--primary-hover);
         transform: translateY(-2px);
     }
-    
+
     .text-offset {
         transform: translateY(2px);
     }

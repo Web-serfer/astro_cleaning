@@ -1,20 +1,8 @@
-import { createSignal, createEffect, type Component } from 'solid-js';
+import { createSignal, createEffect, onCleanup, type Component } from 'solid-js';
 import type { JSX } from 'solid-js';
 
-interface BookingModalProps {
-    isOpen: boolean;
-    onClose: () => void;
-}
-
-interface ValidationErrors {
-    name?: string;
-    email?: string;
-    phone?: string;
-    service?: string;
-    date?: string;
-    time?: string;
-    message?: string;
-}
+interface BookingModalProps { isOpen: boolean; onClose: () => void; }
+interface ValidationErrors { name?: string; email?: string; phone?: string; service?: string; date?: string; time?: string; message?: string; }
 
 const BookingModal: Component<BookingModalProps> = (props) => {
     const [isModalRendered, setIsModalRendered] = createSignal(false);
@@ -135,20 +123,6 @@ const BookingModal: Component<BookingModalProps> = (props) => {
         return newErrors;
     };
 
-    // Проверка валидности формы (без изменений)
-    const isFormValid = () => {
-        const formData = new FormData(document.getElementById('booking-form') as HTMLFormElement);
-        const currentErrors = validateForm(formData);
-        // Проверяем, есть ли ошибки для полей, которые были "тронуты"
-        for (const key of Object.keys(currentErrors)) {
-            if (!touched().has(key)) {
-                // Если поле не тронуто, его ошибка не мешает сабмиту на начальном этапе
-            }
-        }
-        // Форма валидна для сабмита, если нет ошибок
-        return Object.keys(validateForm(formData)).length === 0;
-    };
-
     // Обработчик изменения поля
     const handleInput = (e: Event, field: string) => {
         const target = e.target as HTMLInputElement | HTMLTextAreaElement;
@@ -173,6 +147,7 @@ const BookingModal: Component<BookingModalProps> = (props) => {
                 case 'date': error = validateDate(value); break;
                 case 'time': error = validateTime(value); break;
                 case 'message': error = validateMessage(value); break;
+                case 'service': if (!value) error = 'Please select a service type'; break;
             }
             if (error) {
                 newErrors[field as keyof ValidationErrors] = error;
@@ -185,56 +160,69 @@ const BookingModal: Component<BookingModalProps> = (props) => {
 
     // Обработчик потери фокуса
     const handleBlur = (e: Event, field: string) => {
-        const target = e.target as HTMLInputElement | HTMLTextAreaElement;
+        const target = e.target as HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement;
         setTouched(prev => new Set<string>(prev).add(field));
         validateField(field, target.value);
     };
 
-    // --- КЛЮЧЕВОЕ ИЗМЕНЕНИЕ ЗДЕСЬ ---
     createEffect(() => {
-        const handleEscapeKey = (e: KeyboardEvent) => {
-            if (e.key === 'Escape') props.onClose();
-        };
-
         if (props.isOpen) {
             setIsModalRendered(true);
-            
-            // Ждем следующего тика, чтобы элемент был смонтирован
+            // Даем время для рендера, затем запускаем анимацию и перемещение в портал
             setTimeout(() => {
-                // Перемещаем модальное окно в специальный контейнер
                 const modalContainer = document.getElementById('modal-container');
                 const modalRoot = document.getElementById('modal-root');
-                
                 if (modalContainer && modalRoot) {
-                    // Перемещаем элемент в #modal-root
                     modalRoot.appendChild(modalContainer);
-                    // Убираем фиксированное позиционирование и задаем нужный z-index
-                    modalContainer.style.position = 'fixed';
-                    modalContainer.style.zIndex = '99999';
                 }
-                
                 setIsContentVisible(true);
-                
-                // Отключаем прокрутку
-                document.body.style.overflow = 'hidden';
-
-                document.addEventListener('keydown', handleEscapeKey);
-            }, 20);
-
+            }, 20); // Небольшая задержка
         } else {
+            // Запускаем анимацию закрытия
             setIsContentVisible(false);
+            // Ждем завершения анимации, затем убираем из DOM и портала
             setTimeout(() => {
                 setIsModalRendered(false);
-
-                // Включаем прокрутку обратно.
-                document.body.style.overflow = '';
-
+                const modalContainer = document.getElementById('modal-container');
+                const modalRoot = document.getElementById('modal-root');
+                if (modalContainer && modalRoot && modalRoot.contains(modalContainer)) {
+                    modalRoot.removeChild(modalContainer);
+                }
+                // Сбрасываем форму при закрытии
                 setErrors({});
                 setTouched(new Set<string>());
                 setIsSubmitting(false);
-            }, 300);
-            document.removeEventListener('keydown', handleEscapeKey);
+            }, 300); // Должно совпадать с длительностью transition
         }
+    });
+
+        createEffect(() => {
+        if (!props.isOpen) {
+            return;
+        }
+
+        const scrollPosition = window.scrollY || document.documentElement.scrollTop;
+
+        document.body.classList.add('scroll-lock');
+        document.documentElement.classList.add('scroll-lock-html');
+
+        const handleEscapeKey = (e: KeyboardEvent) => {
+            if (e.key === 'Escape') {
+                props.onClose();
+            }
+        };
+        document.addEventListener('keydown', handleEscapeKey);
+
+        onCleanup(() => {
+            document.body.classList.remove('scroll-lock');
+            document.documentElement.classList.remove('scroll-lock-html');
+            document.removeEventListener('keydown', handleEscapeKey);
+
+            // Восстанавливаем позицию скролла
+            requestAnimationFrame(() => {
+                window.scrollTo(0, scrollPosition);
+            });
+        });
     });
 
     const handleClickOutside = (e: MouseEvent) => {
@@ -248,7 +236,6 @@ const BookingModal: Component<BookingModalProps> = (props) => {
         if (isSubmitting()) return;
 
         const formData = new FormData(e.currentTarget);
-        // "Трогаем" все поля перед валидацией, чтобы показать все ошибки
         const allFields = ['name', 'email', 'phone', 'service', 'date', 'time'];
         setTouched(new Set<string>(allFields));
 
@@ -272,19 +259,19 @@ const BookingModal: Component<BookingModalProps> = (props) => {
         }
     };
 
-    // Обработчики для селекта (без изменений)
     const handleSelectClick = () => setIsSelectOpen(!isSelectOpen());
-    const handleSelectChange = () => {
+    const handleSelectChange = (e: Event) => {
+        const target = e.target as HTMLSelectElement;
         setIsSelectOpen(false);
         if (selectRef) {
             selectRef.blur();
-            // Валидация при изменении
-            handleBlur({ target: selectRef } as any, 'service');
+            handleBlur({ target: target } as any, 'service');
         }
     };
-    const handleSelectBlur = () => {
+    const handleSelectBlur = (e: Event) => {
+        const target = e.target as HTMLSelectElement;
         setTimeout(() => setIsSelectOpen(false), 150);
-        handleBlur({ target: selectRef } as any, 'service');
+        handleBlur({ target: target } as any, 'service');
     };
     const handleArrowClick = () => {
         if (selectRef) {
@@ -293,16 +280,12 @@ const BookingModal: Component<BookingModalProps> = (props) => {
         }
     };
 
-    // Условие для отключения кнопки (без изменений)
     const isSubmitDisabled = () => {
         if (isSubmitting()) return true;
-        // Кнопка отключена, если есть ошибки в "тронутых" полях
         const currentErrors = errors();
-        const touchedFields = touched();
-        for (const field of touchedFields) {
-            if (currentErrors[field as keyof ValidationErrors]) {
-                return true;
-            }
+
+        if (Object.keys(currentErrors).length > 0) {
+            return true;
         }
         return false;
     };
@@ -325,6 +308,7 @@ const BookingModal: Component<BookingModalProps> = (props) => {
                         }`}
                         onClick={(e) => e.stopPropagation()}
                     >
+                        {/* ... (весь JSX формы остается без изменений) ... */}
                         <div class="p-6 border-b border-gray-200 flex justify-between items-center">
                             <p class="text-xl font-bold text-gray-800">Book a Cleaning Service</p>
                             <button
@@ -393,7 +377,7 @@ const BookingModal: Component<BookingModalProps> = (props) => {
                                 </div>
                             </div>
                             <div class="mt-6">
-                                <button type="submit" disabled={isSubmitting()} class={`w-full font-medium text-white px-6 py-3 rounded-full transition-all duration-300 overflow-hidden cursor-pointer ${ isSubmitting() ? 'bg-gray-400 cursor-not-allowed' : 'bg-[var(--primary)] hover:bg-[var(--primary-hover)] hover:-translate-y-1' }`}>
+                                <button type="submit" disabled={isSubmitDisabled()} class={`w-full font-medium text-white px-6 py-3 rounded-full transition-all duration-300 overflow-hidden cursor-pointer ${ isSubmitting() || Object.keys(errors()).length > 0 ? 'bg-gray-400 cursor-not-allowed' : 'bg-[var(--primary)] hover:bg-[var(--primary-hover)] hover:-translate-y-1' }`}>
                                     {isSubmitting() ? 'Submitting...' : 'Submit Request'}
                                 </button>
                             </div>
